@@ -1,7 +1,11 @@
 import React from "react";
-
-function index() {
-  return <div>index</div>;
+import Button from "../../Components/Button";
+function UserLoginPage() {
+  return (
+    <div style={{width:200}}>
+      <Button styleName="bg-logo">index</Button>
+    </div>
+  );
 }
 
-export default index;
+export default UserLoginPage;
