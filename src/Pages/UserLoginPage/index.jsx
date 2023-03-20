@@ -2,11 +2,8 @@ import React from "react";
 import Button from "../../Components/Button";
 function UserLoginPage() {
   return (
-    <div>
-      <Button>index</Button>
-      <Button>index</Button>
-      <Button>index</Button>
-      <Button>index</Button>
+    <div style={{width:200}}>
+      <Button styleName="bg-logo">index</Button>
     </div>
   );
 }
