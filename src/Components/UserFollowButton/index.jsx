@@ -1,5 +1,5 @@
 import styles from "./UserFollowBtn.module.scss";
-function FollowButton() {
+function UserFollowBtn() {
   const handleAddFollow = () => {};
   // const handleDeleteFollow = () => {};
 
@@ -16,4 +16,4 @@ function FollowButton() {
     </>
   );
 }
-export default FollowButton;
+export default UserFollowBtn;

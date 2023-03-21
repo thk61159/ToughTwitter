@@ -1,7 +1,7 @@
 import styles from "./UserPopularCard.module.scss";
 import DefaultAvatar from "../../../../assets/icons/AcLogo.svg";
 import { Link } from "react-router-dom";
-import UserFollowBtn from "../../../UserFollowBtn";
+import UserFollowBtn from "../../../UserFollowButton";
 function PopularUserCard({
   userName,
   accountName,
