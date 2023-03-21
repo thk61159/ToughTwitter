@@ -13,6 +13,9 @@ function AuthInput({ label, type, value, placeholder, onChange }) {
           onChange={(e) => onChange?.(e.target.value)}
         />
       </div>
+
+       <div className={styles["authinput--box"]}></div>
+
     </div>
   );
 }
