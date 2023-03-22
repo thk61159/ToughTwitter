@@ -5,7 +5,10 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import UserLoginPage from "./Pages/UserLoginPage";
 import RegisterPage from "./Pages/RegisterPage";
 import AdminLoginPage from "./Pages/AdminLoginPage";
+
+import SettingPage from "./Pages/SettingPage";
 import UserPopularBar from "./Components/UserPopularBar";
+
 
 
 
@@ -21,7 +24,9 @@ function App() {
             <Route path="login" element={<UserLoginPage />}></Route>
             <Route path="admin" element={<AdminLoginPage />}></Route>
             <Route path="register" element={<RegisterPage />}></Route>
+            <Route path="setting" element={<SettingPage />}></Route>
             <Route path="test" element={<UserPopularBar />}></Route>
+
           </Route>
         </Routes>
       </BrowserRouter>
