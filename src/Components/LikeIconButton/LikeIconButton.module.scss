@@ -1,0 +1,12 @@
+.large {
+  width: 30px;
+  height: 30px;
+}
+.container {
+  cursor: pointer;
+  &:hover {
+    background-color: var(--color-light-grey);
+    border-radius: 100%;
+    transform: scale(1.1,1.1);
+  }
+}

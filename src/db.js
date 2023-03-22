@@ -11,7 +11,7 @@ export const data = [
   {
     id: 2,
     account: "user2",
-    name: "user1",
+    name: "user2",
     isFollowing: true,
     avatar: "https://loremflickr.com/320/240?lock=2",
     currentUserID: 2,
@@ -20,7 +20,7 @@ export const data = [
   {
     id: 3,
     account: "user3",
-    name: "user1",
+    name: "user3",
     isFollowing: true,
     avatar: "https://loremflickr.com/320/240?lock=3",
     currentUserID: 3,
@@ -29,7 +29,7 @@ export const data = [
   {
     id: 4,
     account: "user4",
-    name: "user1",
+    name: "user4",
     isFollowing: true,
     avatar: "https://loremflickr.com/320/240?lock=4",
     currentUserID: 4,
@@ -38,7 +38,7 @@ export const data = [
   {
     id: 5,
     account: "user5",
-    name: "user1",
+    name: "user5",
     isFollowing: true,
     avatar: "https://loremflickr.com/320/240?lock=5",
     currentUserID: 5,
@@ -47,7 +47,7 @@ export const data = [
   {
     id: 6,
     account: "user6",
-    name: "user1",
+    name: "user6",
     isFollowing: true,
     avatar: "https://loremflickr.com/320/240?lock=6",
     currentUserID: 6,
@@ -56,7 +56,7 @@ export const data = [
   {
     id: 7,
     account: "user7",
-    name: "user1",
+    name: "user7",
     isFollowing: true,
     avatar: "https://loremflickr.com/320/240?lock=7",
     currentUserID: 7,
@@ -65,7 +65,7 @@ export const data = [
   {
     id: 8,
     account: "user8",
-    name: "user1",
+    name: "user8",
     isFollowing: true,
     avatar: "https://loremflickr.com/320/240?lock=8",
     currentUserID: 8,
@@ -74,7 +74,7 @@ export const data = [
   {
     id: 9,
     account: "user9",
-    name: "user1",
+    name: "user9",
     isFollowing: true,
     avatar: "https://loremflickr.com/320/240?lock=9",
     currentUserID: 9,
@@ -83,7 +83,7 @@ export const data = [
   {
     id: 10,
     account: "user10",
-    name: "user1",
+    name: "user10",
     isFollowing: true,
     avatar: "https://loremflickr.com/320/240?lock=10",
     currentUserID: 10,

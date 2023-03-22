@@ -2,7 +2,7 @@ import styles from "./UserPopularCard.module.scss";
 import DefaultAvatar from "../../../../assets/icons/AcLogo.svg";
 import { Link } from "react-router-dom";
 import UserFollowBtn from "../../../UserFollowButton";
-function PopularUserCard({
+function UserPopularCard({
   userName,
   accountName,
   avatar,
@@ -21,10 +21,10 @@ function PopularUserCard({
       </Link>
       <div className={styles["user-info"]}>
         <p className={styles["user-name"]}>
-          {userName ? userName : "Pizza Hut"}
+          {userName ? userName : "查無此人"}
         </p>
         <p className={styles["user-account"]}>
-          {accountName ? `@${accountName}` : "@pizzahut"}
+          {accountName ? `@${accountName}` : "@@#!%#$"}
         </p>
       </div>
 
@@ -32,4 +32,4 @@ function PopularUserCard({
     </div>
   );
 }
-export default PopularUserCard;
+export default UserPopularCard;

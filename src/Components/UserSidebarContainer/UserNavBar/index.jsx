@@ -4,12 +4,13 @@ import LogoutButton from "./LogoutButton";
 import TweetButtonSideBar from "./TweetButtonSideBar";
 import { NavLink } from "react-router-dom";
 
+
+//Component
 import { ReactComponent as AcLogo } from "../../../assets/icons/AcLogo.svg";
 import { ReactComponent as House } from "../../../assets/icons/house.svg";
 import { ReactComponent as HouseActive } from "../../../assets/icons/house_Full.svg";
 import { ReactComponent as Head } from "../../../assets/icons/head.svg";
 import { ReactComponent as HeadActive } from "../../../assets/icons/head_Full.svg";
-
 import { ReactComponent as Gear } from "../../../assets/icons/gear.svg";
 import { ReactComponent as GearActive } from "../../../assets/icons/gear_Full.svg";
 
@@ -62,11 +63,7 @@ function UserNavBar() {
       <NavBarItem>
         <NavLink
           to={"/setting"}
-          className={({ isActive }) =>
-            [
-              `${styles["navbar-link"]}`,
-              isActive ? `${styles["router-link-active"]}` : ``,
-            ].join(" ")
+          className={styles["navbar-link"]
           }
           end
         >

@@ -5,12 +5,10 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import UserLoginPage from "./Pages/UserLoginPage";
 import RegisterPage from "./Pages/RegisterPage";
 import AdminLoginPage from "./Pages/AdminLoginPage";
-
 import SettingPage from "./Pages/SettingPage";
-import UserPopularBar from "./Components/UserPopularBar";
-
-
-
+import LayoutUser from "./Components/LayoutUser";
+import TweetInput from "./Components/TweetInput";
+import HomePage from "./Pages/HomePage";
 
 const basename = process.env.PUBLIC_URL;
 function App() {
@@ -25,8 +23,10 @@ function App() {
             <Route path="admin" element={<AdminLoginPage />}></Route>
             <Route path="register" element={<RegisterPage />}></Route>
             <Route path="setting" element={<SettingPage />}></Route>
-            <Route path="test" element={<UserPopularBar />}></Route>
-
+            <Route path="tweet/:id" element={<LayoutUser />}>
+              <Route index element={<HomePage />}></Route>
+            </Route>
+            <Route path="test" element={<HomePage />}></Route>
           </Route>
         </Routes>
       </BrowserRouter>
