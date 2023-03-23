@@ -27,7 +27,7 @@ function UserLoginPage({ setLogin }) {
 				if (token) {
 					localStorage.setItem('token', token)
 					setLogin(true)
-					navigate('/tweet/:id')
+					navigate("/home");
 				}
 				//如果伺服器回傳錯誤會直接被丟到catch，所以沒有特別檢查 !token
 			})
