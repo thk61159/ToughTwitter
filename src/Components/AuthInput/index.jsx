@@ -14,8 +14,8 @@ function AuthInput({ label, type, value, placeholder, onChange }) {
         />
       </div>
 
-       <div className={styles["authinput--box"]}></div>
-
+      <div className={styles["authinput-msg-box"]}></div>
+      <div className={styles["authinput-alertmsg"]}>{""}</div>
     </div>
   );
 }

@@ -4,6 +4,7 @@
   width: 100%;
   margin-bottom: 8px;
 }
+
 .authinput-box {
   display: flex;
   flex-direction: column;
@@ -16,6 +17,11 @@
     border-bottom: 2px solid var(--color-skyblue);
   }
 }
+
+.error {
+  border-bottom: 2px solid var(--color-error);
+}
+
 .authinput-label {
   color: var(--color-input-title-grey);
   font-size: var(--sub-text-size);
@@ -23,6 +29,7 @@
   margin-top: 2px;
   margin-left: 10.55px;
 }
+
 .authinput {
   outline: none;
   border: none;
@@ -34,7 +41,7 @@
   margin-left: 10.55px;
 }
 
-.authinput--box {
+.authinput-msg-box {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -47,4 +54,8 @@
 .authinput::placeholder {
   color: var(--color-input-disable-grey);
   font-weight: 400;
+}
+
+.authinput-alertmsg {
+  color: var(--color-error);
 }

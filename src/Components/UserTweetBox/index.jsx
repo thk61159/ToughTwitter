@@ -5,6 +5,7 @@ import UserInfo from "./UserInfo";
 
 import LikeFullIconButton from "../LikeFullIconButton";
 import ReplyIconButton from "../ReplyIconButton";
+
 import LikeIconButton from "../LikeIconButton";
 
 function UserTweetBox({ data }) {
@@ -53,5 +54,6 @@ function UserTweetBox({ data }) {
 			</div>
 		</div>
 	)
+
 }
 export default UserTweetBox;

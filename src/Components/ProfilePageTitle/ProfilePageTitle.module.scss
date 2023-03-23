@@ -1,0 +1,35 @@
+.container {
+  padding: 16px 24px;
+  display: flex;
+  align-items: center;
+  font-family: "Noto Sans TC";
+}
+.arrow-img {
+  cursor: pointer;
+}
+
+.profile-title {
+  width: calc(100% - 16px);
+  margin-left: 16px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  .user-name {
+    width: 95%;
+    font-size: 18px;
+    line-height: 26px;
+    font-weight: 700;
+    color: var(--color-dark-black);
+    cursor: pointer;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+
+  }
+  .tweet-count {
+    font-size: 13px;
+    line-height: 18.82px;
+    font-weight: 500;
+    color: var(--color-secondary)
+  }
+}
