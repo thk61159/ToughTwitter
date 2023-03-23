@@ -1,24 +1,22 @@
-import axios from 'axios'
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useContext } from 'react'
+
 import styles from './UserTweetList.module.scss'
-import { API_URL } from '../../constants'
+import { Myaxios } from '../../constants'
+import MyContext from '../MyContext'
+
 import UserTweetBox from '../UserTweetBox'
 
 function UserTweetList() {
-  const token = localStorage.getItem("token");
+	const token = useContext(MyContext)
   let [Data, setData] = useState(null)
-  const getTweets = axios.create({
-		baseURL: API_URL,
-		headers: {
-			Authorization: `Bearer ${token}`,
-		},
-	})
-  useEffect(() => {
-    getTweets
-			.get('/api/users/tweets')
-			.then(e => setData(e.data))
+	useEffect(() => {
+		Myaxios(token)
+			.get('/tweets')
+			.then(e => {
+				setData(e.data)
+			})
 			.catch(err => console.log(err))
-  }, [])
+	}, [token])
 	return (
 		<div className={styles['container']}>
 			{Data && Data.map((d, i) => {
