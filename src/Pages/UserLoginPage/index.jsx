@@ -23,7 +23,7 @@ function UserLoginPage({ setUserData }) {
 				const { token, user } = response.data.data
 				if (token) {
 					localStorage.setItem('token', token)
-					setUserData({ token, user })
+					setUserData({ token: token, user: user })
 					navigate('/home')
 				}
 				//如果伺服器回傳錯誤會直接被丟到catch，所以沒有特別檢查 !token

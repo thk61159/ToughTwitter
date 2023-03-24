@@ -14,8 +14,8 @@ function AuthNav({ userData, setUserData }) {
 			.post('/users/test-token')
 			.then(e => {
 				if (e.data.status === 'success') {
-					setUserData({token:localToken})
-					navigate('/home')
+					setUserData({ token: localToken, user: e.data.user })
+					
 				}
 			})
 			.catch(e => {
