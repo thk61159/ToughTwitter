@@ -8,7 +8,7 @@ import MyContext from '../MyContext'
 import { ReactComponent as LikeFull } from '../../assets/icons/like_full_icon.svg'
 
 function LikeFullIconButton({ id }) {
-	const {token} = useContext(MyContext)
+	const { token } = useContext(MyContext)
 	const btnHandler = (e) => {
 		Myaxios(token)
 			.post(`/tweets/${id}/like`)

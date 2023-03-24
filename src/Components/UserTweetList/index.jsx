@@ -8,14 +8,16 @@ import UserTweetBox from '../UserTweetBox'
 
 function UserTweetList() {
 	const { token } = useContext(MyContext)
-  let [Data, setData] = useState(null)
+	let [Data, setData] = useState(null)
 	useEffect(() => {
-		Myaxios(token)
-			.get('/tweets')
-			.then(e => {
-				setData(e.data)
-			})
-			.catch(err => console.log(err))
+		if (token) {
+			Myaxios(token)
+				.get('/tweets')
+				.then(e => {
+					setData(e.data)
+				})
+				.catch(err => console.log(err))
+		}
 	}, [token])
 	return (
 		<div className={styles['container']}>

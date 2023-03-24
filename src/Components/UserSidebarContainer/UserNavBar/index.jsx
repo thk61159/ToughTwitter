@@ -1,8 +1,8 @@
+import { NavLink } from "react-router-dom";
 import styles from "./UserNavBar.module.scss";
 import NavBarItem from "./NavBarItem";
 import LogoutButton from "./LogoutButton";
 import TweetButtonSideBar from "./TweetButtonSideBar";
-import { NavLink } from "react-router-dom";
 
 //Component
 import { ReactComponent as AcLogo } from "../../../assets/icons/AcLogo.svg";
@@ -47,7 +47,7 @@ function UserNavBar() {
       </NavBarItem>
       <NavBarItem>
         <NavLink
-          to={"/user/:username"}
+          to={"${'username'}"}
           className={({ isActive }) =>
             [
               `${styles["navbar-link"]}`,
