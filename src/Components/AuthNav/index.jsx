@@ -4,9 +4,9 @@ import { Outlet, useNavigate } from 'react-router-dom'
 import { Myaxios } from '../../constants'
 
 
-function AuthNav({ token, setToken }) {
+function AuthNav({ userData, setUserData }) {
 	const localToken = localStorage.getItem('token') //測試過可以取出
-	
+
 	const navigate = useNavigate()
 	useEffect(() => {
 		if (!localToken) return navigate('/login')
@@ -14,12 +14,12 @@ function AuthNav({ token, setToken }) {
 			.post('/users/test-token')
 			.then(e => {
 				if (e.data.status === 'success') {
-					setToken(localToken)
+					setUserData({token:localToken})
 					navigate('/home')
 				}
 			})
 			.catch(e => {
-				setToken('')
+				setUserData('')
 				navigate('/login')
 			})
 	}, [])

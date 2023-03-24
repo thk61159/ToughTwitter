@@ -18,18 +18,18 @@ import MyContext from './Components/MyContext'
 const basename = process.env.PUBLIC_URL
 
 function App() {
-	let [token, setToken] = useState('')
+	let [userData, setUserData] = useState('')
 	useEffect(() => {
 		// localStorage.removeItem('token')
 	}, [])
 	return (
 		<div className={styles.App}>
 			<BrowserRouter basename={basename}>
-				<MyContext.Provider value={token}>
+				<MyContext.Provider value={userData}>
 					<Routes>
 						{/* 用一個nav去處理確認登入狀態的事件 ， 非登入者就重新導向到 /login*/}
-						<Route path="/" element={<AuthNav token={token} setToken={setToken} />}>
-							<Route path="login" element={<UserLoginPage setToken={setToken} />}
+						<Route path="/" element={<AuthNav userData={userData} setUserData={setUserData} />}>
+							<Route path="login" element={<UserLoginPage setUserData={setUserData} />}
 							></Route>
 							<Route path="admin" element={<AdminLoginPage />}></Route>
 							<Route path="register" element={<RegisterPage />}></Route>

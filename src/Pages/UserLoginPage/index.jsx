@@ -9,7 +9,7 @@ import { API_URL } from '../../constants'
 import Button from '../../Components/Button'
 import AuthInput from '../../Components/AuthInput'
 
-function UserLoginPage({ setToken }) {
+function UserLoginPage({ setUserData }) {
 	const navigate = useNavigate()
 	const [account, setAccount] = useState('')
 	const [password, setPassword] = useState('')
@@ -18,12 +18,12 @@ function UserLoginPage({ setToken }) {
 	const handleClick = () => {
 		// 點擊登入發送 POST /api/users/login
 		axios
-			.post(API_URL + '/api/users/login', { email: account, password })
+			.post(API_URL + '/users/login', { email: account, password })
 			.then(response => {
-				const token = response.data.data.token
+				const { token, user } = response.data.data
 				if (token) {
 					localStorage.setItem('token', token)
-					setToken(token)
+					setUserData({ token, user })
 					navigate('/home')
 				}
 				//如果伺服器回傳錯誤會直接被丟到catch，所以沒有特別檢查 !token

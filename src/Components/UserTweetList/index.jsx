@@ -7,7 +7,7 @@ import MyContext from '../MyContext'
 import UserTweetBox from '../UserTweetBox'
 
 function UserTweetList() {
-	const token = useContext(MyContext)
+	const { token } = useContext(MyContext)
   let [Data, setData] = useState(null)
 	useEffect(() => {
 		Myaxios(token)
