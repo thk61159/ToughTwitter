@@ -9,7 +9,7 @@ import { API_URL } from '../../constants'
 import Button from '../../Components/Button'
 import AuthInput from '../../Components/AuthInput'
 
-function UserLoginPage({ setLogin }) {
+function UserLoginPage({ setUserData }) {
 	const navigate = useNavigate()
 	const [account, setAccount] = useState('')
 	const [password, setPassword] = useState('')
@@ -18,21 +18,17 @@ function UserLoginPage({ setLogin }) {
 	const handleClick = () => {
 		// 點擊登入發送 POST /api/users/login
 		axios
-			.post(API_URL + '/api/users/login', { email: account, password })
+			.post(API_URL + '/users/login', { email: account, password })
 			.then(response => {
-				// console.log(response)
-				//如果成功就能取得token
-				const token = response.data.data.token
-				// 有拿到token就重新導向到首頁 前端頁面其實別暴露我們的id比較好！ 先放這樣之後再改
+				const { token, user } = response.data.data
 				if (token) {
 					localStorage.setItem('token', token)
-					setLogin(true)
-					navigate("/home");
+					setUserData({ token: token, user: user })
+					navigate('/home')
 				}
 				//如果伺服器回傳錯誤會直接被丟到catch，所以沒有特別檢查 !token
 			})
 			.catch(err => {
-				console.log(err)
 				//此error來自伺服器的回傳
 				setError(new Error('帳號或密碼錯誤'))
 			})
@@ -59,7 +55,6 @@ function UserLoginPage({ setLogin }) {
 					placeholder="請輸入帳號"
 					onChange={setAccount}
 				/>
-
 
 				<AuthInput
 					label="密碼"
