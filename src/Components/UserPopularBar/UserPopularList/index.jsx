@@ -1,10 +1,10 @@
 import { useState } from "react";
 import styles from "./UserPopularList.module.scss";
 import UserPopularCard from "./UserPopularCard";
-import { data } from "../../../db";
+
 function UserPopularList() {
   const [topFollower, setTopFollower] = useState(data);
-
+  const data = {}
   return (
     <div className={styles["container"]}>
       <h4 className={styles["popular__title"]}>推薦跟隨</h4>

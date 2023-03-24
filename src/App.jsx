@@ -9,7 +9,8 @@ import AdminLoginPage from './Pages/AdminLoginPage'
 import SettingPage from './Pages/SettingPage'
 import LayoutUser from './Components/LayoutUser'
 import HomePage from './Pages/HomePage'
-import UserProfilePage from'./Pages/UserProfilePage'
+import UserProfilePage from './Pages/UserProfilePage'
+import Test from './Pages/Test'
 //components
 import AuthNav from './Components/AuthNav'
 import MyContext from './Components/MyContext'
@@ -27,8 +28,15 @@ function App() {
 				<MyContext.Provider value={userData}>
 					<Routes>
 						{/* 用一個nav去處理確認登入狀態的事件 ， 非登入者就重新導向到 /login*/}
-						<Route path="/" element={<AuthNav userData={userData} setUserData={setUserData} />}>
-							<Route path="login" element={<UserLoginPage setUserData={setUserData} />}
+						<Route
+							path="/"
+							element={
+								<AuthNav userData={userData} setUserData={setUserData} />
+							}
+						>
+							<Route
+								path="login"
+								element={<UserLoginPage setUserData={setUserData} />}
 							></Route>
 							<Route path="admin" element={<AdminLoginPage />}></Route>
 							<Route path="register" element={<RegisterPage />}></Route>
@@ -38,7 +46,7 @@ function App() {
 								<Route index element={<HomePage />}></Route>
 							</Route>
 
-							<Route path="test" element={<HomePage />}></Route>
+							<Route path="test" element={<Test />}></Route>
 						</Route>
 					</Routes>
 				</MyContext.Provider>

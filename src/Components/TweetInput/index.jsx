@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import styles from "./TweetInput.module.scss";
 import TweetSubmitButton from "./TweetSubmitButton";
-import { data } from "../../db.js";
+const data = {}
 
 function TweetInput() {
   return (
