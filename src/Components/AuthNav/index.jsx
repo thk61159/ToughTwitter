@@ -7,7 +7,6 @@ import { Myaxios } from '../../constants'
 function AuthNav({ userData, setUserData }) {
 	const localToken = localStorage.getItem('token') //測試過可以取出
 	const location = useLocation()
-	console.log(location)
 
 	const navigate = useNavigate()
 	useEffect(() => {
