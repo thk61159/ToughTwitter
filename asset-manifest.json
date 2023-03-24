@@ -1,0 +1,28 @@
+{
+  "files": {
+    "main.css": "/ToughTwitter/static/css/main.286bc23e.css",
+    "main.js": "/ToughTwitter/static/js/main.3ab15f7d.js",
+    "static/js/787.cd73e525.chunk.js": "/ToughTwitter/static/js/787.cd73e525.chunk.js",
+    "static/media/gear.svg": "/ToughTwitter/static/media/gear.7e0c5cdd7abe8114f28c04e09466a31f.svg",
+    "static/media/gear_Full.svg": "/ToughTwitter/static/media/gear_Full.53670273838eeeda8dbecd8c276f620c.svg",
+    "static/media/AcLogo.svg": "/ToughTwitter/static/media/AcLogo.2f9d6616648badcc85a1c10004a4f7fc.svg",
+    "static/media/notification_info.svg": "/ToughTwitter/static/media/notification_info.81560a583c4cb2cdf8477fa69ace6c8a.svg",
+    "static/media/logout.svg": "/ToughTwitter/static/media/logout.5aca5b6e4583238eb30dd233d30664a1.svg",
+    "static/media/head.svg": "/ToughTwitter/static/media/head.176561637f88dcfc6b4ffb6037d9bd57.svg",
+    "static/media/house.svg": "/ToughTwitter/static/media/house.118b65bbc877fac608db8df544874bdb.svg",
+    "static/media/reply_icon.svg": "/ToughTwitter/static/media/reply_icon.ae60cbeddf833c924a998e6c57f0f7d2.svg",
+    "static/media/house_Full.svg": "/ToughTwitter/static/media/house_Full.2898be6d7d5fc5ffd0e2d942fd894e90.svg",
+    "static/media/letter_icon.svg": "/ToughTwitter/static/media/letter_icon.ecdfaf4c4b945c936c2bc95f8a7669d6.svg",
+    "static/media/head_Full.svg": "/ToughTwitter/static/media/head_Full.84fe96811716d2224285af382e0dcabe.svg",
+    "index.html": "/ToughTwitter/index.html",
+    "static/media/arrowPre.svg": "/ToughTwitter/static/media/arrowPre.e8ec00a1d11a2567c2fadb6ef56db9d7.svg",
+    "static/media/like_full_icon.svg": "/ToughTwitter/static/media/like_full_icon.5e5d892842ae545d6d81b84cec2019b6.svg",
+    "main.286bc23e.css.map": "/ToughTwitter/static/css/main.286bc23e.css.map",
+    "main.3ab15f7d.js.map": "/ToughTwitter/static/js/main.3ab15f7d.js.map",
+    "787.cd73e525.chunk.js.map": "/ToughTwitter/static/js/787.cd73e525.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.286bc23e.css",
+    "static/js/main.3ab15f7d.js"
+  ]
+}
