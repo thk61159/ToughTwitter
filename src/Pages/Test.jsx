@@ -33,50 +33,31 @@ import UserTweetList from '../Components/UserTweetList'
 
 const Test = () => {
   return (
-		<div>
-			<p>Alert</p>
-			<Alert />
-			<p>AuthInput</p>
-			<AuthInput />
-			<p>Button</p>
-			<Button />
+		<div style={{ padding: '100px' }}>
+			{/* <Alert /> */}
+			{/* <AuthInput /> */}
+			{/* <Button /> */}
 			{/* <LayoutUser /> */}
-			<p>LikeFullIconButton</p>
-			<LikeFullIconButton />
-			<p>LikeIconButton</p>
-			<LikeIconButton />
-			<p>ProfileEditButton</p>
-			<ProfileEditButton />
-			<p>ProfileInfo</p>
+			{/* <LikeFullIconButton style={{ margin: 'auto' }} /> */}
+			{/* <LikeIconButton /> */}
+			{/* <ProfileEditButton /> */}
 			<ProfileInfo />
-			<p>ProfileNavLink</p>
-			<ProfileNavLink />
-			<p>ProfilePageTitle</p>
-			<ProfilePageTitle />
-			<p>ProfileUserNavBar</p>
-			<ProfileUserNavBar />
-			<p>ReplyIconButton</p>
-			<ReplyIconButton />
+			{/* <ProfileNavLink /> */}
+			{/* <ProfilePageTitle /> */}
+			{/* <ProfileUserNavBar /> */}
+			{/* <ReplyIconButton /> */}
 			{/* <ReplyModal /> */}
 			{/* <TweetInput /> */} {/* 這個應該是沒問題！！ */}
-			<p>TweetSubmitButton</p>
-			<TweetSubmitButton />
-			<p>UserFollowButton</p>
-			<UserFollowButton />
+			{/* <TweetSubmitButton /> */}
+			{/* <UserFollowButton /> */}
 			{/* <UserPopularList /> */}
 			{/* <UserPopularBar /> */}
-			<p>UserPopularCard</p>
-			<UserPopularCard />
-			<p>UserSidebarContainer</p>
-			<UserSidebarContainer />
-			<p>UserNavBar</p>
-			<UserNavBar />
-			<p>LogoutButton</p>
-			<LogoutButton />
-			<p>NavBarItem</p>
-			<NavBarItem />
-			<p>TweetButtonSideBar</p>
-			<TweetButtonSideBar />
+			{/* <UserPopularCard /> */}
+			{/* <UserSidebarContainer /> */}
+			{/* <UserNavBar /> */}
+			{/* <LogoutButton /> */}
+			{/* <NavBarItem /> */}
+			{/* <TweetButtonSideBar /> */}
 			{/* <UserTweetBox /> */} {/* 這個應該是沒問題！！ */}
 			{/* <UserInfo/> */} {/* 這個應該是沒問題！！ */}
 			{/* <UserTweetList /> */} {/* 這個應該是沒問題！！ */}
