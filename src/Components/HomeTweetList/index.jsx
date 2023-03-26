@@ -1,12 +1,12 @@
 import React, { useState, useContext, useEffect } from 'react'
 
-import styles from './UserTweetList.module.scss'
+import styles from './HomeTweetList.module.scss'
 import { Myaxios } from '../../constants'
 import MyContext from '../MyContext'
 
-import UserTweetBox from '../UserTweetBox'
+import HomeTweetBox from '../UserTweetBox'
 
-function UserTweetList() {
+function HomeTweetList() {
 	const { token } = useContext(MyContext)
 	let [Data, setData] = useState(null)
 	useEffect(() => {
@@ -20,16 +20,15 @@ function UserTweetList() {
 				.catch(err => console.log(err))
 		}
 	}, [Data])
-	
-	
+
 	return (
 		<div className={styles['container']}>
 			{Data &&
 				Data.map((d, i) => {
-					return <UserTweetBox data={d} key={i} />
+					return <HomeTweetBox data={d} key={i} />
 				})}
 		</div>
 	)
 }
 
-export default UserTweetList
+export default HomeTweetList

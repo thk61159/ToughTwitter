@@ -1,0 +1,106 @@
+.container {
+	font-family: sans-serif;
+	padding: 18px 24px 0px 18px;
+	border-bottom: 1px solid #e6ecf0;
+	border-top: 1px solid #e6ecf0;
+	font-family: 'Noto Sans TC';
+}
+.user-avatar {
+	margin-left: 8px;
+	.avatar-img {
+		width: 50px;
+		height: 50px;
+		border-radius: 100px;
+	}
+}
+.tweet-user-info {
+	// flex-grow: 1;
+	display: flex;
+}
+.tweet-content {
+	margin-left: 8px;
+	margin-bottom: 8px;
+	color: var(--color-dark-black);
+	font-family: 'Noto Sans TC';
+	font-style: normal;
+	font-weight: 400;
+	font-size: 24px;
+	line-height: 36px;
+	word-wrap: break-word;
+	.tweet-timestamp {
+		// width: 188px;
+		height: 22px;
+		top: 174px;
+		font-family: 'Noto Sans TC';
+		font-style: normal;
+		font-weight: 500;
+		font-size: 14px;
+		line-height: 22px;
+		color: #6c757d;
+	}
+}
+.tweet-social-list {
+	border-bottom: 1px solid #e6ecf0;
+	border-top: 1px solid #e6ecf0;
+	min-height: 60px;
+	display: flex;
+	margin-left: 8px;
+	padding: 0px;
+	& .tweet-social-group {
+		display: flex;
+		align-items: center;
+
+		font-style: normal;
+		font-weight: 700;
+		font-size: 19px;
+		line-height: 23px;
+		color: var(--color-secondary);
+		font-family: 'Montserrat';
+		&:not(:last-child) {
+			margin-right: 41.3px;
+		}
+	}
+}
+
+.user-info {
+	margin-left: 8px;
+}
+
+.user-info-name {
+	width: 46px;
+	height: 26px;
+	font-family: 'Noto Sans TC';
+	font-style: normal;
+	font-weight: 700;
+	font-size: 16px;
+	line-height: 26px;
+	color: var(--color-dark-black);
+}
+
+.user-info-account {
+	width: 51px;
+	height: 22px;
+	top: 26px;
+	font-family: 'Noto Sans TC';
+	font-style: normal;
+	font-weight: 400;
+	font-size: 14px;
+	line-height: 22px;
+	color: var(--color-secondary);
+}
+
+.tweet-social-btn {
+	margin-left: 8px;
+	min-height: 68px;
+	display: flex;
+	align-items: center;
+	.reply-link,
+	.like-btn {
+		svg {
+			width: 24px;
+			height: 24px;
+		}
+
+		margin-right: 133.13px;
+	}
+}

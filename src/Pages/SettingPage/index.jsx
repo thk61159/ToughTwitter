@@ -12,7 +12,7 @@ import UserSidebarContainer from "../../Components/UserSidebarContainer";
 
 
 function SettingPage() {
-  const { token, user } = useContext(MyContext)
+	const { token,user } = useContext(MyContext)
   const navigate = useNavigate()
   //State
   const [account, setAccount] = useState("");
@@ -25,28 +25,23 @@ function SettingPage() {
 	function updateNoteField(field, value) {
 		if (field === 'password' && value) {
 			const regExp = new RegExp('^(?=.*[a-z])(?=.*[0-9])(?=.{4,12})')
-			console.log(value)
-			if (regExp.test(value)) {
-				return setNote({ ...note, [field]: '' })
-			} else {
-				return setNote({ ...note, [field]: '請包含至少一個小寫英文字及數字' })
-			}
+			return regExp.test(value)
+				? setNote({ ...note, [field]: '' })
+				: setNote({ ...note, [field]: '請包含至少一個小寫英文字及數字' })
 		} else {
-				if (!value.trim() && field !== 'password') {
-				return setNote({ ...note, [field]: `${field}不可以空白` })
-			} else {
-				return setNote({ ...note, [field]: '' })
-			}
+			return !value.trim() && field !== 'password'
+				? setNote({ ...note, [field]: `${field}不可以空白` })
+				: setNote({ ...note, [field]: '' })
 		}
 	}
 	//處理資料並送出
   const saveHandler = (e) => {
     try {
-    if (!(account && name && email )) throw new Error('帳號、名稱、信箱都是必填')
+    if (!(account && name && email )) throw new Error()
     if (password !== checkPassword) {
 			setPassword('')
 			setCheckPassword('')
-			throw new Error('密碼與確認密碼不符')
+			setNote({ ...note, password :'密碼與確認密碼不符！'})
 		}
       const form = { account, name, email, password }
 
@@ -64,13 +59,11 @@ function SettingPage() {
     }
 	}
 	//使用者資料
-  useEffect(() => {
-		if (user) {
+	useEffect(() => {
 			setAccount(user.account)
 			setName(user.name)
 			setEmail(user.email)
-		}
-	}, [user])
+	}, [])
 	useEffect(() => { updateNoteField('account', account)}, [account])
 	useEffect(() => { updateNoteField('name', name) }, [name])
 	useEffect(() => { updateNoteField('email', email) }, [email])

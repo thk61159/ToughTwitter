@@ -1,35 +1,21 @@
-import styles from "./UserPopularCard.module.scss";
-import DefaultAvatar from "../../../../assets/icons/AcLogo.svg";
-import { Link } from "react-router-dom";
-import UserFollowBtn from "../../../UserFollowButton";
-function UserPopularCard({
-  userName,
-  accountName,
-  avatar,
-  userID,
-  isFollowed,
-  setTopFollower,
-}) {
-  return (
-    <div className={styles["container"]}>
-      <Link to={`/user/${userID}`}>
-        <img
-          src={avatar ? avatar : DefaultAvatar}
-          alt="user-avatar"
-          className={styles["user-avatar"]}
-        />
-      </Link>
-      <div className={styles["user-info"]}>
-        <p className={styles["user-name"]}>
-          {userName ? userName : "查無此人"}
-        </p>
-        <p className={styles["user-account"]}>
-          {accountName ? `@${accountName}` : "@@#!%#$"}
-        </p>
-      </div>
+import styles from './UserPopularCard.module.scss'
+import DefaultAvatar from '../../../../assets/icons/AcLogo.svg'
+import { Link } from 'react-router-dom'
+import UserFollowBtn from '../../../UserFollowButton'
+function UserPopularCard({ data }) {
+  const d = JSON.parse(JSON.stringify(data))
+	return (
+		<div className={styles['container']}>
+			<Link to={`/${d.user.id}`}>
+				<img src={d.user.avatar ? d.user.avatar : DefaultAvatar} alt='user-avatar' className={styles['user-avatar']} />
+			</Link>
+			<div className={styles['user-info']}>
+				<p className={styles['user-name']}>{d.user.name}</p>
+				<p className={styles['user-account']}>@{d.user.account}</p>
+			</div>
 
-      <UserFollowBtn />
-    </div>
-  );
+			<UserFollowBtn isFollowed={d.isFollowed} userId={d.user.id} />
+		</div>
+	)
 }
-export default UserPopularCard;
+export default UserPopularCard

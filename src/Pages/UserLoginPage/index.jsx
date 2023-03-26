@@ -13,33 +13,33 @@ function UserLoginPage({ setUserData }) {
 	const navigate = useNavigate()
 	const [account, setAccount] = useState('')
 	const [password, setPassword] = useState('')
-	const [error, setError] = useState(null)
+	const [note, setNote] = useState({})
 	// 事件處理
 	const handleClick = () => {
-		// 點擊登入發送 POST /api/users/login
-		axios
-			.post(API_URL + '/users/login', { email: account, password })
-			.then(response => {
-				const { token, user } = response.data.data
-				if (token) {
-					localStorage.setItem('token', token)
-					setUserData({ token: token, user: user })
-					navigate('/home')
-				}
-				//如果伺服器回傳錯誤會直接被丟到catch，所以沒有特別檢查 !token
-			})
-			.catch(err => {
-				//此error來自伺服器的回傳
-				setError(new Error('帳號或密碼錯誤'))
-			})
+		if (!password || !account) return setNote({ password: '請輸入帳號密碼' })
+			// 點擊登入發送 POST /api/users/login
+			axios
+				.post(API_URL + '/users/login', { account, password })
+				.then(response => {
+					const { token, user } = response.data.data
+					if (token) {
+						localStorage.setItem('token', token)
+						setUserData({ token: token, user: user })
+						navigate('/home')
+					}
+					setNote({})
+					//如果伺服器回傳錯誤會直接被丟到catch，所以沒有特別檢查 !token
+				})
+				.catch(err => {
+					//此error來自伺服器的回傳
+					if (err.response.status === 400) {
+						setNote({ account: '帳號不存在！' })
+					}
+					if (err.response.status === 401) {
+						setNote({ password: '帳號或密碼有誤' })
+					}
+				})
 	}
-	useEffect(() => {
-		if (error instanceof Error) {
-			// alert後清空錯誤狀態，或是有其他顯示錯誤的方式我不是很確定AC要啥
-			alert(error.message)
-			setError(null)
-		}
-	}, [error])
 	return (
 		<div className={styles.container}>
 			<div>
@@ -54,6 +54,7 @@ function UserLoginPage({ setUserData }) {
 					value={account}
 					placeholder="請輸入帳號"
 					onChange={setAccount}
+					note={note.account}
 				/>
 
 				<AuthInput
@@ -62,6 +63,7 @@ function UserLoginPage({ setUserData }) {
 					value={password}
 					placeholder="請輸入密碼"
 					onChange={setPassword}
+					note={note.password}
 				/>
 			</div>
 			<div className={styles['auth-button']} onClick={handleClick}>
