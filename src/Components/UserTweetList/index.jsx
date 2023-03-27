@@ -15,7 +15,7 @@ function UserTweetList() {
 	let [Data, setData] = useState(null)
 	//當網址中:accout改變在做axios
 	useEffect(() => {
-		if(true){
+		if (!Data) {
 			Myaxios(token)
 				.get(`/users/${account}/tweets`)
 				.then(e => {
@@ -30,7 +30,7 @@ function UserTweetList() {
 					setIsLoading(false)
 				})
 		} else {
-			return BrowsingUser?setIsLoading(false):null
+			return BrowsingUser ? setIsLoading(false) : null
 		}
 	}, [account, BrowsingUser])
 
