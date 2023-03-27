@@ -1,7 +1,13 @@
-import React from "react";
+import AdminUserCards from '../../Components/AdminUserCards';
+import AdminSideBar from '../../Components/AdminSideBar';
 
-function index() {
-  return <div>index</div>;
+function AdminUserPage() {
+  return (
+    <div>
+      <AdminSideBar />
+      <AdminUserCards />
+    </div>
+  );
 }
 
-export default index;
+export default AdminUserPage;
