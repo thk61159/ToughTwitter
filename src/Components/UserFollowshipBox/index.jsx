@@ -11,7 +11,6 @@ import ReplyIconButton from '../ReplyIconButton'
 import LikeIconButton from '../LikeIconButton'
 
 function UserFollowshipBox({ data }) {
-	console.log(data)
 	const { token } = useContext(MyContext)
 	const d = JSON.parse(JSON.stringify(data))
 	let [likeCount, setLikeCount] = useState(d.Likes)
