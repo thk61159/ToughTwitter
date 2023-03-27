@@ -5,27 +5,27 @@ import styles from './UserFollowBtn.module.scss'
 import { Myaxios } from '../../constants'
 import MyContext from '../MyContext'
 
-function UserFollowBtn({ isFollowed, userId }) {
-  const { token } = useContext(MyContext)
-  let [followed, setFollowed] = useState(isFollowed)
-  const handleAddFollow = () => {
-    console.log('clicked Follow')
+function UserFollowBtn({ currentfollowed, userId }) {
+	const { token } = useContext(MyContext)
+	let [followed, setFollowed] = useState(currentfollowed)
+	const handleAddFollow = () => {
+		console.log('clicked Follow')
 		Myaxios(token)
 			.post(`followships`, { id: userId })
 			.then(e => {
 				setFollowed(!followed)
 			})
 			.catch(err => console.log('err'))
-  }
-  const handleDeleteFollow = () => {
-    console.log('clicked unFollow')
+	}
+	const handleDeleteFollow = () => {
+		console.log('clicked unFollow')
 		Myaxios(token)
 			.delete(`followships/${userId}`)
 			.then(e => {
 				setFollowed(!followed)
 			})
 			.catch(err => console.log('err'))
-  }
+	}
 	return (
 		<>
 			{followed ? (
