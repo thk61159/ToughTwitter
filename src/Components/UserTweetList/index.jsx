@@ -16,6 +16,7 @@ function UserTweetList() {
 		Myaxios(token)
 			.get(`/users/${account}/tweets`)
 			.then(e => {
+				console.log(e.data)
 				console.log('使用者推文清單', e.status)
 				setData(e.data)
 			})
