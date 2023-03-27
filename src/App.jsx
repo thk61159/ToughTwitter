@@ -12,6 +12,7 @@ import TweetPage from './Pages/TweetPage'
 import UserProfilePage from './Pages/UserProfilePage'
 import UserProfileLike from './Pages/UserProfileLike'
 import UserProfileReply from './Pages/UserProfileReply'
+import UserProfileFollowship from './Pages/UserProfileFollowship'
 
 import Test from './Pages/Test'
 //components
@@ -50,11 +51,16 @@ function App() {
 							<Route path='/:account' element={userData && <LayoutUser />}>
 								<Route index element={userData && <UserProfilePage />}></Route>
 								<Route path='/:account/replies' element={userData && <UserProfileReply />}></Route>
+								{/* 需要修改UserReplyBox樣式 */}
 								<Route path='/:account/likes' element={userData && <UserProfileLike />}></Route>
+								{/* 需要修改UserLikeBox樣式 */}
+								<Route path='/:account/following' element={userData && <UserProfileFollowship />}></Route>
+								{/* 需要修改UserFollowshipBox樣式 */}
+								{/* <Route path='/:account/follower' element={userData && <UserProfileLike />}></Route> */}
 							</Route>
 							<Route path='/tweet/:tweet_id' element={userData && <Layout />}>
 								<Route index element={userData && <TweetPage />}></Route>
-								{/* 修改TweetReplyBox樣式 */}
+								{/* 需要修改TweetReplyBox樣式 */}
 							</Route>
 
 							<Route path='/useajkhfcal' element={userData && <LayoutUser />}>

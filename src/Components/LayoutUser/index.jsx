@@ -13,9 +13,9 @@ import UserSidebarContainer from '../UserSidebarContainer'
 import UserPopularBar from '../UserPopularBar'
 
 function LayoutUser() {
+	let [Account, setAccount] = useState(null)
   const { token } = useContext(MyContext)
 	const { account } = useParams()
-	let [Account, setAccount] = useState(null)
 	useEffect(() => {
 		if (!Account) {
 			Myaxios(token)

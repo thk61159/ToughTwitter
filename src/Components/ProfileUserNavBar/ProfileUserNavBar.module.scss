@@ -9,10 +9,12 @@
   width: 100%;
   position: fixed;
   width: 654px;
+  border-bottom: 1px solid #E6ECF0;
   @media screen and (max-width: 1200px) {
     width: 432px;
     
   }
+  
 }
 
 .background-avatar {
