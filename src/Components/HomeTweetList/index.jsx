@@ -6,7 +6,7 @@ import MyContext from '../MyContext'
 
 import HomeTweetBox from '../HomeTweetBox'
 
-function HomeTweetList() {
+function HomeTweetList({post,setPost}) {
 	const { token } = useContext(MyContext)
 	let [Data, setData] = useState(null)
 	useEffect(() => {
@@ -20,6 +20,16 @@ function HomeTweetList() {
 				.catch(err => console.log(err))
 		}
 	}, [Data])
+	useEffect(() => {
+			Myaxios(token)
+				.get('/tweets')
+				.then(e => {
+					console.log('首頁推文更新', e.status)
+					setPost(false)
+					setData(e.data)
+				})
+				.catch(err => console.log(err))
+	}, [post])
 
 	return (
 		<div className={styles['container']}>
