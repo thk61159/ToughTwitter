@@ -15,7 +15,7 @@ function UserTweetList() {
 	let [Data, setData] = useState(null)
 	//當網址中:accout改變在做axios
 	useEffect(() => {
-		if (!Data) {
+		if(true){
 			Myaxios(token)
 				.get(`/users/${account}/tweets`)
 				.then(e => {
