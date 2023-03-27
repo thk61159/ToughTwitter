@@ -9,19 +9,19 @@ import UserTweetBox from '../UserTweetBox'
 
 function UserTweetList() {
 	const { token } = useContext(MyContext)
-	const {account} = useParams()
+	const { account } = useParams()
 	let [Data, setData] = useState(null)
+	//當網址中:accout改變在做axios
 	useEffect(() => {
-			Myaxios(token)
-				.get(`/users/${account}/tweets`)
-				.then(e => {
-					console.log('使用者推文清單', e.status)
-					setData(e.data)
-				})
-				.catch(err => console.log(err))
-	}, [Data, account])
-	
-	
+		Myaxios(token)
+			.get(`/users/${account}/tweets`)
+			.then(e => {
+				console.log('使用者推文清單', e.status)
+				setData(e.data)
+			})
+			.catch(err => console.log(err))
+	}, [account])
+
 	return (
 		<div className={styles['container']}>
 			{Data &&

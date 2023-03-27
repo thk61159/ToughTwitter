@@ -1,9 +1,8 @@
-import React, { useState, useEffect, useContext } from 'react'
+import React, { useState, useContext } from 'react'
 import { NavLink } from 'react-router-dom'
 import styles from './UserNavBar.module.scss'
 import MyContext from '../../MyContext'
 import NavBarItem from './NavBarItem'
-import LogoutButton from './LogoutButton'
 import TweetButtonSideBar from './TweetButtonSideBar'
 import TweetInputModal from '../../TweetInputModal'
 
@@ -59,7 +58,6 @@ function UserNavBar() {
 		
 			<TweetInputModal Modal={Modal} setModal={setModal} />
 			<div className={styles['logout-btn']}>
-				<LogoutButton />
 			</div>
 		</div>
 	)

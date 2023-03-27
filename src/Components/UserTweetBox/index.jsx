@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom'
 import styles from './UserTweetBox.module.scss'
 import { Myaxios } from '../../constants'
 import MyContext from '../MyContext'
+import ProfileContext from '../ProfileContext'
 
 import UserInfo from './UserInfo'
 import LikeFullIconButton from '../LikeFullIconButton'
@@ -12,6 +13,7 @@ import LikeIconButton from '../LikeIconButton'
 
 function UserTweetBox({ data }) {
 	const { token } = useContext(MyContext)
+	// console.log(useContext(ProfileContext))
 	const d = JSON.parse(JSON.stringify(data))
 	let [likeCount, setLikeCount] = useState(d.Likes)
 	let [isLiked, setIsLiked] = useState(d.isLiked)

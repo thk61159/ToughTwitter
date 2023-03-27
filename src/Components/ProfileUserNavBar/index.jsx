@@ -9,7 +9,6 @@ function ProfileUserNavBar({ data }) {
 	const location = useLocation()
 	const path = location.pathname
 	const toRender = path.includes('follow')
-	console.log(toRender)
 	return (
 		<div className={styles['container']}>
 			<div className={styles['profile-title']}>
