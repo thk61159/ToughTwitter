@@ -6,6 +6,7 @@ import { BrowserRouter, Routes, Route, useNavigate } from 'react-router-dom'
 import UserLoginPage from './Pages/UserLoginPage'
 import RegisterPage from './Pages/RegisterPage'
 import AdminLoginPage from './Pages/AdminLoginPage'
+import AdminUserPage from './Pages/AdminUserPage'
 import SettingPage from './Pages/SettingPage'
 import HomePage from './Pages/HomePage'
 import TweetPage from './Pages/TweetPage'
@@ -42,6 +43,7 @@ function App() {
 							{/* <Route path='/'> */}
 							<Route path='login' element={<UserLoginPage setUserData={setUserData} />}></Route>
 							<Route path='admin' element={<AdminLoginPage />}></Route>
+							<Route path='admin/userlist' element={<AdminUserPage />}></Route>
 							<Route path='register' element={<RegisterPage />}></Route>
 
 							<Route path='setting' element={userData && <SettingPage />}></Route>

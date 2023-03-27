@@ -28,6 +28,8 @@ import TweetButtonSideBar from '../Components/UserSidebarContainer/UserNavBar/Tw
 import UserTweetBox from '../Components/UserTweetBox'
 import UserInfo from '../Components/UserTweetBox/UserInfo'
 import UserTweetList from '../Components/UserTweetList'
+import AdminNavBar from '../Components/AdminSideBar/AdminNavBar'
+import AdminUserCards from '../Components/AdminUserCards'
 
 const Test = () => {
 	return (
@@ -60,7 +62,9 @@ const Test = () => {
 			{/* <UserTweetBox /> ==========用這個做 TweetBox UserReplyBox AdminTweetBox UserFollowBox */}
 			{/* <UserInfo/>  */}
 			{/* <UserTweetList />  */}
-			<UserTweetList />
+			{/* <UserTweetList /> */}
+			{/* <AdminNavBar /> */}
+			{/* <AdminUserCards /> */}
 		</div>
 	)
 }
