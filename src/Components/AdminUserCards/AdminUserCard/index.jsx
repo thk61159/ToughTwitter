@@ -2,11 +2,11 @@ import { ReactComponent as TweetIcon } from '../../../assets/icons/tweet_feather
 import { ReactComponent as LikeIcon } from '../../../assets/icons/like_icon.svg';
 import styles from './AdminUserCard.module.scss';
 
-const AdminUserCard = ({ cover, avatar, account, name, tweetCount, followerCount, followingCount, likeCount }) => {
+const AdminUserCard = ({ background, avatar, account, name, tweetsCount, followersCount, followingsCount, likesCount }) => {
   return (
     <div className={styles['user-card-container']}>
       <div className={styles['user-image-container']}>
-        <img src={cover} alt='cover' className={styles['user-cover']} />
+        <img src={background} alt='background' className={styles['user-cover']} />
         <img src={avatar} alt='avatar' className={styles['user-avatar']} />
       </div>
       <div className={styles['user-card-content']}>
@@ -15,19 +15,19 @@ const AdminUserCard = ({ cover, avatar, account, name, tweetCount, followerCount
         <div className={styles['user-card-social-media']}>
           <p>
             <TweetIcon />
-            <span>{tweetCount}</span>
+            <span>{tweetsCount}</span>
           </p>
           <p>
             <LikeIcon />
-            <span>{likeCount}</span>
+            <span>{likesCount}</span>
           </p>
         </div>
         <div className={styles['user-card-social-media']}>
           <p>
-            <strong>{followingCount} 個</strong> 跟隨中
+            <strong>{followingsCount} 個</strong> 跟隨中
           </p>
           <p>
-            <strong>{followerCount} 個</strong> 跟隨者
+            <strong>{followersCount} 個</strong> 跟隨者
           </p>
         </div>
       </div>
