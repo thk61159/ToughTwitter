@@ -47,13 +47,13 @@ function App() {
 								</Route>
 								<Route path='/:account' element={userData && <LayoutUser BrowsingUser={BrowsingUser} setBrowsingUser={setBrowsingUser} />}>
 									<Route index element={userData && <UserProfilePage />}></Route>
-									<Route path='/:account/replies' element={userData && <UserProfileReply />}></Route>
+									<Route path='/:account/replies' element={BrowsingUser && <UserProfileReply />}></Route>
 									{/* 需要修改UserReplyBox樣式 */}
-									<Route path='/:account/likes' element={userData && <UserProfileLike />}></Route>
+									<Route path='/:account/likes' element={BrowsingUser && <UserProfileLike />}></Route>
 									{/* 需要修改UserLikeBox樣式 */}
-									<Route path='/:account/following' element={userData && <UserProfileFollowship />}></Route>
+									<Route path='/:account/following' element={BrowsingUser && <UserProfileFollowship />}></Route>
 									{/* 需要修改UserFollowshipBox樣式 */}
-									<Route path='/:account/follower' element={userData && <UserProfileFollowship />}></Route>
+									<Route path='/:account/follower' element={BrowsingUser && <UserProfileFollowship />}></Route>
 								</Route>
 								<Route path='/tweet/:tweet_id' element={userData && <Layout />}>
 									<Route index element={userData && <TweetPage />}></Route>

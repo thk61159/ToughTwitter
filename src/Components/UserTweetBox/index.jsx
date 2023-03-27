@@ -13,9 +13,8 @@ import LikeIconButton from '../LikeIconButton'
 
 function UserTweetBox({ data }) {
 	const { token } = useContext(MyContext)
-	const browsingUser = useContext(ProfileContext) //poster
+	const poster = useContext(ProfileContext) //poster
 	const tweet = JSON.parse(JSON.stringify(data))
-	const poster = browsingUser
 	let [likeCount, setLikeCount] = useState(tweet.Likes)
 	let [isLiked, setIsLiked] = useState(tweet.currentIsLiked)
 	const unLiked = e => {

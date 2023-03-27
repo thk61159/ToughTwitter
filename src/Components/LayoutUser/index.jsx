@@ -13,10 +13,10 @@ import UserSidebarContainer from '../UserSidebarContainer'
 import UserPopularBar from '../UserPopularBar'
 
 function LayoutUser({ BrowsingUser,setBrowsingUser }) {
-	// let [Account, setAccount] = useState(null)
 	const { token } = useContext(MyContext)
 	const { account } = useParams()
-	//當網址中:accout改變在做axios
+	const id = Number(account.slice(1,account.length))
+	//當網址中:accout改變再做axios
 	useEffect(() => {
 		Myaxios(token)
 			.get(`/users/${account}`)
