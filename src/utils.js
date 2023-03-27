@@ -2,9 +2,9 @@
 export function timeCounter(createdAt) {
   const now = new Date()
   const targetDate = new Date(createdAt)
-  const timeDiff = targetDate.getTime() - now.getTime()
-  const hours = Math.floor((timeDiff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-  return -hours
+  const timeDiff = now.getTime() - targetDate.getTime()
+	const hours = Math.floor((timeDiff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+  return hours
 }
 export function formChange(form, user) {
 	for (let key in form) {
@@ -32,4 +32,9 @@ export function timestamp(time) {
 	const hourPMAM = hour > 12 ? `下午 ${hour - 12}` : `上午 ${hour}`
   
 	return `${hourPMAM}:${minute}:${second}•${year}年${month}月${day}日`
+}
+
+export function findPath(path, place) {
+	let pathArray = path.split('/')
+	return pathArray[pathArray.length - place]
 }

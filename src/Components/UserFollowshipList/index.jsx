@@ -1,28 +1,34 @@
 import React, { useState, useContext, useEffect } from 'react'
-import { useParams } from 'react-router-dom'
+import { useParams, useLocation } from 'react-router-dom'
 
 import styles from './UserFollowshipList.module.scss'
 import { Myaxios } from '../../constants'
 import MyContext from '../MyContext'
-
+import {findPath} from '../../utils'
 
 import UserFollowshipBox from '../UserFollowshipBox'
+
 
 function UserFollowshipList() {
 	const { token } = useContext(MyContext)
 	const { account } = useParams()
+	const path = useLocation().pathname
+	console.log(findPath(path, 1))
 	let [Data, setData] = useState(null)
+	let [loc, setLoc] = useState(null)
 	useEffect(() => {
-		if (!Data) {
+		console.log(loc !== findPath(path, 1))
+		if (loc !== findPath(path, 1)) {
 			Myaxios(token)
-				.get(`/users/${account}/tweets`)
+				.get(`/users/${account}/${findPath(path, 1)}`)
 				.then(e => {
-					console.log('使用者推文清單', e.status)
+					console.log(`使用者${findPath(path, 1)}清單`, e.status)
 					setData(e.data)
+					setLoc(findPath(path, 1))
 				})
 				.catch(err => console.log(err))
 		}
-	}, [Data])
+	}, [Data, path])
 
 	return (
 		<div className={styles['container']}>

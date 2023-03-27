@@ -9,20 +9,8 @@ function ProfileInfo({ d }) {
 				<img src={d.avatar ? d.avatar : 'https://loremflickr.com/320/240?lock=3'} alt='user-avatar' className={styles['avatar-img']} />
 			</div>
 			<div className={styles['user-detail']}>
-				{/* 應該只要改 edit-profile-btn 加了他才會跑版 */}
-				{d.currentUser ? (
-					<div>
-						<button
-							className={styles['edit-profile-btn']}
-							onClick={() => {
-								'do Something'
-							}}>
-							編輯個人資料
-						</button>
-					</div>
-				) : (
-					<ProfileEditButton />
-				)}
+				{/* 太神了 */}
+					<ProfileEditButton currentUser={d.currentUser} />
 				<div className={styles['user-info']}>
 					<p className={styles['user-name']}>{d.name}</p>
 					<p className={styles['user-account']}>@{d.account}</p>
@@ -30,12 +18,12 @@ function ProfileInfo({ d }) {
 				<div className={styles['user-description']}></div>
 				<div className={styles['user-track-info']}>
 					<div className={styles['user-following']}>
-						<Link to={`/${d.id}/following`} className={styles['number-link']}>
+						<Link to={`/${d.id}/followings`} className={styles['number-link']}>
 							{d.followingsCounts}
 						</Link>
 						<p className={styles['note']}>個跟隨中</p>
 					</div>
-					<div className={styles['user-follower']}>
+					<div className={styles['user-followers']}>
 						<Link to={`/${d.id}/follower`} className={styles['number-link']}>
 							{d.followersCounts}
 						</Link>

@@ -51,9 +51,9 @@ function App() {
 									{/* 需要修改UserReplyBox樣式 */}
 									<Route path='/:account/likes' element={BrowsingUser && <UserProfileLike />}></Route>
 									{/* 需要修改UserLikeBox樣式 */}
-									<Route path='/:account/following' element={BrowsingUser && <UserProfileFollowship />}></Route>
+									<Route path='/:account/followings' element={BrowsingUser && <UserProfileFollowship />}></Route>
 									{/* 需要修改UserFollowshipBox樣式 */}
-									<Route path='/:account/follower' element={BrowsingUser && <UserProfileFollowship />}></Route>
+									<Route path='/:account/followers' element={BrowsingUser && <UserProfileFollowship />}></Route>
 								</Route>
 								<Route path='/tweet/:tweet_id' element={userData && <Layout />}>
 									<Route index element={userData && <TweetPage />}></Route>
