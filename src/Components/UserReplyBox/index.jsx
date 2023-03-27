@@ -1,7 +1,7 @@
 import React, { useState, useContext } from 'react'
 import { Link } from 'react-router-dom'
 
-import styles from './UserTweetBox.module.scss'
+import styles from './UserReplyBox.module.scss'
 import { Myaxios } from '../../constants'
 import MyContext from '../MyContext'
 
@@ -10,7 +10,7 @@ import LikeFullIconButton from '../LikeFullIconButton'
 import ReplyIconButton from '../ReplyIconButton'
 import LikeIconButton from '../LikeIconButton'
 
-function UserTweetBox({ data }) {
+function UserReplyBox({ data }) {
 	console.log(data)
 	const { token } = useContext(MyContext)
 	const d = JSON.parse(JSON.stringify(data))
@@ -71,4 +71,4 @@ function UserTweetBox({ data }) {
 		</div>
 	)
 }
-export default UserTweetBox
+export default UserReplyBox

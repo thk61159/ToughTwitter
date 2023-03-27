@@ -1,8 +1,8 @@
-import { useParams, useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import styles from './PageTitle.module.scss'
 import { ReactComponent as ArrowPre } from '../../assets/icons/arrowPre.svg'
 
-function PageTitle(props) {
+function PageTitle({ d }) {
 	const navigate = useNavigate()
 	return (
 		<div className={styles['container']}>
@@ -14,8 +14,8 @@ function PageTitle(props) {
 				/>
 			</div>
 			<div className={styles['profile-title']}>
-				<div className={styles['user-name']}>{'user1'}</div>
-				<div className={styles['tweet-count']}>{2} 貼文</div>
+				<div className={styles['user-name']}>{d.name}</div>
+				<div className={styles['tweet-count']}>{d.tweetsCounts} 貼文</div>
 			</div>
 		</div>
 	)

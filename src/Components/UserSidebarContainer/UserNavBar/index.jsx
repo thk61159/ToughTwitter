@@ -31,7 +31,7 @@ function UserNavBar() {
 				</NavLink>
 			</NavBarItem>
 			<NavBarItem>
-				<NavLink to={`/${user.account}`} className={({ isActive }) => [`${styles['navbar-link']}`, isActive ? `${styles['router-link-active']}` : ``].join(' ')}>
+				<NavLink to={`/${user.id}`} className={({ isActive }) => [`${styles['navbar-link']}`, isActive ? `${styles['router-link-active']}` : ``].join(' ')}>
 					<Head className={styles['navbar-link__logo']} />
 					<HeadActive className={styles['navbar-link__logo-active']} />
 					<p className={styles['navbar-link__title']}>個人資料</p>

@@ -10,6 +10,8 @@ import SettingPage from './Pages/SettingPage'
 import HomePage from './Pages/HomePage'
 import TweetPage from './Pages/TweetPage'
 import UserProfilePage from './Pages/UserProfilePage'
+import UserProfileLike from './Pages/UserProfileLike'
+import UserProfileReply from './Pages/UserProfileReply'
 
 import Test from './Pages/Test'
 //components
@@ -17,6 +19,7 @@ import Layout from './Components/Layout'
 import LayoutUser from './Components/LayoutUser'
 import AuthNav from './Components/AuthNav'
 import MyContext from './Components/MyContext'
+
 
 const basename = process.env.PUBLIC_URL
 
@@ -46,6 +49,8 @@ function App() {
 							</Route>
 							<Route path='/:account' element={userData && <LayoutUser />}>
 								<Route index element={userData && <UserProfilePage />}></Route>
+								<Route path='/:account/replies' element={userData && <UserProfileReply />}></Route>
+								<Route path='/:account/likes' element={userData && <UserProfileLike />}></Route>
 							</Route>
 							<Route path='/tweet/:tweet_id' element={userData && <Layout />}>
 								<Route index element={userData && <TweetPage />}></Route>

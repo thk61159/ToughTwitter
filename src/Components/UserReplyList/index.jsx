@@ -1,20 +1,23 @@
 import React, { useState, useContext, useEffect } from 'react'
+import { useParams } from 'react-router-dom'
 
-import styles from './HomeTweetList.module.scss'
+import styles from './UserReplyList.module.scss'
 import { Myaxios } from '../../constants'
 import MyContext from '../MyContext'
 
-import HomeTweetBox from '../HomeTweetBox'
 
-function HomeTweetList() {
+import UserReplyBox from '../UserReplyBox'
+
+function UserReplyList() {
 	const { token } = useContext(MyContext)
+	const { account } = useParams()
 	let [Data, setData] = useState(null)
 	useEffect(() => {
 		if (!Data) {
 			Myaxios(token)
-				.get('/tweets')
+				.get(`/users/${account}/tweets`)
 				.then(e => {
-					console.log('首頁推文', e.status)
+					console.log('使用者推文清單', e.status)
 					setData(e.data)
 				})
 				.catch(err => console.log(err))
@@ -25,10 +28,10 @@ function HomeTweetList() {
 		<div className={styles['container']}>
 			{Data &&
 				Data.map((d, i) => {
-					return <HomeTweetBox data={d} key={i} />
+					return <UserReplyBox data={d} key={i} />
 				})}
 		</div>
 	)
 }
 
-export default HomeTweetList
+export default UserReplyList
