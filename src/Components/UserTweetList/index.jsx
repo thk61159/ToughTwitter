@@ -12,7 +12,6 @@ function UserTweetList() {
 	const {account} = useParams()
 	let [Data, setData] = useState(null)
 	useEffect(() => {
-		if (!Data) {
 			Myaxios(token)
 				.get(`/users/${account}/tweets`)
 				.then(e => {
@@ -20,8 +19,7 @@ function UserTweetList() {
 					setData(e.data)
 				})
 				.catch(err => console.log(err))
-		}
-	}, [Data])
+	}, [Data, account])
 	
 	
 	return (

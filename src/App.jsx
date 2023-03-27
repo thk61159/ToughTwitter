@@ -56,7 +56,7 @@ function App() {
 								{/* 需要修改UserLikeBox樣式 */}
 								<Route path='/:account/following' element={userData && <UserProfileFollowship />}></Route>
 								{/* 需要修改UserFollowshipBox樣式 */}
-								{/* <Route path='/:account/follower' element={userData && <UserProfileLike />}></Route> */}
+								<Route path='/:account/follower' element={userData && <UserProfileFollowship />}></Route>
 							</Route>
 							<Route path='/tweet/:tweet_id' element={userData && <Layout />}>
 								<Route index element={userData && <TweetPage />}></Route>
