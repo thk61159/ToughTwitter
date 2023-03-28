@@ -12,28 +12,28 @@ import { Outlet } from 'react-router-dom'
 import UserSidebarContainer from '../UserSidebarContainer'
 import UserPopularBar from '../UserPopularBar'
 
-function LayoutUser() {
-	let [Account, setAccount] = useState(null)
-  const { token } = useContext(MyContext)
+function LayoutUser({ BrowsingUser,setBrowsingUser }) {
+	const { token } = useContext(MyContext)
 	const { account } = useParams()
+	const id = Number(account.slice(1,account.length))
+	//當網址中:accout改變再做axios
 	useEffect(() => {
-		if (!Account) {
-			Myaxios(token)
-				.get(`/users/${account}`)
-				.then(e => {
-					console.log('使用者資料', e.status)
-					setAccount(e.data)
-				})
-				.catch(err => console.log(err))
-		}
-	}, [Account])
+		Myaxios(token)
+			.get(`/users/${account}`)
+			.then(e => {
+				console.log('使用者資料', e.status)
+				// setAccount(e.data)
+				setBrowsingUser(e.data)
+			})
+			.catch(err => console.log(err))
+	}, [account])
 	return (
 		<div className={styles['layout-container']}>
 			<div className={styles['column-1']}>
 				<UserSidebarContainer />
 			</div>
 			<div className={styles['column-2']}>
-				{Account && <ProfileUserNavBar data={Account} />}
+				{BrowsingUser && <ProfileUserNavBar data={BrowsingUser} />}
 				<Outlet />
 			</div>
 			<div className={styles['column-3']}>

@@ -8,5 +8,5 @@
 	"prettier.jsxSingleQuote": true,
 	"prettier.bracketSameLine": true,
 	"prettier.singleAttributePerLine": false,
-	"prettier.printWidth": 300
+	"prettier.printWidth": 400
 }

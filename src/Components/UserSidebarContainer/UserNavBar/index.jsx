@@ -1,10 +1,10 @@
-import React, { useState, useEffect, useContext } from 'react'
+import React, { useState, useContext } from 'react'
 import { NavLink } from 'react-router-dom'
 import styles from './UserNavBar.module.scss'
 import MyContext from '../../MyContext'
 import NavBarItem from './NavBarItem'
-import LogoutButton from './LogoutButton'
 import TweetButtonSideBar from './TweetButtonSideBar'
+import TweetInputModal from '../../TweetInputModal'
 
 //Component
 import { ReactComponent as AcLogo } from '../../../assets/icons/AcLogo.svg'
@@ -15,8 +15,10 @@ import { ReactComponent as HeadActive } from '../../../assets/icons/head_Full.sv
 import { ReactComponent as Gear } from '../../../assets/icons/gear.svg'
 import { ReactComponent as GearActive } from '../../../assets/icons/gear_Full.svg'
 
+
 function UserNavBar() {
 	const { user } = useContext(MyContext)
+	let [Modal,setModal]=useState(false)
 	return (
 		<div className={styles['container']}>
 			<AcLogo className={styles['navbar-logo']} />
@@ -46,9 +48,16 @@ function UserNavBar() {
 					<p className={styles['navbar-link__title']}>設定</p>
 				</NavLink>
 			</NavBarItem>
-			<TweetButtonSideBar>推文</TweetButtonSideBar>
+				<button
+					className={styles['remove-btn']}
+					onClick={() => {
+						setModal(!Modal)
+					}}>
+					<TweetButtonSideBar />
+				</button>
+		
+			<TweetInputModal Modal={Modal} setModal={setModal} />
 			<div className={styles['logout-btn']}>
-				<LogoutButton />
 			</div>
 		</div>
 	)

@@ -12,14 +12,14 @@ import LikeIconButton from '../LikeIconButton'
 
 function HomeTweetBox({ data }) {
 	const { token } = useContext(MyContext)
-	const d = JSON.parse(JSON.stringify(data))
-	const id = d.UserId
-	let [likeCount, setLikeCount] = useState(d.Likes)
-	let [isLiked, setIsLiked] = useState(d.isLiked)
+	const tweet = JSON.parse(JSON.stringify(data))
+	const poster = tweet.poster
+	let [likeCount, setLikeCount] = useState(tweet.Likes)
+	let [isLiked, setIsLiked] = useState(tweet.currentIsLiked)
 	const unLiked = e => {
 		console.log('clicked unLike')
 		Myaxios(token)
-			.post(`/tweets/${d.id}/unlike`)
+			.post(`/tweets/${tweet.id}/unlike`)
 			.then(e => {
 				// likeCount不應該是-1
 				setIsLiked(!isLiked)
@@ -30,7 +30,7 @@ function HomeTweetBox({ data }) {
 	const Liked = () => {
 		console.log('clicked Like')
 		Myaxios(token)
-			.post(`/tweets/${d.id}/like`)
+			.post(`/tweets/${tweet.id}/like`)
 			.then(e => {
 				setIsLiked(!isLiked)
 				setLikeCount((likeCount += 1))
@@ -40,16 +40,16 @@ function HomeTweetBox({ data }) {
 	return (
 		<div className={styles['container']}>
 			<div className={styles['user-avatar']}>
-				<Link to={ `/${d.UserId}`}>
-					<img src={d.poster.avatar} className={styles['avatar-img']} alt='avatar-img' />
+				<Link to={`/${poster.id}`}>
+					<img src={poster.avatar} className={styles['avatar-img']} alt='avatar-img' />
 				</Link>
 			</div>
 			<div className={styles['tweet-user-info']}>
-				<UserInfo d={d} />
+				<UserInfo tweet={tweet} poster={poster} />
 				<div className={styles['tweet-content']}>
-					<Link to={`/tweet/${d.id}`} className={styles['tweet-content-link']}>
+					<Link to={`/tweet/${poster.id}`} className={styles['tweet-content-link']}>
 						{/* <img src={d.image} alt='' /> */}
-						<div>{d.description}</div>
+						<div>{tweet.description}</div>
 					</Link>
 				</div>
 				<div className={styles['tweet-social-list']}>
@@ -57,7 +57,7 @@ function HomeTweetBox({ data }) {
 						<div className={styles['reply-link']}>
 							<ReplyIconButton />
 						</div>
-						<p className={styles['reply-number']}>{d.Replies}</p>
+						<p className={styles['reply-number']}>{tweet.Replies}</p>
 					</div>
 					<div className={styles['tweet-social-group']}>
 						<div className={styles['like-btn']}>

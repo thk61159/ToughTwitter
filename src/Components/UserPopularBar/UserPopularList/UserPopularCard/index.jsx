@@ -14,7 +14,7 @@ function UserPopularCard({ data }) {
 				<p className={styles['user-account']}>@{d.user.account}</p>
 			</div>
 
-			<UserFollowBtn isFollowed={d.isFollowed} userId={d.user.id} />
+			<UserFollowBtn currentfollowed={d.currentfollowed} userId={d.user.id} />
 		</div>
 	)
 }

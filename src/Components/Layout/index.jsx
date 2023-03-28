@@ -8,8 +8,6 @@ import UserSidebarContainer from '../UserSidebarContainer'
 import UserPopularBar from '../UserPopularBar'
 
 function Layout() {
-	
-
 	return (
 		<div className={styles['layout-container']}>
 			<div className={styles['column-1']}>
@@ -18,7 +16,10 @@ function Layout() {
 			<div className={styles['column-2']}>
 				<Outlet />
 			</div>
-			<div className={styles['column-3']}>  <UserPopularBar /></div>
+			<div className={styles['column-3']}>
+				{' '}
+				<UserPopularBar />
+			</div>
 		</div>
 	)
 }

@@ -13,16 +13,15 @@ function UserReplyList() {
 	const { account } = useParams()
 	let [Data, setData] = useState(null)
 	useEffect(() => {
-		if (!Data) {
 			Myaxios(token)
-				.get(`/users/${account}/tweets`)
+				.get(`/users/${account}/replied_tweets`)
 				.then(e => {
+					console.log(e)
 					console.log('使用者推文清單', e.status)
 					setData(e.data)
 				})
 				.catch(err => console.log(err))
-		}
-	}, [Data])
+	}, [account])
 
 	return (
 		<div className={styles['container']}>
