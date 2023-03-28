@@ -31,10 +31,12 @@ import UserTweetList from '../Components/UserTweetList'
 import AdminNavBar from '../Components/AdminSideBar/AdminNavBar'
 import AdminUserCards from '../Components/AdminUserCards'
 import ProfileInfoModal from '../Components/ProfileInfoModal'
+import TweetReplyModal from '../Components/TweetReplyModal'
 
 const Test = () => {
 	return (
 		<div style={{ padding: '100px' }}>
+			<TweetReplyModal Modal={true} />
 			<ProfileInfoModal/>
 			{/* <Alert /> */}
 			{/* <AuthInput /> */}

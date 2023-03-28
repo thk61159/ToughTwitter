@@ -2,13 +2,12 @@ import React from 'react'
 import styles from './Alert.module.scss'
 
 
-import { ReactComponent as Info } from '../../assets/icons/notification_notify.svg'
 import { ReactComponent as Warn } from '../../assets/icons/notification_warning.svg'
 import { ReactComponent as Error } from '../../assets/icons/notification_error.svg'
 import { ReactComponent as Suc } from '../../assets/icons/notification_success.svg'
 const arr = [
 	<div className={styles['note-c-blue']}>
-		<Info />
+		<Warn/>
 	</div>,
 	<div className={styles['note-c-yellow']}>
 		<Warn />

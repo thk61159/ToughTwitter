@@ -1,9 +1,6 @@
-import React, { useState, useContext } from 'react'
 import { Link, useParams } from 'react-router-dom'
 
 import styles from './TweetReplyBox.module.scss'
-import { Myaxios } from '../../constants'
-import MyContext from '../MyContext'
 
 import UserInfo from './UserInfo'
 

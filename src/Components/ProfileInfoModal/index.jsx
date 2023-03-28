@@ -8,7 +8,7 @@ import Button from '../Button'
 
 // function wordCounter
 
-import { Link } from 'react-router-dom' //按到追隨者、追隨中轉址用
+
 function ProfileInfoModal({ Modal, setModal }) {
 	const [intro, setIntro] = useState()
 	const [name, setName] = useState()
