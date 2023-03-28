@@ -70,67 +70,25 @@ function SettingPage() {
 	useEffect(() => {updateNoteField('password', password) }, [password])
   return (
 		<div className={styles['container']}>
-			<div className={styles['column-1']}>
-				<UserSidebarContainer />
-			</div>
-			<div className={styles['column-2']}>
-				<div className={styles['column-2-container']}>
-					<h4 className={styles['title']}>帳號設定</h4>
-					{/* Auth Form */}
-					<div className={styles['auth-form']}>
-						<div className={styles['authinput-group']}>
-							<AuthInput
-								label="帳號"
-								type="text"
-								value={account}
-								placeholder="請輸入帳號"
-								onChange={setAccount}
-								note={note.account}
-							/>
+			<h4 className={styles['title']}>帳號設定</h4>
+			{/* Auth Form */}
+			<div className={styles['auth-form']}>
+				<div className={styles['authinput-group']}>
+					<AuthInput label='帳號' type='text' value={account} placeholder='請輸入帳號' onChange={setAccount} note={note.account} />
 
-							<AuthInput
-								label="名稱"
-								type="text"
-								value={name}
-								placeholder="請輸入使用者名稱"
-								onChange={setName}
-								note={note.name}
-							/>
+					<AuthInput label='名稱' type='text' value={name} placeholder='請輸入使用者名稱' onChange={setName} note={note.name} />
 
-							<AuthInput
-								label="Email"
-								type="text"
-								value={email}
-								placeholder="請輸入Email"
-								onChange={setEmail}
-								note={note.email}
-							/>
+					<AuthInput label='Email' type='text' value={email} placeholder='請輸入Email' onChange={setEmail} note={note.email} />
 
-							<AuthInput
-								label="密碼（需介於4到～12字元）"
-								type="password"
-								value={password}
-								placeholder="請設定密碼"
-								onChange={setPassword}
-								note={note.password}
-							/>
+					<AuthInput label='密碼（需介於4到～12字元）' type='password' value={password} placeholder='請設定密碼' onChange={setPassword} note={note.password} />
 
-							<AuthInput
-								label="密碼再確認"
-								type="password"
-								value={checkPassword}
-								placeholder="請再次輸入密碼"
-								onChange={setCheckPassword}
-							/>
-						</div>
-						{/* Save Button */}
-						<div className={styles['save-button']} onClick={saveHandler}>
-							<Button styleName="bg-logo">儲存</Button>
-						</div>
-					</div>
+					<AuthInput label='密碼再確認' type='password' value={checkPassword} placeholder='請再次輸入密碼' onChange={setCheckPassword} />
+				</div>
+				{/* Save Button */}
+				<div className={styles['save-button']} onClick={saveHandler}>
+					<Button styleName='bg-logo'>儲存</Button>
 				</div>
 			</div>
-			<div className={styles['column-3']}></div>
 		</div>
 	)
 }

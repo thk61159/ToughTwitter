@@ -41,9 +41,9 @@ function App() {
 								<Route path='admin' element={<AdminLoginPage />}></Route>
 								<Route path='admin/userlist' element={<AdminUserPage />}></Route>
 								<Route path='register' element={<RegisterPage />}></Route>
-								<Route path='setting' element={userData && <SettingPage />}></Route>
-								<Route path='home' element={userData && <Layout />}>
-									<Route index element={userData && <HomePage />}></Route>
+								<Route path='/' element={userData && <Layout />}>
+									<Route path='home' element={userData && <HomePage />}></Route>
+									<Route path='setting' element={userData && <SettingPage />}></Route>
 								</Route>
 								<Route path='/:account' element={userData && <LayoutUser BrowsingUser={BrowsingUser} setBrowsingUser={setBrowsingUser} />}>
 									<Route index element={userData && <UserProfilePage />}></Route>

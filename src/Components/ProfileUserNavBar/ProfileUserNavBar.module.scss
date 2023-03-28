@@ -2,6 +2,8 @@
   font-family: "Noto Sans TC";
   border-left: 1px solid #E6ECF0;
   border-bottom: 1px solid #E6ECF0;
+  width: 44.5vw;
+  margin-left: 3vw;
 }
 .profile-title {
   top: 0;
@@ -10,8 +12,8 @@
   z-index: 2;
   width: 100%;
   position: fixed;
-  width: 654px;
-  border-bottom: 1px solid #E6ECF0;
+  width: 44vw;
+
   @media screen and (max-width: 1200px) {
     width: 432px;
     
