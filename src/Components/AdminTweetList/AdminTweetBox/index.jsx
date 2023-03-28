@@ -1,6 +1,7 @@
 import React from 'react';
 import styles from './AdminTweetBox.module.scss';
 import { ReactComponent as DeleteIcon } from '../../../assets/icons/admin_delete_icon.svg';
+import { timestamp } from '../../../utils';
 
 const AdminTweetBox = ({ id, avatar, name, account, time, description, deleteTweet }) => {
 
@@ -12,7 +13,7 @@ const AdminTweetBox = ({ id, avatar, name, account, time, description, deleteTwe
       <div className={styles['tweet-content']}>
         <p className={styles['tweet-user-info']}>
           <span>{name}</span>
-          <span>@{account}・{time}</span>
+          <span>@{account}・{timestamp(time)}</span>
         </p>
         <p className={styles['tweet-description']}>{description}</p>
       </div>
