@@ -36,9 +36,9 @@ import TweetReplyModal from '../Components/TweetReplyModal'
 const Test = () => {
 	return (
 		<div style={{ padding: '100px' }}>
-			<TweetReplyModal Modal={true} />
-			<ProfileInfoModal/>
-			{/* <Alert /> */}
+			{/* <TweetReplyModal Modal={true} /> */}
+			{/* <ProfileInfoModal/> */}
+			<Alert />
 			{/* <AuthInput /> */}
 			{/* <Button /> ========== ???*/}
 			{/* <Layout /> ========== home fix*/}
