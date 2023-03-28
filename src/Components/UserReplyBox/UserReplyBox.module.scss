@@ -13,36 +13,50 @@
   }
 }
 .tweet-user-info {
-flex-grow: 1
-}
-.tweet-content {
   margin-left: 8px;
-  margin-bottom: 9px;
-  cursor: pointer;
-  .tweet-content-link {
-    text-decoration: none;
-    color: var(--color-dark-black);
-    font-size: 16px;
-    line-height: 26px;
-    font-weight: 400;
-    word-wrap: break-word;
-  }
-}
-.tweet-social-list{
-  display: flex;
-  margin-left: 8px;
-  & .tweet-social-group {
+  .tweet-author {
+    margin: 8px 0;
     display: flex;
-    align-items: center;
+    font-weight: 400;
     font-size: 14px;
-    font-weight: 600;
-    color: var(--color-secondary);
-    font-family: "Montserrat";
-    &:not(:last-child){
-      margin-right: 41.3px;
+    color: #6C757D;
+
+    a {
+      margin-left: 5px;
+      text-decoration: none;
+      color: #FF6600;
     }
   }
-  .reply-link,.like-btn {
-    margin-right: 9.44px;
+  
+  .tweet-content {
+    margin-bottom: 9px;
+    cursor: pointer;
+    .tweet-content-link {
+      text-decoration: none;
+      color: var(--color-dark-black);
+      font-size: 16px;
+      line-height: 26px;
+      font-weight: 400;
+      word-wrap: break-word;
+    }
+  }
+  .tweet-social-list{
+    display: flex;
+    margin-left: 8px;
+    & .tweet-social-group {
+      display: flex;
+      align-items: center;
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--color-secondary);
+      font-family: "Montserrat";
+      &:not(:last-child){
+        margin-right: 41.3px;
+      }
+    }
+    .reply-link,.like-btn {
+      margin-right: 9.44px;
+    }
   }
 }
+

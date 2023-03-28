@@ -13,10 +13,11 @@
   }
 }
 .tweet-user-info {
-flex-grow: 1
-}
-.tweet-content {
+  flex-grow: 1;
   margin-left: 8px;
+}
+
+.tweet-content {
   margin-bottom: 9px;
   cursor: pointer;
   .tweet-content-link {
