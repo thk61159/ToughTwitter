@@ -27,7 +27,7 @@ function AdminLoginPage({ setUserData }) {
         if (token) {
           localStorage.setItem('token', token);
           setUserData({ token, user });
-          navigate('/admin/userlist');
+          navigate('/admin/tweets');
         }
         setNote({});
       })
