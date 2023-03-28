@@ -7,6 +7,7 @@ import UserLoginPage from './Pages/UserLoginPage';
 import RegisterPage from './Pages/RegisterPage';
 import AdminLoginPage from './Pages/AdminLoginPage';
 import AdminUserPage from './Pages/AdminUserPage';
+import AdminTweetPage from './Pages/AdminTweetPage';
 import SettingPage from './Pages/SettingPage';
 import HomePage from './Pages/HomePage';
 import TweetPage from './Pages/TweetPage';
@@ -43,7 +44,8 @@ function App() {
               <Route path='login' element={<UserLoginPage setUserData={setUserData} />}></Route>
               <Route path='admin'>
                 <Route index element={<AdminLoginPage setUserData={setUserData} />}></Route>
-                <Route path='userlist' element={userData && <AdminUserPage />}></Route>
+                <Route path='users' element={userData && <AdminUserPage />}></Route>
+                <Route path='tweets' element={userData && <AdminTweetPage />}></Route>
               </Route>
               <Route path='register' element={<RegisterPage />}></Route>
 
