@@ -1,18 +1,23 @@
-import styles from "./ProfileEditButton.module.scss";
-import notificatiobIcon from "../../assets/icons/notification_info.svg";
-import messageIcon from "../../assets/icons/letter_icon.svg";
-
-import UserFollowBtn from "../UserFollowButton";
-
-function ProfileEditButton({currentUser}) {
-  
+import styles from './ProfileEditButton.module.scss'
+import notificatiobIcon from '../../assets/icons/notification_info.svg'
 
 
-  return (
+import messageIcon from '../../assets/icons/letter_icon.svg'
+
+import UserFollowBtn from '../UserFollowButton'
+
+function ProfileEditButton({ currentUser, setModal }) {
+	return (
 		<>
 			<div className={styles['container']}>
 				{currentUser ? (
-					<button className={styles['edit-btn']}>編輯個人資料</button>
+					<button
+						className={styles['edit-btn']}
+						onClick={() => {
+							setModal(true)
+						}}>
+						編輯個人資料
+					</button>
 				) : (
 					<div className={styles['other-btn']}>
 						<div className={styles['message-avatar']}>
@@ -28,4 +33,4 @@ function ProfileEditButton({currentUser}) {
 		</>
 	)
 }
-export default ProfileEditButton;
+export default ProfileEditButton

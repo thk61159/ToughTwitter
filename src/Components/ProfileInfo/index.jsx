@@ -1,8 +1,14 @@
-import styles from './ProfileInfo.module.scss'
-import ProfileEditButton from '../ProfileEditButton'
-
+import React, { useState, useEffect, useContext } from 'react'
 import { Link } from 'react-router-dom' //按到追隨者、追隨中轉址用
+
+import styles from './ProfileInfo.module.scss'
+
+import ProfileEditButton from '../ProfileEditButton'
+import ProfileInfoModal from '../ProfileInfoModal'
+
 function ProfileInfo({ d }) {
+	let [Modal, setModal] = useState(false)
+
 	return (
 		<div className={styles['container']}>
 			<div className={styles['user-avatar']}>
@@ -10,7 +16,9 @@ function ProfileInfo({ d }) {
 			</div>
 			<div className={styles['user-detail']}>
 				{/* 太神了 */}
-					<ProfileEditButton currentUser={d.currentUser} />
+				<ProfileEditButton currentUser={d.currentUser} setModal={setModal} />
+				{/* 彈出編輯匡 */}
+				<ProfileInfoModal Modal={Modal} setModal={setModal} />
 				<div className={styles['user-info']}>
 					<p className={styles['user-name']}>{d.name}</p>
 					<p className={styles['user-account']}>@{d.account}</p>
@@ -23,7 +31,7 @@ function ProfileInfo({ d }) {
 						</Link>
 						<p className={styles['note']}>個跟隨中</p>
 					</div>
-					<div className={styles['user-followers']}>
+					<div className={styles['user-following']}>
 						<Link to={`/${d.id}/follower`} className={styles['number-link']}>
 							{d.followersCounts}
 						</Link>

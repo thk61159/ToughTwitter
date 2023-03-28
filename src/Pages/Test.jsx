@@ -30,10 +30,12 @@ import UserInfo from '../Components/UserTweetBox/UserInfo'
 import UserTweetList from '../Components/UserTweetList'
 import AdminNavBar from '../Components/AdminSideBar/AdminNavBar'
 import AdminUserCards from '../Components/AdminUserCards'
+import ProfileInfoModal from '../Components/ProfileInfoModal'
 
 const Test = () => {
 	return (
 		<div style={{ padding: '100px' }}>
+			<ProfileInfoModal/>
 			{/* <Alert /> */}
 			{/* <AuthInput /> */}
 			{/* <Button /> ========== ???*/}
