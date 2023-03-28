@@ -3,6 +3,7 @@ import styles from './ProfileInfoModal.module.scss'
 
 import AuthInput from '../AuthInput'
 import { ReactComponent as Close } from '../../assets/icons/admin_cross.svg'
+import { ReactComponent as Camera } from '../../assets/icons/camera_icon.svg'
 import Button from '../Button'
 
 // function wordCounter
@@ -32,9 +33,24 @@ function ProfileInfoModal({ Modal, setModal }) {
 				</div>
 				<div className={styles['background-avatar']}>
 					<img src={'https://loremflickr.com/320/240?lock=2'} alt='background' us className={styles['avatar-img']} />
+					<div className={styles['background-avatar-cover']}>
+						<div className={styles['background-setting']}>
+							<div>
+								<Camera />
+							</div>
+							<div>
+								<Close className={styles['white-X']} />
+							</div>
+						</div>
+					</div>
 				</div>
 				<div className={styles['user-avatar']}>
 					<img src={'https://loremflickr.com/320/240?lock=3'} alt='user-avatar' className={styles['avatar-img']} />
+					<div className={styles['user-avatar-cover']}>
+						<div>
+							<Camera />
+						</div>
+					</div>
 				</div>
 				<div className={styles['user-detail']}>
 					{/* 太神了 */}
