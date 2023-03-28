@@ -1,11 +1,12 @@
 .container {
-  width: 178px;
+  width: 100%;
   display: flex;
   flex-direction: column;
   height: 100vh;
   justify-content: space-between;
   margin-right: 24px;
   font-family: "Noto Sans TC";
+  border: #000000 1px solid;
 }
 .navbar-logo {
   margin: 13px;
