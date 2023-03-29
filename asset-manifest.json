@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/ToughTwitter/static/css/main.c2fbf6aa.css",
-    "main.js": "/ToughTwitter/static/js/main.44e265e7.js",
+    "main.css": "/ToughTwitter/static/css/main.f6911bc4.css",
+    "main.js": "/ToughTwitter/static/js/main.68064c55.js",
     "static/js/787.cd73e525.chunk.js": "/ToughTwitter/static/js/787.cd73e525.chunk.js",
     "static/media/gear.svg": "/ToughTwitter/static/media/gear.7e0c5cdd7abe8114f28c04e09466a31f.svg",
     "static/media/gear_Full.svg": "/ToughTwitter/static/media/gear_Full.53670273838eeeda8dbecd8c276f620c.svg",
@@ -20,16 +20,17 @@
     "static/media/tweet_feather_icon.svg": "/ToughTwitter/static/media/tweet_feather_icon.b81f6066c7900622a3effd74e06552b6.svg",
     "static/media/head_Full.svg": "/ToughTwitter/static/media/head_Full.84fe96811716d2224285af382e0dcabe.svg",
     "index.html": "/ToughTwitter/index.html",
+    "static/media/admin_delete_icon.svg": "/ToughTwitter/static/media/admin_delete_icon.db16e909e2e9bc4ec77471f6539cd582.svg",
     "static/media/admin_cross.svg": "/ToughTwitter/static/media/admin_cross.c2283cfb082ce00efe5a08a17c9825e6.svg",
     "static/media/arrowPre.svg": "/ToughTwitter/static/media/arrowPre.e8ec00a1d11a2567c2fadb6ef56db9d7.svg",
     "static/media/like_full_icon.svg": "/ToughTwitter/static/media/like_full_icon.5e5d892842ae545d6d81b84cec2019b6.svg",
     "static/media/notification_success.svg": "/ToughTwitter/static/media/notification_success.05abe9bb79ccce09ca487739447fd59b.svg",
-    "main.c2fbf6aa.css.map": "/ToughTwitter/static/css/main.c2fbf6aa.css.map",
-    "main.44e265e7.js.map": "/ToughTwitter/static/js/main.44e265e7.js.map",
+    "main.f6911bc4.css.map": "/ToughTwitter/static/css/main.f6911bc4.css.map",
+    "main.68064c55.js.map": "/ToughTwitter/static/js/main.68064c55.js.map",
     "787.cd73e525.chunk.js.map": "/ToughTwitter/static/js/787.cd73e525.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.c2fbf6aa.css",
-    "static/js/main.44e265e7.js"
+    "static/css/main.f6911bc4.css",
+    "static/js/main.68064c55.js"
   ]
 }
