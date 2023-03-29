@@ -64,6 +64,7 @@ function App() {
 									<Route index element={userData && <TweetPage />}></Route>
 									{/* 需要修改TweetReplyBox樣式 */}
 								</Route>
+								<Route path='/test' element={userData && <Test />}></Route>
 							</Route>
 						</Routes>
 					</ProfileContext.Provider>

@@ -38,3 +38,7 @@ export function findPath(path, place) {
 	let pathArray = path.split('/')
 	return pathArray[pathArray.length - place]
 }
+export function findExtName(filemane) {
+	const temp = filemane.split('.')
+	return temp[temp.length - 1]
+}

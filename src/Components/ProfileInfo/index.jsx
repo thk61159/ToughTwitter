@@ -6,17 +6,32 @@ import MyContext from '../MyContext'
 
 import ProfileEditButton from '../ProfileEditButton'
 import ProfileInfoModal from '../ProfileInfoModal'
+import Alert from '../Alert'
 
 function ProfileInfo({ data }) {
 	const { userData } = useContext(MyContext)
 	let [Modal, setModal] = useState(false)
 	let [d, setD] = useState(data)
+	let [newD, setNewD] = useState(null)
+	const [alertNote, setAlertNote] = useState()
 	// console.log(data,d)
 	useEffect(() => {
-		setD(data)
+		if (newD) {
+			setD(newD)
+			setAlertNote({note:'成功',type:'suc'})
+			setNewD(null)
+		} else { setD(data) }
 	}, [d, data])
 	return (
 		<div className={styles['container']}>
+			{alertNote && (
+				<div
+					onClick={() => {
+						setAlertNote(null)
+					}}>
+					<Alert alertNote={alertNote.note} alertType={alertNote.type} />
+				</div>
+			)}
 			<div className={styles['background-avatar']}>
 				<img src={d.background ? d.background : 'https://loremflickr.com/320/240?lock=2'} alt='background' className={styles['avatar-img']} />
 			</div>
@@ -27,7 +42,7 @@ function ProfileInfo({ data }) {
 				{/* 太神了 */}
 				<ProfileEditButton currentUser={d.currentUser} setModal={setModal} />
 				{/* 彈出編輯匡 */}
-				{userData && <ProfileInfoModal Modal={Modal} setModal={setModal} userData={userData} />}
+				{userData && <ProfileInfoModal Modal={Modal} setModal={setModal} setNewD={setNewD} userData={userData} />}
 				<div className={styles['user-info']}>
 					<p className={styles['user-name']}>{d.name}</p>
 					<p className={styles['user-account']}>@{d.account}</p>
@@ -41,7 +56,7 @@ function ProfileInfo({ data }) {
 						<p className={styles['note']}>個跟隨中</p>
 					</div>
 					<div className={styles['user-following']}>
-						<Link to={`/${d.id}/follower`} className={styles['number-link']}>
+						<Link to={`/${d.id}/followers`} className={styles['number-link']}>
 							{d.followersCounts}
 						</Link>
 						<p className={styles['note']}>位跟隨者</p>

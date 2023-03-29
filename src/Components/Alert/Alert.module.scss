@@ -5,6 +5,12 @@
 	border-radius: 8px;
 	background-color: #ffffff;
 	padding: 20px 24px;
+	position:absolute;
+	top: 10%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+	z-index: 1000;
+
 }
 
 .alert-c {
@@ -46,7 +52,7 @@
 	@include note-cf(#ffc542);
 }
 
-svg {
+.svgsvg {
 	width: 20px;
 	height: 20px;
 	position: relative;
