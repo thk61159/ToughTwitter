@@ -1,6 +1,7 @@
 .container {
   font-family: "Noto Sans TC", sans-serif;
-  border-left: 1px solid #E6ECF0;
+  border: 1px solid #E6ECF0;
+  border-top: none;
   margin-left: 200px;
   .title {
     font-size: 24px;
@@ -10,11 +11,4 @@
     border-bottom: 1px solid #E6ECF0;
     color: #171725;
   }
-
-  .user-cards {
-    display: flex;
-    flex-wrap: wrap;
-  }
 }
-
-
