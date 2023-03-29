@@ -6,7 +6,8 @@ import MyContext from '../../MyContext'
 import UserPopularCard from './UserPopularCard'
 
 function UserPopularList() {
-	const { token } = useContext(MyContext)
+	const { userData } = useContext(MyContext)
+	const { token } = userData
 	let [Data, setData] = useState(null)
 	useEffect(() => {
 		if (!Data) {

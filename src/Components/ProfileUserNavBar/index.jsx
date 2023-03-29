@@ -1,14 +1,14 @@
-import { useState, useEffect } from 'react'
 import { useLocation, useParams } from 'react-router-dom'
 
 import styles from './ProfileUserNavBar.module.scss'
-import { Myaxios } from '../../constants'
+
+
 
 import ProfileInfo from '../ProfileInfo'
 import PageTitle from '../PageTitle'
 import ProfileNavLink from '../ProfileNavLink'
 import FollowNavLink from '../FollowNavLink'
-function ProfileUserNavBar({ data, setBrowsingUser, setUserData }) {
+function ProfileUserNavBar({ data }) {
 	const d = JSON.parse(JSON.stringify(data))
 	const location = useLocation()
 	const path = location.pathname
@@ -21,7 +21,7 @@ function ProfileUserNavBar({ data, setBrowsingUser, setUserData }) {
 			</div>
 			{!toRender && (
 				<div className={styles['user-profile-info']}>
-					<ProfileInfo d={d} setBrowsingUser={setBrowsingUser} setUserData={setUserData} />
+					<ProfileInfo data={d} />
 				</div>
 			)}
 			{!toRender && (

@@ -12,7 +12,8 @@ import UserSidebarContainer from "../../Components/UserSidebarContainer";
 
 
 function SettingPage() {
-	const { token,user } = useContext(MyContext)
+	const { userData } = useContext(MyContext)
+	const { token, user } = userData
   const navigate = useNavigate()
   //State
   const [account, setAccount] = useState("");

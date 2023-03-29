@@ -8,8 +8,9 @@ import ProfileContext from '../ProfileContext'
 
 import UserTweetBox from '../UserTweetBox'
 function UserTweetList() {
-	const { token } = useContext(MyContext)
-	const BrowsingUser = useContext(ProfileContext)
+	const { userData, BrowsingUser } = useContext(MyContext)
+	const { token } = userData
+	// const BrowsingUser = useContext(ProfileContext)
 	const { account } = useParams()
 	const [isLoading, setIsLoading] = useState(true)
 	let [Data, setData] = useState(null)

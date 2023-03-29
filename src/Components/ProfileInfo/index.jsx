@@ -7,9 +7,10 @@ import MyContext from '../MyContext'
 import ProfileEditButton from '../ProfileEditButton'
 import ProfileInfoModal from '../ProfileInfoModal'
 
-function ProfileInfo({ d, setBrowsingUser }) {
+function ProfileInfo({ data }) {
+	const { userData, updateUserData, updateBrowsingUser } = useContext(MyContext)
 	let [Modal, setModal] = useState(false)
-	const {token} = useContext(MyContext)
+	let [d, setD] = useState(data)
 
 	return (
 		<div className={styles['container']}>
@@ -17,13 +18,13 @@ function ProfileInfo({ d, setBrowsingUser }) {
 				<img src={d.background ? d.background : 'https://loremflickr.com/320/240?lock=2'} alt='background' className={styles['avatar-img']} />
 			</div>
 			<div className={styles['user-avatar']}>
-				<img src={d.avatar ? d.avatar : 'https://loremflickr.com/320/240?lock=3'} alt='user-avatar' className={styles['avatar-img']} />
+				<img src={d.avatar} alt='user-avatar' className={styles['avatar-img']} />
 			</div>
 			<div className={styles['user-detail']}>
 				{/* 太神了 */}
 				<ProfileEditButton currentUser={d.currentUser} setModal={setModal} />
 				{/* 彈出編輯匡 */}
-				{token && <ProfileInfoModal Modal={Modal} setModal={setModal} token={token} user={d} setBrowsingUser={setBrowsingUser} />}
+				{userData && <ProfileInfoModal Modal={Modal} setModal={setModal} setD={setD} userData={userData} />}
 				<div className={styles['user-info']}>
 					<p className={styles['user-name']}>{d.name}</p>
 					<p className={styles['user-account']}>@{d.account}</p>

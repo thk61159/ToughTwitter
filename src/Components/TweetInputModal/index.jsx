@@ -8,7 +8,8 @@ import TweetSubmitButton from './TweetSubmitButton'
 import { ReactComponent as Close } from '../../assets/icons/admin_cross.svg'
 
 function TweetInputModal({ Modal,setModal }) {
-	const { token, user } = useContext(MyContext)
+	const { userData } = useContext(MyContext)
+	const { token, user } = userData
 	const navigate = useNavigate()
 	let [tweet, setTweet] = useState(null)
 	let [error, setError] = useState(null)
@@ -36,6 +37,9 @@ function TweetInputModal({ Modal,setModal }) {
 			}
 		}
 	}, [tweet])
+	useEffect(() => {
+		console.log(user.avatar)
+	}, [userData])
 	if (!Modal) return null
 	return (
 		<div className={styles['modal-bg']}>
@@ -51,7 +55,7 @@ function TweetInputModal({ Modal,setModal }) {
 				</div>
 				<div className={styles['input-body']}>
 					<div className={styles['user-avatar']}>
-						<img src={user.avatar} alt='avatar-img' className={styles['avatar-img']} />
+						{user.avatar&&<img src={user.avatar} alt='avatar-img' className={styles['avatar-img']} />}
 					</div>
 					<textarea className={styles['input-textarea']} placeholder='有什麼新鮮事?' onChange={e => setTweet(e.target.value)} value={tweet}></textarea>
 				</div>

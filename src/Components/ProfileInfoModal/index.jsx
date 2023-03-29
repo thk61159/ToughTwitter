@@ -2,6 +2,7 @@ import React, { useState, useEffect, useContext, useRef } from 'react'
 
 import styles from './ProfileInfoModal.module.scss'
 import { Myaxios } from '../../constants'
+import MyContext from '../MyContext'
 
 import AuthInput from '../AuthInput'
 import { ReactComponent as Close } from '../../assets/icons/admin_cross.svg'
@@ -10,8 +11,10 @@ import Button from '../Button'
 
 // function wordCounter
 
-import { Link } from 'react-router-dom' //按到追隨者、追隨中轉址用
-function ProfileInfoModal({ Modal, setModal, token, user, setBrowsingUser }) {
+
+function ProfileInfoModal({ Modal, setModal, setD, userData }) {
+	const { updateUserData, updateBrowsingUser } = useContext(MyContext)
+	const { token, user } = userData
 	const bgFileRef = useRef(null) //for button to connect upload input
 	const avatarFileRef = useRef(null)
 	const [intro, setIntro] = useState(user.introduction)
@@ -48,15 +51,15 @@ function ProfileInfoModal({ Modal, setModal, token, user, setBrowsingUser }) {
 				},
 			})
 			.then(e => {
-				const user = JSON.parse(JSON.stringify(e.data))
-				user.currentUser = true
+				const updateduser = JSON.parse(JSON.stringify(e.data))
+				updateduser.currentUser = true
 				console.log('資料更新成功', e.status)
+				updateUserData({ token: token, user: updateduser })
+				updateBrowsingUser({ user: updateduser })
+				setD(updateduser)
+				setBgURL(updateduser.background)
+				setAvatarURL(updateduser.avatar)
 				setModal(false)
-				setBrowsingUser(user)
-				setIntro(user.introduction)
-				setName(user.name)
-				setAvatarURL(user.avatar)
-				setBgURL(user.background)
 			})
 			.catch(err => console.log(err))
 	}
@@ -76,8 +79,8 @@ function ProfileInfoModal({ Modal, setModal, token, user, setBrowsingUser }) {
 					<div className={styles['title']}>編輯個人資料</div>
 					<div className={styles['save-button']}>
 						{/* 隱藏的 */}
-						<input type='file' ref={bgFileRef} name='background' onChange={onSelectBg} accept='image/jpg, image/png' style={{ display: 'none' }} />
-						<input type='file' ref={avatarFileRef} name='avatar' onChange={onSelectAvatar} accept='image/jpg, image/png' style={{ display: 'none' }} />
+						<input type='file' ref={bgFileRef} onChange={onSelectBg} accept='image/jpg, image/png' style={{ display: 'none' }} />
+						<input type='file' ref={avatarFileRef} onChange={onSelectAvatar} accept='image/jpg, image/png' style={{ display: 'none' }} />
 						<button className={styles['none-btn']} onClick={handleSubmit}>
 							<Button styleName='bg-logo'>儲存</Button>
 						</button>
@@ -105,7 +108,7 @@ function ProfileInfoModal({ Modal, setModal, token, user, setBrowsingUser }) {
 					</div>
 				</div>
 				<div className={styles['user-avatar']}>
-					<img src={avatarURL ? avatarURL : 'https://loremflickr.com/320/240?lock=3'} alt='user-avatar' className={styles['avatar-img']} />
+					{user&&<img src={avatarURL} alt='user-avatar' className={styles['avatar-img']} />}
 					<div className={styles['user-avatar-cover']}>
 						<div>
 							<button

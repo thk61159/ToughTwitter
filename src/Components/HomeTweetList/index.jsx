@@ -6,8 +6,10 @@ import MyContext from '../MyContext'
 
 import HomeTweetBox from '../HomeTweetBox'
 
-function HomeTweetList({post,setPost}) {
-	const { token } = useContext(MyContext)
+function HomeTweetList({ post, setPost }) {
+	const { userData } = useContext(MyContext)
+	console.log(userData,'登入後的data')
+	const { token } = userData
 	let [Data, setData] = useState(null)
 	useEffect(() => {
 		if (!Data) {

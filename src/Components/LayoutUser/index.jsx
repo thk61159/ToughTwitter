@@ -12,8 +12,9 @@ import { Outlet } from 'react-router-dom'
 import UserSidebarContainer from '../UserSidebarContainer'
 import UserPopularBar from '../UserPopularBar'
 
-function LayoutUser({ BrowsingUser, setBrowsingUser, setUserData }) {
-	const { token } = useContext(MyContext)
+function LayoutUser() {
+	const { userData, BrowsingUser, updateBrowsingUser } = useContext(MyContext)
+	const { token } = userData
 	const { account } = useParams()
 	//當網址中:accout改變再做axios
 	useEffect(() => {
@@ -22,17 +23,17 @@ function LayoutUser({ BrowsingUser, setBrowsingUser, setUserData }) {
 			.then(e => {
 				console.log('使用者資料', e.status)
 				// setAccount(e.data)
-				setBrowsingUser(e.data)
+				updateBrowsingUser(e.data)
 			})
 			.catch(err => console.log(err))
-	}, [account])
+	}, [account, userData])
 	return (
 		<div className={styles['layout-container']}>
 			<div className={styles['column-1']}>
 				<UserSidebarContainer />
 			</div>
 			<div className={styles['column-2']}>
-				{BrowsingUser && <ProfileUserNavBar data={BrowsingUser} token={token} setBrowsingUser={setBrowsingUser} setUserData={setUserData} />}
+				{BrowsingUser && <ProfileUserNavBar data={BrowsingUser} />}
 				<Outlet />
 			</div>
 			<div className={styles['column-3']}>
