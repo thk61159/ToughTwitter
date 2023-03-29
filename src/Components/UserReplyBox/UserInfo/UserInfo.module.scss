@@ -1,7 +1,7 @@
 .container {
   display: flex;
+  line-height: 26px;
   align-items: center;
-  margin-left: 8px;
   font-family: "Noto Sans TC";
   flex-wrap: wrap;
   .user-info-name {
@@ -17,6 +17,7 @@
   .user-info-update {
     color: var(--color-secondary);
     margin-right: 2px;
+    font-size: 14px;
   }
   .user-info-name,
   .user-info-account {

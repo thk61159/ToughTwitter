@@ -21,7 +21,7 @@ function UserReplyBox({ data }) {
 			</div>
 			<div className={styles['tweet-user-info']}>
 				<UserInfo reply={reply} browsingUser={browsingUser} />
-				<div>
+				<div className={styles['tweet-author']}>
 					回覆
 					<Link to={`/${poster.id}`}>
 						<div>@{poster.account}</div>
