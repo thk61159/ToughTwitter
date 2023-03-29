@@ -38,36 +38,34 @@ function UserRelpyBox({ data }) {
 			})
 			.catch(err => console.log('err'))
 	}
-	return (
-		<div className={styles['container']}>
-			<div className={styles['user-avatar']}>
-				<Link to={`/${poster.account}`}>
-					<img src={poster.avatar} className={styles['avatar-img']} alt='avatar-img' />
-				</Link>
-			</div>
-			<div className={styles['tweet-user-info']}>
-				<UserInfo tweet={tweet} poster={poster} />
-				<div className={styles['tweet-content']}>
-					<Link to={`/tweet/${poster.id}`} className={styles['tweet-content-link']}>
-						<div>{tweet.description}</div>
+		return (
+			<div className={styles['container']}>
+				<div className={styles['user-avatar']}>
+					<Link to={`/${poster.account}`}>
+						<img src={poster.avatar} className={styles['avatar-img']} alt='avatar-img' />
 					</Link>
 				</div>
-				<div className={styles['tweet-social-list']}>
-					<div className={styles['tweet-social-group']}>
-						<div className={styles['reply-link']}>
-							<ReplyIconButton />
-						</div>
-						<p className={styles['reply-number']}>{tweet.Replies}</p>
+				<div className={styles['tweet-user-info']}>
+					<UserInfo tweet={tweet} poster={poster} />
+					<div className={styles['tweet-content']}>
+						<Link to={`/tweet/${poster.id}`} className={styles['tweet-content-link']}>
+							<div>{tweet.description}</div>
+						</Link>
 					</div>
-					<div className={styles['tweet-social-group']}>
-						<div className={styles['like-btn']}>
-							{isLiked ? <LikeFullIconButton unLiked={unLiked} /> : <LikeIconButton Liked={Liked} />}
+					<div className={styles['tweet-social-list']}>
+						<div className={styles['tweet-social-group']}>
+							<div className={styles['reply-link']}>
+								<ReplyIconButton />
+							</div>
+							<p className={styles['reply-number']}>{tweet.Replies}</p>
 						</div>
-						<p className={styles['like-number']}>{likeCount}</p>
+						<div className={styles['tweet-social-group']}>
+							<div className={styles['like-btn']}>{isLiked ? <LikeFullIconButton unLiked={unLiked} /> : <LikeIconButton Liked={Liked} />}</div>
+							<p className={styles['like-number']}>{likeCount}</p>
+						</div>
 					</div>
 				</div>
 			</div>
-		</div>
-	)
+		)
 }
 export default UserRelpyBox

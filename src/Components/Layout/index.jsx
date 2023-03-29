@@ -1,5 +1,5 @@
 import React from 'react'
-import { Outlet } from 'react-router-dom'
+import { Outlet,useLocation } from 'react-router-dom'
 
 import styles from './Layout.module.scss'
 
@@ -8,6 +8,7 @@ import UserSidebarContainer from '../UserSidebarContainer'
 import UserPopularBar from '../UserPopularBar'
 
 function Layout() {
+	const path = useLocation().pathname
 	return (
 		<div className={styles['layout-container']}>
 			<div className={styles['column-1']}>
@@ -17,8 +18,8 @@ function Layout() {
 				<Outlet />
 			</div>
 			<div className={styles['column-3']}>
-				{' '}
-				<UserPopularBar />
+				{path==='/home'&&
+				<UserPopularBar />}
 			</div>
 		</div>
 	)

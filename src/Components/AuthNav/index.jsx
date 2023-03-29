@@ -4,9 +4,10 @@ import { Outlet, useNavigate, useLocation } from 'react-router-dom'
 import MyContext from '../../Components/MyContext'
 import { Myaxios } from '../../constants'
 
-function AuthNav({ userData, setUserData }) {
+function AuthNav() {
+	const {userData,updateUserData} = useContext(MyContext)
+	const  token  = userData ? userData.token: null
 	const localToken = localStorage.getItem('token') //測試過可以取出
-	const { token } = MyContext
 	const location = useLocation()
 	const navigate = useNavigate()
 	useEffect(() => {
@@ -17,7 +18,7 @@ function AuthNav({ userData, setUserData }) {
 				.then(e => {
 					console.log('localToken驗證', e.status)
 					if (e.status === 200) {
-						setUserData({ token: localToken, user: e.data })
+						updateUserData({ token: localToken, user: e.data })
 						//用正則比較好但不會
 						const dirHome = ['/', '/login', 'register']
 						if (dirHome.includes(location.pathname)) return navigate('home')
@@ -26,7 +27,7 @@ function AuthNav({ userData, setUserData }) {
 				})
 				.catch(err => {
 					console.log(err)
-					setUserData(null)
+					updateUserData(null)
 					navigate('/login')
 				})
 	}, [])

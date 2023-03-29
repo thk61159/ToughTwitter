@@ -12,20 +12,32 @@ import { Outlet } from 'react-router-dom'
 import UserSidebarContainer from '../UserSidebarContainer'
 import UserPopularBar from '../UserPopularBar'
 
-function LayoutUser({ BrowsingUser,setBrowsingUser }) {
-	const { token } = useContext(MyContext)
+function LayoutUser() {
+	const { userData, BrowsingUser, updateBrowsingUser } = useContext(MyContext)
 	const { account } = useParams()
-	const id = Number(account.slice(1,account.length))
+	const [Data, setData] = useState(null)
 	//當網址中:accout改變再做axios
 	useEffect(() => {
-		Myaxios(token)
-			.get(`/users/${account}`)
-			.then(e => {
-				console.log('使用者資料', e.status)
-				// setAccount(e.data)
-				setBrowsingUser(e.data)
-			})
-			.catch(err => console.log(err))
+		const { token } = userData
+		if (!BrowsingUser || BrowsingUser.id != account) {
+			Myaxios(token)
+				.get(`/users/${account}`)
+				.then(e => {
+					console.log('使用者資料', e.status)
+					setData(e.data)
+					updateBrowsingUser(e.data)
+				})
+				.catch(err => console.log(err))
+		} else if (account == userData.user.id) {
+			Myaxios(token)
+				.get(`/users/${account}`)
+				.then(e => {
+					console.log('使用者資料', e.status)
+					setData(e.data)
+					updateBrowsingUser(e.data)
+				})
+				.catch(err => console.log(err))
+		}
 	}, [account])
 	return (
 		<div className={styles['layout-container']}>
@@ -33,7 +45,7 @@ function LayoutUser({ BrowsingUser,setBrowsingUser }) {
 				<UserSidebarContainer />
 			</div>
 			<div className={styles['column-2']}>
-				{BrowsingUser && <ProfileUserNavBar data={BrowsingUser} />}
+				{Data && <ProfileUserNavBar data={Data} />}
 				<Outlet />
 			</div>
 			<div className={styles['column-3']}>

@@ -1,15 +1,14 @@
 import React, { useState, useEffect, useContext } from 'react'
 import { useNavigate } from 'react-router-dom'
+import styles from './TweetReplyModal.module.scss'
 
-import styles from './TweetInputModal.module.scss'
 import MyContext from '../MyContext'
 import { Myaxios } from '../../constants'
-import TweetSubmitButton from './TweetSubmitButton'
+import TweetSubmitButton from './ReplySubmitButton'
 import { ReactComponent as Close } from '../../assets/icons/admin_cross.svg'
 
-function TweetInputModal({ Modal,setModal }) {
-	const { userData } = useContext(MyContext)
-	const { token, user } = userData
+function TweetReplyModal({ Modal, setModal }) {
+	const { token, user } = useContext(MyContext)
 	const navigate = useNavigate()
 	let [tweet, setTweet] = useState(null)
 	let [error, setError] = useState(null)
@@ -21,7 +20,8 @@ function TweetInputModal({ Modal,setModal }) {
 					setModal(false)
 					setTweet('')
 					console.log(e.status)
-			}).catch(err=>console.log(err))
+				})
+				.catch(err => console.log(err))
 		} else {
 			setError('字數不可超過140字或是空白')
 		}
@@ -37,9 +37,6 @@ function TweetInputModal({ Modal,setModal }) {
 			}
 		}
 	}, [tweet])
-	useEffect(() => {
-		console.log(user.avatar)
-	}, [userData])
 	if (!Modal) return null
 	return (
 		<div className={styles['modal-bg']}>
@@ -55,9 +52,31 @@ function TweetInputModal({ Modal,setModal }) {
 				</div>
 				<div className={styles['input-body']}>
 					<div className={styles['user-avatar']}>
-						{user.avatar&&<img src={user.avatar} alt='avatar-img' className={styles['avatar-img']} />}
+						<img src={user.avatar} className={styles['avatar-img']} alt='avatar-img' />
+						<div className={styles['user-avatar-bar']}></div>
 					</div>
-					<textarea className={styles['input-textarea']} placeholder='有什麼新鮮事?' onChange={e => setTweet(e.target.value)} value={tweet}></textarea>
+					<div>
+						<div className={styles['tweet-box']}>
+							<div className={styles['tweet-user-info']}>
+								<div className={styles['tweet-user-name']}>name</div>
+								<div className={styles['tweet-user-account']}>@account・time</div>
+							</div>
+							<div className={styles['tweet-content']}>
+								<div>{'t.descriptiontweet.descrescriptiontweet.descrescriptiontweet.descrescriptiontweet.descrescriptiontweet.descrescriptiontweet.descrescriptiontweet.descrescriptiontweet.descrescriptiontweet.descrescriptiontweet.descrescriptiontweet.descrescriptiontweet.descriptiontwn'}</div>
+							</div>
+							<div className={styles['tweet-reply-alert']}>
+								回覆給 <span style={{color:'#FF6600'}}>@{'account'}</span>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div className={styles['input-body']}>
+					<div className={styles['user-avatar']}>
+						<img src={user.avatar} alt='avatar-img' className={styles['avatar-img']} />
+					</div>
+					<div>
+						<textarea className={styles['input-textarea']} placeholder='推你的回覆...' onChange={e => setTweet(e.target.value)} value={tweet}></textarea>
+					</div>
 				</div>
 				<div>
 					<div className={styles['footer']}>
@@ -73,4 +92,4 @@ function TweetInputModal({ Modal,setModal }) {
 		</div>
 	)
 }
-export default TweetInputModal
+export default TweetReplyModal

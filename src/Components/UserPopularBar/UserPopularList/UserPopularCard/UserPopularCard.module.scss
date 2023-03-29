@@ -6,6 +6,9 @@
   padding: 16px;
   font-family: "Noto Sans TC";
   border-radius: 16px;
+  a{
+    text-decoration: unset;
+  }
 }
 .user-info {
   margin-right: auto;
@@ -16,6 +19,7 @@
   width: 50px;
   height: 50px;
   border-radius: 100px;
+  display: block;
 
 }
 .user-name {

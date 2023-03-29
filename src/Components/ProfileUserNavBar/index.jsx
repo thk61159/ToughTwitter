@@ -1,5 +1,9 @@
-import { useLocation } from 'react-router-dom'
+import { useLocation, useParams } from 'react-router-dom'
+
 import styles from './ProfileUserNavBar.module.scss'
+
+
+
 import ProfileInfo from '../ProfileInfo'
 import PageTitle from '../PageTitle'
 import ProfileNavLink from '../ProfileNavLink'
@@ -15,13 +19,8 @@ function ProfileUserNavBar({ data }) {
 				<PageTitle d={d} />
 			</div>
 			{!toRender && (
-				<div className={styles['background-avatar']}>
-					<img src={d.background ? d.background : 'https://loremflickr.com/320/240?lock=2'} alt='background' us className={styles['avatar-img']} />
-				</div>
-			)}
-			{!toRender && (
 				<div className={styles['user-profile-info']}>
-					<ProfileInfo d={d} />
+					<ProfileInfo data={d} />
 				</div>
 			)}
 			{!toRender && (
@@ -30,7 +29,7 @@ function ProfileUserNavBar({ data }) {
 				</div>
 			)}
 			{toRender && (
-				<div className={styles['profile-nav-link']} style={{marginTop:'74px'}}>
+				<div className={styles['profile-nav-link']} style={{ marginTop: '74px' }}>
 					<FollowNavLink d={d} />
 				</div>
 			)}

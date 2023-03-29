@@ -1,12 +1,11 @@
-import React, { useState, useEffect, useContext } from 'react'
+import React, { useState, useEffect } from 'react'
 
 import styles from './TweetInput.module.scss'
-import MyContext from '../MyContext'
+
 import { Myaxios } from '../../constants'
 import TweetSubmitButton from './TweetSubmitButton'
 
-function TweetInput({ setPost }) {
-	const { token, user } = useContext(MyContext)
+function TweetInput({ setPost, token, user }) {
 	let [tweet, setTweet] = useState(null)
 	let [error, setError] = useState(null)
 	const submitTweet = () => {
@@ -40,7 +39,8 @@ function TweetInput({ setPost }) {
 		<div className={styles['container']}>
 			<div className={styles['input-body']}>
 				<div className={styles['user-avatar']}>
-					<img src={user.avatar} alt='avatar-img' className={styles['avatar-img']} />
+					{user.avatar&&
+					<img src={user.avatar} alt='avatar-img' className={styles['avatar-img']} />}
 				</div>
 				<textarea className={styles['input-textarea']} placeholder='有什麼新鮮事?' onChange={e => setTweet(e.target.value)} value={tweet}></textarea>
 			</div>

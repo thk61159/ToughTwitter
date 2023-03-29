@@ -17,7 +17,8 @@ import { ReactComponent as GearActive } from '../../../assets/icons/gear_Full.sv
 
 
 function UserNavBar() {
-	const { user } = useContext(MyContext)
+	const { userData } = useContext(MyContext)
+	const { user } = userData
 	let [Modal,setModal]=useState(false)
 	return (
 		<div className={styles['container']}>

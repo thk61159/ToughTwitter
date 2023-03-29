@@ -50,6 +50,17 @@
   font-weight: 500;
   margin-top: 4px;
 }
+.counter-msg-box {
+  float: right;
+  margin-top: 4px;
+  height: 20px;
+
+  font-family: 'Noto Sans TC', sans-serif;
+font-weight: 500;
+font-size: 12px;
+line-height: 20px;
+
+}
 
 .authinput::placeholder {
   color: var(--color-input-disable-grey);
@@ -58,4 +69,7 @@
 
 .authinput-alertmsg {
   color: var(--color-error);
+}
+.counter-alertmsg {
+  color: #696974
 }

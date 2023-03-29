@@ -11,7 +11,8 @@ import ReplyIconButton from '../ReplyIconButton'
 import LikeIconButton from '../LikeIconButton'
 
 function HomeTweetBox({ data }) {
-	const { token } = useContext(MyContext)
+	const { userData } = useContext(MyContext)
+	const { token } = userData
 	const tweet = JSON.parse(JSON.stringify(data))
 	const poster = tweet.poster
 	let [likeCount, setLikeCount] = useState(tweet.Likes)

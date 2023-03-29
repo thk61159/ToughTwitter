@@ -1,21 +1,19 @@
-import React, { useState, useContext, useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 
 import styles from './UserTweetList.module.scss'
 import { Myaxios } from '../../constants'
-import MyContext from '../MyContext'
-import ProfileContext from '../ProfileContext'
+
+
 
 import UserTweetBox from '../UserTweetBox'
-function UserTweetList() {
-	const { token } = useContext(MyContext)
-	const BrowsingUser = useContext(ProfileContext)
+function UserTweetList({ BrowsingUser ,token}) {
 	const { account } = useParams()
 	const [isLoading, setIsLoading] = useState(true)
 	let [Data, setData] = useState(null)
 	//當網址中:accout改變在做axios
 	useEffect(() => {
-		if (!Data) {
+		if (BrowsingUser) {
 			Myaxios(token)
 				.get(`/users/${account}/tweets`)
 				.then(e => {
@@ -32,7 +30,7 @@ function UserTweetList() {
 		} else {
 			return BrowsingUser ? setIsLoading(false) : null
 		}
-	}, [account, BrowsingUser])
+	}, [account])
 
 	return (
 		<div className={styles['container']}>
@@ -40,7 +38,7 @@ function UserTweetList() {
 				<div className={styles['loading-animation']}></div>
 			) : (
 				Data.map((d, i) => {
-					return <UserTweetBox data={d} key={i} />
+					return <UserTweetBox data={d} key={i} token={token} />
 				})
 			)}
 		</div>
