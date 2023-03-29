@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from './AdminTweetBox.module.scss';
-import { ReactComponent as DeleteIcon } from '../../../assets/icons/admin_delete_icon.svg';
+import { ReactComponent as DeleteIcon } from '../../../assets/icons/admin_cross.svg'
 import { timestamp } from '../../../utils';
 
 const AdminTweetBox = ({ id, avatar, name, account, time, description, deleteTweet }) => {
