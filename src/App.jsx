@@ -51,7 +51,7 @@ function App() {
 								<Route path='register' element={<RegisterPage />}></Route>
 								<Route path='/' element={userData && <Layout />}>
 									<Route path='home' element={userData && <HomePage />}></Route>
-									<Route path='setting' element={userData && <SettingPage />}></Route>
+									<Route path='setting' element={userData && <SettingPage  />}></Route>
 								</Route>
 								<Route path='/:account' element={userData && <LayoutUser />}>
 									<Route index element={BrowsingUser && <UserProfilePage />}></Route>

@@ -42,3 +42,7 @@ export function findExtName(filemane) {
 	const temp = filemane.split('.')
 	return temp[temp.length - 1]
 }
+export function takeErrMsg(err) {
+	const temp = err.response.data.message.split(':')
+	return temp[1]
+}

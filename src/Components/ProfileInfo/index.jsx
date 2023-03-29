@@ -10,9 +10,9 @@ import Alert from '../Alert'
 
 function ProfileInfo({ data }) {
 	const { userData } = useContext(MyContext)
-	let [Modal, setModal] = useState(false)
-	let [d, setD] = useState(data)
-	let [newD, setNewD] = useState(null)
+	const [Modal, setModal] = useState(false)
+	const [d, setD] = useState(data)
+	const [newD, setNewD] = useState(null)
 	const [alertNote, setAlertNote] = useState()
 	// console.log(data,d)
 	useEffect(() => {
