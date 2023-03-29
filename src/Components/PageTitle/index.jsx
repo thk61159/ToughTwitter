@@ -8,7 +8,8 @@ function PageTitle({ d }) {
 	const navigate = useNavigate()
 	const path = useLocation().pathname
 	const { account } = useParams()
-	const { user } = useContext(MyContext)
+	const { userData } = useContext(MyContext)
+	const { user } = userData
 	const previousPage = () => {
 		if (account == user.id && account == path.slice(1, path.length)) {
 			navigate('/home')
@@ -22,10 +23,10 @@ function PageTitle({ d }) {
 			<div className={styles['arrow-img']}>
 				<ArrowPre onClick={previousPage} />
 			</div>
-			<div className={styles['profile-title']}>
+			{d&&<div className={styles['profile-title']}>
 				<div className={styles['user-name']}>{d.name}</div>
 				<div className={styles['tweet-count']}>{d.tweetsCounts} 貼文</div>
-			</div>
+			</div>}
 		</div>
 	)
 }

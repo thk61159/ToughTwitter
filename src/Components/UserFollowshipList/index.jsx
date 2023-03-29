@@ -9,16 +9,14 @@ import {findPath} from '../../utils'
 import UserFollowshipBox from '../UserFollowshipBox'
 
 
-function UserFollowshipList() {
-	const { token } = useContext(MyContext)
+function UserFollowshipList({ token, BrowsingUser }) {
 	const { account } = useParams()
 	const path = useLocation().pathname
-	console.log(findPath(path, 1))
 	let [Data, setData] = useState(null)
 	let [loc, setLoc] = useState(null)
 	useEffect(() => {
-		console.log(loc !== findPath(path, 1))
-		if (loc !== findPath(path, 1)) {
+
+		if (loc !== findPath(path, 1) && BrowsingUser) {
 			Myaxios(token)
 				.get(`/users/${account}/${findPath(path, 1)}`)
 				.then(e => {

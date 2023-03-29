@@ -7,11 +7,11 @@ import MyContext from '../MyContext'
 
 import UserLikeBox from '../UserLikeBox'
 
-function UserLikeList() {
-	const { token } = useContext(MyContext)
+function UserLikeList({ token, BrowsingUser }) {
 	const { account } = useParams()
 	let [Data, setData] = useState(null)
 	useEffect(() => {
+		if (!Data && BrowsingUser) {
 			Myaxios(token)
 				.get(`/users/${account}/likes`)
 				.then(e => {
@@ -20,7 +20,8 @@ function UserLikeList() {
 					setData(e.data)
 				})
 				.catch(err => console.log(err))
-	}, [account])
+		}
+	}, [account,Data])
 
 	return (
 		<div className={styles['container']}>

@@ -11,8 +11,7 @@ import LikeFullIconButton from '../LikeFullIconButton'
 import ReplyIconButton from '../ReplyIconButton'
 import LikeIconButton from '../LikeIconButton'
 
-function UserTweetBox({ data }) {
-	const { token } = useContext(MyContext)
+function UserTweetBox({ data, token }) {
 	const poster = useContext(ProfileContext) //poster
 	const tweet = JSON.parse(JSON.stringify(data))
 	let [likeCount, setLikeCount] = useState(tweet.Likes)

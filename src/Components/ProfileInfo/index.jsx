@@ -8,10 +8,13 @@ import ProfileEditButton from '../ProfileEditButton'
 import ProfileInfoModal from '../ProfileInfoModal'
 
 function ProfileInfo({ data }) {
-	const { userData, updateUserData, updateBrowsingUser } = useContext(MyContext)
+	const { userData } = useContext(MyContext)
 	let [Modal, setModal] = useState(false)
 	let [d, setD] = useState(data)
-
+	// console.log(data,d)
+	useEffect(() => {
+		setD(data)
+	}, [d, data])
 	return (
 		<div className={styles['container']}>
 			<div className={styles['background-avatar']}>
@@ -24,7 +27,7 @@ function ProfileInfo({ data }) {
 				{/* 太神了 */}
 				<ProfileEditButton currentUser={d.currentUser} setModal={setModal} />
 				{/* 彈出編輯匡 */}
-				{userData && <ProfileInfoModal Modal={Modal} setModal={setModal} setD={setD} userData={userData} />}
+				{userData && <ProfileInfoModal Modal={Modal} setModal={setModal} userData={userData} />}
 				<div className={styles['user-info']}>
 					<p className={styles['user-name']}>{d.name}</p>
 					<p className={styles['user-account']}>@{d.account}</p>

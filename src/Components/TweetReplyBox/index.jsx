@@ -21,11 +21,9 @@ function TweetReplyBox({ data }) {
 					回覆
 					<Link to={`/${d.UserId}`}>
 						<div>@{account}</div>
-						{/* 使用span會很難按到超連結 */}
 					</Link>
 				</div>
 				<div className={styles['tweet-content']}>
-					{/* styles['tweet-content'] 裡hover換成手指需要拿掉 */}
 					<div>{d.comment}</div>
 				</div>
 			</div>

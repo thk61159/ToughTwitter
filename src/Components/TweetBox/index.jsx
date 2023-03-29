@@ -1,9 +1,8 @@
-import React, { useState, useContext } from 'react'
+import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 
 import styles from './TweetBox.module.scss'
 import { Myaxios } from '../../constants'
-import MyContext from '../MyContext'
 import { timestamp } from '../../utils'
 
 import LikeFullIconButton from '../LikeFullIconButton'
@@ -11,8 +10,7 @@ import ReplyIconButton from '../ReplyIconButton'
 import LikeIconButton from '../LikeIconButton'
 
 //長得跟UserTweetBox 也有資料由data->d
-function TweetBox({ d }) {
-	const { token } = useContext(MyContext)
+function TweetBox({ d, token }) {
 	let [likeCount, setLikeCount] = useState(d.Likes)
 	let [isLiked, setIsLiked] = useState(d.isLiked)
 	const unLiked = e => {
@@ -40,7 +38,7 @@ function TweetBox({ d }) {
 		<div className={styles['container']}>
 			<div className={styles['tweet-user-info']}>
 				<div className={styles['user-avatar']}>
-					<Link to={ `/${d.poster.id}`} style={{ textDecoration: 'none' }}>
+					<Link to={`/${d.poster.id}`} style={{ textDecoration: 'none' }}>
 						<img src={d.poster.avatar} className={styles['avatar-img']} alt='avatar-img' />
 					</Link>
 				</div>

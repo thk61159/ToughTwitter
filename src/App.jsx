@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import styles from './App.module.scss'
 import { BrowserRouter, Routes, Route, useNavigate, useParams } from 'react-router-dom'
 
+
 //Page
 import UserLoginPage from './Pages/UserLoginPage'
 import RegisterPage from './Pages/RegisterPage'
@@ -35,6 +36,7 @@ function App() {
 	const updateBrowsingUser = newValue => {
 		setBrowsingUser(newValue)
 	}
+	useEffect(() => {}, [userData, BrowsingUser])
 	return (
 		<div className={styles.App}>
 			<BrowserRouter basename={basename}>
@@ -48,16 +50,21 @@ function App() {
 								<Route path='admin/userlist' element={<AdminUserPage />}></Route>
 								<Route path='register' element={<RegisterPage />}></Route>
 								<Route path='/' element={userData && <Layout />}>
-									<Route path='home' element={userData&&<HomePage />}></Route>
+									<Route path='home' element={userData && <HomePage />}></Route>
 									<Route path='setting' element={userData && <SettingPage />}></Route>
 								</Route>
 								<Route path='/:account' element={userData && <LayoutUser />}>
-									<Route index element={userData && <UserProfilePage />}></Route>
-									
+									<Route index element={BrowsingUser && <UserProfilePage />}></Route>
+									<Route path='/:account/replies' element={BrowsingUser && <UserProfileReply />}></Route>
+									<Route path='/:account/likes' element={BrowsingUser && <UserProfileLike />}></Route>
+									<Route path='/:account/followings' element={BrowsingUser && <UserProfileFollowship />}></Route>
+									<Route path='/:account/followers' element={BrowsingUser && <UserProfileFollowship />}></Route>
 								</Route>
-								
+								<Route path='/tweet/:tweet_id' element={userData && <Layout />}>
+									<Route index element={userData && <TweetPage />}></Route>
+									{/* 需要修改TweetReplyBox樣式 */}
+								</Route>
 							</Route>
-							{/* <Route path='*' component={NotFound} /> */}
 						</Routes>
 					</ProfileContext.Provider>
 				</MyContext.Provider>

@@ -11,12 +11,13 @@ import { ReactComponent as ArrowPre } from '../../assets/icons/arrowPre.svg'
 
 
 function TweetPage() {
+	const {userData}= useContext(MyContext)
+	const { token } = userData
 	const navigate = useNavigate()
-	const { token } = useContext(MyContext)
 	const { tweet_id } = useParams()
 	let [Data, setData] = useState(null)
 	useEffect(() => {
-		if (!Data) {
+		if (!Data && token) {
 			Myaxios(token)
 				.get(`tweets/${tweet_id}`)
 				.then(e => {
@@ -30,16 +31,20 @@ function TweetPage() {
 		<div className={styles['container']}>
 			<div>
 				<div>
-					<ArrowPre onClick={() => {navigate(-1)}} />
+					<ArrowPre
+						onClick={() => {
+							navigate(-1)
+						}}
+					/>
 				</div>
 				<div>
 					<div className={styles['page-title']}>推文</div>
 				</div>
 			</div>
 
-			<div className={styles['tweet-input']}>{Data && <TweetBox d={Data} />}</div>
+			<div className={styles['tweet-input']}>{Data && <TweetBox d={Data} token={token} />}</div>
 			<div className={styles['tweet-list']}>
-				<TweetReplyList />
+				<TweetReplyList token={token} />
 			</div>
 		</div>
 	)

@@ -26,7 +26,7 @@ function ProfileUserNavBar({ data }) {
 			)}
 			{!toRender && (
 				<div className={styles['profile-nav-link']}>
-					<ProfileNavLink d={decodeURI} />
+					<ProfileNavLink d={d} />
 				</div>
 			)}
 			{toRender && (
