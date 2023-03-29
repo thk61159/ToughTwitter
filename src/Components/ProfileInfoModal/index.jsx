@@ -11,12 +11,13 @@ import Button from '../Button'
 // function wordCounter
 
 import { Link } from 'react-router-dom' //按到追隨者、追隨中轉址用
-function ProfileInfoModal({ Modal, setModal, currentUser }) {
-	const { token, user } = currentUser
-	const bgFileRef = useRef(null)
+function ProfileInfoModal({ Modal, setModal, token, user, setBrowsingUser }) {
+	const bgFileRef = useRef(null) //for button to connect upload input
 	const avatarFileRef = useRef(null)
 	const [intro, setIntro] = useState(user.introduction)
 	const [name, setName] = useState(user.name)
+	const [avatarURL, setAvatarURL] = useState(user.avatar)
+	const [bgURL, setBgURL] = useState(user.background)
 	const [bg, setBg] = useState('')
 	const [avatar, setAvatar] = useState('')
 	const [error, setError] = useState('Error')
@@ -24,34 +25,40 @@ function ProfileInfoModal({ Modal, setModal, currentUser }) {
 		const selectedFile = e.target.files[0]
 		const url = URL.createObjectURL(selectedFile)
 		setBg(selectedFile)
-		console.log(url)
-		
+		setBgURL(url)
 	}
 	const onSelectAvatar = e => {
 		const selectedFile = e.target.files[0]
 		const url = URL.createObjectURL(selectedFile)
 		setAvatar(selectedFile)
-		console.log(url)
-		
+		setAvatarURL(url)
 	}
-	const handleSubmit = async e => {
-		try {
-			e.preventDefault()
-			const formData = new FormData()
-			await formData.append('background', bg)
-			await formData.append('avatar', avatar)
-			await formData.append('name', name)
-			await formData.append('introduction', intro)
-			console.log(formData)
-			const response = await Myaxios(token).put(`/users/${user.id}`, formData, {
+	const handleSubmit = e => {
+		e.preventDefault()
+		const formData = new FormData()
+		formData.append('background', bg)
+		formData.append('avatar', avatar)
+		formData.append('name', name)
+		formData.append('introduction', intro)
+
+		Myaxios(token)
+			.put(`/users/${user.id}`, formData, {
 				headers: {
 					'Content-Type': `multipart/form-data`,
 				},
 			})
-			console.log(response)
-		} catch (err) {
-			console.log(err)
-		}
+			.then(e => {
+				const user = JSON.parse(JSON.stringify(e.data))
+				user.currentUser = true
+				console.log('資料更新成功', e.status)
+				setModal(false)
+				setBrowsingUser(user)
+				setIntro(user.introduction)
+				setName(user.name)
+				setAvatarURL(user.avatar)
+				setBgURL(user.background)
+			})
+			.catch(err => console.log(err))
 	}
 
 	if (!Modal) return null
@@ -68,17 +75,16 @@ function ProfileInfoModal({ Modal, setModal, currentUser }) {
 					</button>
 					<div className={styles['title']}>編輯個人資料</div>
 					<div className={styles['save-button']}>
-						<form onSubmit={handleSubmit}>
-							<input type='file' ref={bgFileRef} name='background' onChange={onSelectBg} accept='image/jpg, image/png' style={{ display: 'none' }} />
-							<input type='file' ref={avatarFileRef} name='avatar' onChange={onSelectAvatar} accept='image/jpg, image/png' style={{ display: 'none' }} />
-							<button className={styles['none-btn']} type='submit'>
-								<Button styleName='bg-logo'>儲存</Button>
-							</button>
-						</form>
+						{/* 隱藏的 */}
+						<input type='file' ref={bgFileRef} name='background' onChange={onSelectBg} accept='image/jpg, image/png' style={{ display: 'none' }} />
+						<input type='file' ref={avatarFileRef} name='avatar' onChange={onSelectAvatar} accept='image/jpg, image/png' style={{ display: 'none' }} />
+						<button className={styles['none-btn']} onClick={handleSubmit}>
+							<Button styleName='bg-logo'>儲存</Button>
+						</button>
 					</div>
 				</div>
 				<div className={styles['background-avatar']}>
-					<img src={bg ? bg : user.background ? user.background : 'https://loremflickr.com/320/240?lock=2'} alt='background' className={styles['avatar-img']} />
+					<img src={bgURL ? bgURL : 'https://loremflickr.com/320/240?lock=2'} alt='background' className={styles['avatar-img']} />
 					<div className={styles['background-avatar-cover']}>
 						<div className={styles['background-setting']}>
 							<div>
@@ -91,7 +97,7 @@ function ProfileInfoModal({ Modal, setModal, currentUser }) {
 								</button>
 							</div>
 							<div>
-								<button className={styles['none-btn']} onClick={'dosomething'}>
+								<button className={styles['none-btn']}>
 									<Close className={styles['white-X']} />
 								</button>
 							</div>
@@ -99,7 +105,7 @@ function ProfileInfoModal({ Modal, setModal, currentUser }) {
 					</div>
 				</div>
 				<div className={styles['user-avatar']}>
-					<img src={avatar ? avatar : user.avatar ? user.avatar : 'https://loremflickr.com/320/240?lock=3'} alt='user-avatar' className={styles['avatar-img']} />
+					<img src={avatarURL ? avatarURL : 'https://loremflickr.com/320/240?lock=3'} alt='user-avatar' className={styles['avatar-img']} />
 					<div className={styles['user-avatar-cover']}>
 						<div>
 							<button

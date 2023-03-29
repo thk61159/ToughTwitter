@@ -45,7 +45,7 @@ function App() {
 									<Route path='home' element={userData && <HomePage />}></Route>
 									<Route path='setting' element={userData && <SettingPage />}></Route>
 								</Route>
-								<Route path='/:account' element={userData && <LayoutUser BrowsingUser={BrowsingUser} setBrowsingUser={setBrowsingUser} />}>
+								<Route path='/:account' element={userData && <LayoutUser BrowsingUser={BrowsingUser} setBrowsingUser={setBrowsingUser} setUserData={setUserData} />}>
 									<Route index element={userData && <UserProfilePage />}></Route>
 									<Route path='/:account/replies' element={BrowsingUser && <UserProfileReply />}></Route>
 									{/* 需要修改UserReplyBox樣式 */}

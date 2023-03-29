@@ -39,6 +39,7 @@
 	text-decoration: none;
 	font-size: inherit;
 	margin: 20.5px 19.5px;
+	position: relative;
 }
 .title {
 	font-family: 'Noto Sans TC', sans-serif;
@@ -50,10 +51,11 @@
 	padding: 0;
 }
 .save-button {
-	margin: 8px auto;
-	margin-right: 16px;
+	position: absolute;
+	left: 554px;
+	top: 8px;
 	width: 14.8%;
-	float: right;
+	
 }
 .background-avatar {
 	position: relative;
