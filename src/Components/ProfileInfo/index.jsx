@@ -2,12 +2,14 @@ import React, { useState, useEffect, useContext } from 'react'
 import { Link } from 'react-router-dom' //按到追隨者、追隨中轉址用
 
 import styles from './ProfileInfo.module.scss'
+import MyContext from '../MyContext'
 
 import ProfileEditButton from '../ProfileEditButton'
 import ProfileInfoModal from '../ProfileInfoModal'
 
 function ProfileInfo({ d }) {
 	let [Modal, setModal] = useState(false)
+	const currentUser = useContext(MyContext)
 
 	return (
 		<div className={styles['container']}>
@@ -18,7 +20,7 @@ function ProfileInfo({ d }) {
 				{/* 太神了 */}
 				<ProfileEditButton currentUser={d.currentUser} setModal={setModal} />
 				{/* 彈出編輯匡 */}
-				<ProfileInfoModal Modal={Modal} setModal={setModal} />
+				{currentUser && <ProfileInfoModal Modal={Modal} setModal={setModal} currentUser={currentUser} />}
 				<div className={styles['user-info']}>
 					<p className={styles['user-name']}>{d.name}</p>
 					<p className={styles['user-account']}>@{d.account}</p>
