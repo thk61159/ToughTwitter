@@ -3,8 +3,9 @@ import axios from 'axios'
 import { Link, useNavigate } from 'react-router-dom'
 import { ReactComponent as AcLogo } from '../../assets/icons/AcLogo.svg'
 import styles from './UserLoginPage.module.scss'
-import { API_URL } from '../../constants'
+import { API_URL, API_LOCAL, API_URL_BACKUP } from '../../constants'
 import MyContext from '../../Components/MyContext'
+
 
 // Components
 import Button from '../../Components/Button'
@@ -21,7 +22,7 @@ function UserLoginPage() {
 		if (!password || !account) return setNote({ password: '請輸入帳號密碼' })
 		// 點擊登入發送 POST /api/users/login
 		axios
-			.post(API_URL + '/users/login', { account, password })
+			.post(API_URL_BACKUP + '/users/login', { account, password })
 			.then(response => {
 				const { token, user } = response.data.data
 				console.log('login token', token)
