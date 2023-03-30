@@ -1,5 +1,7 @@
 import { useContext, useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+
+import styles from './AdminTweetPage.module.scss'
 import AdminSideBar from '../../Components/AdminSideBar';
 import AdminTweetList from '../../Components/AdminTweetList';
 import MyContext from '../../Components/MyContext';
@@ -8,7 +10,8 @@ import { Myaxios } from '../../constants';
 function AdminTweetPage() {
   const [Data, setData] = useState(null);
   const navigate = useNavigate();
-  const { token } = useContext(MyContext);
+  const { userData } = useContext(MyContext);
+  const { token } = userData
 
   useEffect(() => {
     if (!Data) {
@@ -32,11 +35,13 @@ function AdminTweetPage() {
   };
 
   return (
-    <div>
-      <AdminSideBar />
-      {Data && <AdminTweetList data={Data} deleteTweet={handleDeleteTweet} />}
-    </div>
-  );
+		<div className={styles['container']}>
+			<dir className={styles['column-1']}>
+				<AdminSideBar />
+			</dir>
+			<div className={styles['column-2']}>{Data && <AdminTweetList data={Data} deleteTweet={handleDeleteTweet} />}</div>
+		</div>
+	)
 }
 
 export default AdminTweetPage;

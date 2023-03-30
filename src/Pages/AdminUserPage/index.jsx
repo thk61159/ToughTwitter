@@ -1,4 +1,6 @@
 import { useContext, useEffect, useState } from 'react';
+
+import styles from './AdminUserPage.module.scss'
 import { Myaxios } from '../../constants';
 import MyContext from '../../Components/MyContext';
 import AdminUserCards from '../../Components/AdminUserCards';
@@ -6,7 +8,8 @@ import AdminSideBar from '../../Components/AdminSideBar';
 
 function AdminUserPage() {
   const [Data, setData] = useState(null);
-  const { token } = useContext(MyContext);
+  const { userData } = useContext(MyContext);
+  const { token } = userData
 
   useEffect(() => {
     if (!Data) {
@@ -21,12 +24,13 @@ function AdminUserPage() {
   }, []);
 
   return (
-    <div>
-      <AdminSideBar />
-    
-      {Data && <AdminUserCards data={Data} />}
-    </div>
-  );
+		<div className={styles['container']}>
+			<div className={styles['column-1']}>
+				<AdminSideBar />
+			</div>
+			<div className={styles['column-2']}>{Data && <AdminUserCards data={Data} />}</div>
+		</div>
+	)
 }
 
 export default AdminUserPage;

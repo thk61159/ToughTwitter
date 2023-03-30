@@ -13,7 +13,6 @@ function AuthNav() {
 	const navigate = useNavigate()
 	useEffect(() => {
 		if (token) return navigate(location.pathname)
-		if (!localToken) return navigate('/login')
 		Myaxios(localToken)
 			.post('/users/test-token')
 			.then(e => {
@@ -29,17 +28,22 @@ function AuthNav() {
 			.catch(err => {
 				console.log(err)
 				updateUserData(null)
-				navigate('/login')
+				if (path === '/admin') {
+					navigate('/admin')
+				} else {
+					navigate('/login')
+				}
+				
 			})
 	}, [path])
 
 	return (
 		<>
-			{userData && (
+			
 				<div>
 					<Outlet />
 				</div>
-			)}
+			
 		</>
 	)
 }

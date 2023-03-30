@@ -1,13 +1,15 @@
 .container {
-  width: 178px;
+  width: 12.71vw;
+  // margin-left: 9.28vw;
   display: flex;
   flex-direction: column;
   height: 100vh;
   justify-content: space-between;
   font-family: "Noto Sans TC";
   position: fixed;
-  top: 0;
-  left: 0;
+ top:0;
+ left:9.28vw;
+
 }
 .navbar-logo {
   margin: 13px;

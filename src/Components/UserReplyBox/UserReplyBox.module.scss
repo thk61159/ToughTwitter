@@ -1,62 +1,42 @@
 .container {
-  display: flex;
-  font-family: sans-serif;
-  padding: 18px 24px;
-  border-bottom: 1px solid #E6ECF0;
-  font-family: "Noto Sans TC";
+	display: flex;
+	font-family: sans-serif;
+	padding: 18px 24px;
+	border-bottom: 1px solid #e6ecf0;
+	font-family: 'Noto Sans TC';
 }
 .user-avatar {
-  .avatar-img {
-    width: 50px;
-    height: 50px;
-    border-radius: 100px;
-  }
+	.avatar-img {
+		width: 50px;
+		height: 50px;
+		border-radius: 100px;
+	}
 }
 .tweet-user-info {
-  margin-left: 8px;
-  .tweet-author {
-    margin: 8px 0;
-    display: flex;
-    font-weight: 400;
-    font-size: 14px;
-    color: #6C757D;
+	margin-left: 8px;
+	.tweet-author {
+		margin: 8px 0;
+		// display: flex;
+		font-weight: 400;
+		font-size: 14px;
+		color: #6c757d;
 
-    a {
-      margin-left: 5px;
-      text-decoration: none;
-      color: #FF6600;
-    }
-  }
-  
-  .tweet-content {
-    margin-bottom: 9px;
-    cursor: pointer;
-    .tweet-content-link {
-      text-decoration: none;
-      color: var(--color-dark-black);
-      font-size: 16px;
-      line-height: 26px;
-      font-weight: 400;
-      word-wrap: break-word;
-    }
-  }
-  .tweet-social-list{
-    display: flex;
-    margin-left: 8px;
-    & .tweet-social-group {
-      display: flex;
-      align-items: center;
-      font-size: 14px;
-      font-weight: 600;
-      color: var(--color-secondary);
-      font-family: "Montserrat";
-      &:not(:last-child){
-        margin-right: 41.3px;
-      }
-    }
-    .reply-link,.like-btn {
-      margin-right: 9.44px;
-    }
-  }
+		a {
+			margin-left: 5px;
+			text-decoration: none;
+			color: #ff6600;
+		}
+	}
+
+	.tweet-content {
+		// margin-bottom: 9px;
+
+		margin-top: 8px;
+		text-decoration: none;
+		color: var(--color-dark-black);
+		font-size: 16px;
+		// line-height: 26px;
+		font-weight: 400;
+		word-wrap: break-word;
+	}
 }
-

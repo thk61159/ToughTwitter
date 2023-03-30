@@ -1,14 +1,14 @@
 import React, { useState, useEffect, useContext } from 'react'
-import axios from 'axios'
 import { Link, useNavigate } from 'react-router-dom'
-import { ReactComponent as AcLogo } from '../../assets/icons/AcLogo.svg'
+
 import styles from './UserLoginPage.module.scss'
-import { API_URL, API_LOCAL, API_URL_BACKUP,Myaxios } from '../../constants'
+import { Myaxios } from '../../constants'
 import MyContext from '../../Components/MyContext'
 
 // Components
 import Button from '../../Components/Button'
 import AuthInput from '../../Components/AuthInput'
+import { ReactComponent as AcLogo } from '../../assets/icons/AcLogo.svg'
 
 function UserLoginPage() {
 	const { updateUserData } = useContext(MyContext)
