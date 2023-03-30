@@ -42,32 +42,28 @@ function App() {
 		<div className={styles.App}>
 			<BrowserRouter basename={basename}>
 				<MyContext.Provider value={{ userData, updateUserData, BrowsingUser, updateBrowsingUser }}>
-					<ProfileContext.Provider value={BrowsingUser}>
-						<Routes>
-							{/* 用一個nav去處理確認登入狀態的事件 ， 非登入者就重新導向到 /login*/}
-							<Route path='/' element={<AuthNav />}>
-								<Route path='login' element={<UserLoginPage />}></Route>
-								<Route path='admin' element={<AdminLoginPage />}></Route>
-								<Route path='admin/userlist' element={<AdminUserPage />}></Route>
-								<Route path='register' element={<RegisterPage />}></Route>
-								<Route path='/' element={userData && <Layout />}>
-									<Route path='home' element={userData && <HomePage />}></Route>
-									<Route path='setting' element={userData && <SettingPage />}></Route>
-								</Route>
-								<Route path='/:account' element={userData && <LayoutUser />}>
-									<Route index element={BrowsingUser && <UserProfilePage />}></Route>
-									<Route path='/:account/replies' element={BrowsingUser && <UserProfileReply />}></Route>
-									<Route path='/:account/likes' element={BrowsingUser && <UserProfileLike />}></Route>
-									<Route path='/:account/followings' element={BrowsingUser && <UserProfileFollowship />}></Route>
-									<Route path='/:account/followers' element={BrowsingUser && <UserProfileFollowship />}></Route>
-								</Route>
-								<Route path='/tweet/:tweet_id' element={userData && <Layout />}>
-									<Route index element={userData && <TweetPage />}></Route>
-									{/* 需要修改TweetReplyBox樣式 */}
-								</Route>
+					<Routes>
+						{/* 用一個nav去處理確認登入狀態的事件 ， 非登入者就重新導向到 /login*/}
+						<Route path='/' element={<AuthNav />}>
+							<Route path='login' element={<UserLoginPage />}></Route>
+							<Route path='admin' element={<AdminLoginPage />}></Route>
+							<Route path='admin/userlist' element={<AdminUserPage />}></Route>
+							<Route path='register' element={<RegisterPage />}></Route>
+							<Route path='/' element={userData && <Layout />}>
+								<Route path='home' element={userData && <HomePage />}></Route>
+								<Route path='setting' element={userData && <SettingPage />}></Route>
+								<Route path='/tweet/:tweet_id' element={userData && <TweetPage />}></Route>
 							</Route>
-						</Routes>
-					</ProfileContext.Provider>
+							<Route path='/:account' element={userData && <LayoutUser />}>
+								<Route index element={BrowsingUser && <UserProfilePage />}></Route>
+								<Route path='/:account/replies' element={BrowsingUser && <UserProfileReply />}></Route>
+								<Route path='/:account/likes' element={BrowsingUser && <UserProfileLike />}></Route>
+								<Route path='/:account/followings' element={BrowsingUser && <UserProfileFollowship />}></Route>
+								<Route path='/:account/followers' element={BrowsingUser && <UserProfileFollowship />}></Route>
+							</Route>
+							<Route path='/test' element={userData && <Test />}></Route>
+						</Route>
+					</Routes>
 				</MyContext.Provider>
 			</BrowserRouter>
 		</div>

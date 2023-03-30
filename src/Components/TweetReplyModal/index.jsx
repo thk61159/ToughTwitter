@@ -19,7 +19,7 @@ function TweetReplyModal({ Modal, setModal }) {
 				.then(e => {
 					setModal(false)
 					setTweet('')
-					console.log(e.status)
+					console.log('回覆送出',e.status)
 				})
 				.catch(err => console.log(err))
 		} else {

@@ -26,20 +26,18 @@ function TweetPage() {
 				})
 				.catch(err => console.log(err))
 		}
-	},[])
+	}, [token,tweet_id])
 	return (
 		<div className={styles['container']}>
-			<div>
-				<div>
+			<div className={styles['page-title-box']}>
+				<div className={styles['page-title-arrow']}>
 					<ArrowPre
 						onClick={() => {
-							navigate(-1)
+							navigate('/home')
 						}}
 					/>
 				</div>
-				<div>
-					<div className={styles['page-title']}>推文</div>
-				</div>
+				<div className={styles['page-title']}>推文</div>
 			</div>
 
 			<div className={styles['tweet-input']}>{Data && <TweetBox d={Data} token={token} />}</div>

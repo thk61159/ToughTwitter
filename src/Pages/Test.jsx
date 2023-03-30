@@ -38,7 +38,7 @@ const Test = () => {
 		<div style={{ padding: '100px' }}>
 			{/* <TweetReplyModal Modal={true} /> */}
 			{/* <ProfileInfoModal/> */}
-			<Alert />
+			<Alert alertNote={'test'} alertType={ 'suc'} />
 			{/* <AuthInput /> */}
 			{/* <Button /> ========== ???*/}
 			{/* <Layout /> ========== home fix*/}

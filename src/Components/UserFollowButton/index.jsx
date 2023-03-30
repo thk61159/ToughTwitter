@@ -10,7 +10,6 @@ function UserFollowBtn({ currentfollowed, userId }) {
 	const { token } = userData
 	let [followed, setFollowed] = useState(currentfollowed)
 	const handleAddFollow = () => {
-		console.log('clicked Follow')
 		Myaxios(token)
 			.post(`followships`, { id: userId })
 			.then(e => {
@@ -19,7 +18,6 @@ function UserFollowBtn({ currentfollowed, userId }) {
 			.catch(err => console.log('err'))
 	}
 	const handleDeleteFollow = () => {
-		console.log('clicked unFollow')
 		Myaxios(token)
 			.delete(`followships/${userId}`)
 			.then(e => {

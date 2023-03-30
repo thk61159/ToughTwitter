@@ -18,7 +18,7 @@ function Layout() {
 				<Outlet />
 			</div>
 			<div className={styles['column-3']}>
-				{path==='/home'&&
+				{path!=='/setting'&&
 				<UserPopularBar />}
 			</div>
 		</div>

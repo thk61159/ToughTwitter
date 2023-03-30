@@ -20,7 +20,7 @@ function TweetInputModal({ Modal,setModal }) {
 				.then(e => {
 					setModal(false)
 					setTweet('')
-					console.log(e.status)
+					console.log('推文送出',e.status)
 			}).catch(err=>console.log(err))
 		} else {
 			setError('字數不可超過140字或是空白')
@@ -37,9 +37,9 @@ function TweetInputModal({ Modal,setModal }) {
 			}
 		}
 	}, [tweet])
-	useEffect(() => {
-		console.log(user.avatar)
-	}, [userData])
+	// useEffect(() => {
+		
+	// }, [userData])
 	if (!Modal) return null
 	return (
 		<div className={styles['modal-bg']}>

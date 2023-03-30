@@ -12,28 +12,7 @@ import LikeIconButton from '../LikeIconButton'
 //長得跟UserTweetBox 也有資料由data->d
 function TweetBox({ d, token }) {
 	let [likeCount, setLikeCount] = useState(d.Likes)
-	let [isLiked, setIsLiked] = useState(d.isLiked)
-	const unLiked = e => {
-		console.log('clicked unLike')
-		Myaxios(token)
-			.post(`/tweets/${d.id}/unlike`)
-			.then(e => {
-				// likeCount不應該是-1
-				setIsLiked(!isLiked)
-				setLikeCount(likeCount <= 1 ? 0 : (likeCount -= 1))
-			})
-			.catch(err => console.log('err'))
-	}
-	const Liked = () => {
-		console.log('clicked Like')
-		Myaxios(token)
-			.post(`/tweets/${d.id}/like`)
-			.then(e => {
-				setIsLiked(!isLiked)
-				setLikeCount((likeCount += 1))
-			})
-			.catch(err => console.log('err'))
-	}
+	let [isLiked, setIsLiked] = useState(d.currentIsLiked)
 	return (
 		<div className={styles['container']}>
 			<div className={styles['tweet-user-info']}>
@@ -73,7 +52,7 @@ function TweetBox({ d, token }) {
 					<ReplyIconButton />
 					{/* 缺彈窗功能 */}
 				</div>
-				<div className={styles['like-btn']}>{isLiked ? <LikeFullIconButton unLiked={unLiked} /> : <LikeIconButton Liked={Liked} />}</div>
+				<div className={styles['like-btn']}>{isLiked ? <LikeFullIconButton tweetId={d.id} token={token} isLiked={isLiked} setIsLiked={setIsLiked} likeCount={likeCount} setLikeCount={setLikeCount} /> : <LikeIconButton tweetId={d.id} token={token} isLiked={isLiked} setIsLiked={setIsLiked} likeCount={likeCount} setLikeCount={setLikeCount} />}</div>
 			</div>
 		</div>
 	)

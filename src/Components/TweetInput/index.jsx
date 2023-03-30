@@ -10,8 +10,7 @@ function TweetInput({ setPost, token, user }) {
 	let [error, setError] = useState(null)
 	const submitTweet = () => {
 		if (!tweet) return setError('不可空白')
-		if (tweet.length < 140 || !tweet.trim()) {
-			console.log('送出')
+		if (tweet.length < 140 || !tweet.trim()){
 			Myaxios(token)
 				.post(`/tweets`, { description: tweet })
 				.then(e => {
