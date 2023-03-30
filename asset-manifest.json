@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/ToughTwitter/static/css/main.872f828d.css",
-    "main.js": "/ToughTwitter/static/js/main.a425e64b.js",
+    "main.js": "/ToughTwitter/static/js/main.f277e781.js",
     "static/js/787.cd73e525.chunk.js": "/ToughTwitter/static/js/787.cd73e525.chunk.js",
     "static/media/gear.svg": "/ToughTwitter/static/media/gear.7e0c5cdd7abe8114f28c04e09466a31f.svg",
     "static/media/gear_Full.svg": "/ToughTwitter/static/media/gear_Full.53670273838eeeda8dbecd8c276f620c.svg",
@@ -25,11 +25,11 @@
     "static/media/like_full_icon.svg": "/ToughTwitter/static/media/like_full_icon.5e5d892842ae545d6d81b84cec2019b6.svg",
     "static/media/notification_success.svg": "/ToughTwitter/static/media/notification_success.05abe9bb79ccce09ca487739447fd59b.svg",
     "main.872f828d.css.map": "/ToughTwitter/static/css/main.872f828d.css.map",
-    "main.a425e64b.js.map": "/ToughTwitter/static/js/main.a425e64b.js.map",
+    "main.f277e781.js.map": "/ToughTwitter/static/js/main.f277e781.js.map",
     "787.cd73e525.chunk.js.map": "/ToughTwitter/static/js/787.cd73e525.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.872f828d.css",
-    "static/js/main.a425e64b.js"
+    "static/js/main.f277e781.js"
   ]
 }
