@@ -56,6 +56,9 @@ function SettingPage() {
 						setName(updatedUser.name)
 						setEmail(updatedUser.email)
 						setAlertNote({ note: '編輯成功', type: 'suc' })
+						setTimeout(() => {
+							navigate('/home')
+						}, 2000)
 					}).catch(err => {
 						setAlertNote({ note: takeErrMsg(err), type: 'error' })
 					})
@@ -79,6 +82,10 @@ function SettingPage() {
 	}, [name])
 	useEffect(() => {
 		updateNoteField('email', email)
+		const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+		if (!emailRegex.test(email)) {
+			setNote({ ...note, email: '信箱格式錯誤' })
+		}
 	}, [email])
 	useEffect(() => {
 		updateNoteField('password', password)
