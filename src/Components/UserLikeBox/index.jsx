@@ -11,12 +11,12 @@ import ReplyIconButton from '../ReplyIconButton'
 import LikeIconButton from '../LikeIconButton'
 
 function UserRelpyBox({ data }) {
-	const { token } = useContext(MyContext)
-	const d = JSON.parse(JSON.stringify(data))
-	const tweet = d.LikedPost //about liked tweet
-	const poster = d.LikedPost.poster
+	const { userData } = useContext(MyContext)
+	const { token } = userData
+	const tweet = JSON.parse(JSON.stringify(data))
+	const poster = tweet.poster
 	let [likeCount, setLikeCount] = useState(tweet.Likes)
-	let [isLiked, setIsLiked] = useState(d.currentIsLiked)
+	let [isLiked, setIsLiked] = useState(tweet.currentIsLiked)
 		return (
 			<div className={styles['container']}>
 				<div className={styles['user-avatar']}>
@@ -39,7 +39,7 @@ function UserRelpyBox({ data }) {
 							<p className={styles['reply-number']}>{tweet.Replies}</p>
 						</div>
 						<div className={styles['tweet-social-group']}>
-							<div className={styles['like-btn']}>{isLiked ? <LikeFullIconButton tweetId={tweet.id} token={token} isLiked={isLiked} setIsLiked={setIsLiked} likeCount={likeCount} setLikeCount={setLikeCount} /> : <LikeIconButton tweetId={tweet.id} token={token} isLiked={isLiked} setIsLiked={setIsLiked} likeCount={likeCount} setLikeCount={setLikeCount} />}</div>
+							<div className={styles['like-btn']}>{isLiked ? <LikeFullIconButton tweetId={tweet.TweetId} token={token} isLiked={isLiked} setIsLiked={setIsLiked} likeCount={likeCount} setLikeCount={setLikeCount} /> : <LikeIconButton tweetId={tweet.TweetId} token={token} isLiked={isLiked} setIsLiked={setIsLiked} likeCount={likeCount} setLikeCount={setLikeCount} />}</div>
 							<p className={styles['like-number']}>{likeCount}</p>
 						</div>
 					</div>

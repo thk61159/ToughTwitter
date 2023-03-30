@@ -12,7 +12,7 @@ function LikeFullIconButton({ tweetId, token, isLiked, setIsLiked, likeCount, se
 				setIsLiked(!isLiked)
 				setLikeCount(likeCount <= 1 ? 0 : (likeCount -= 1))
 			})
-			.catch(err => console.log('err'))
+			.catch(err => console.log(err))
 	}
 	return (
 		<div className={styles['container']}>

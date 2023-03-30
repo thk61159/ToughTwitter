@@ -26,7 +26,7 @@ function HomeTweetBox({ data }) {
 			<div className={styles['tweet-user-info']}>
 				<UserInfo tweet={tweet} poster={poster} />
 				<div className={styles['tweet-content']}>
-					<Link to={`/tweet/${poster.id}`} className={styles['tweet-content-link']}>
+					<Link to={`/tweet/${tweet.id}`} className={styles['tweet-content-link']}>
 						{/* <img src={d.image} alt='' /> */}
 						<div>{tweet.description}</div>
 					</Link>

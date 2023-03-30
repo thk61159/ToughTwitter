@@ -7,19 +7,27 @@
   overflow-y: scroll;
   overflow-x: hidden;
   position: relative;
+  
 }
-
+.page-title-box{
+  margin: 24px;
+  display: flex;
+  align-items: center;
+  
+}
+.page-title-arrow{
+ margin-left: 4px;
+ cursor: pointer;
+}
 .page-title {
-  position: sticky;
-  top: 0;
+  margin-left: 19px;
   width: 100%;
   font-size: 24px;
   line-height: 26px;
   font-weight: 700;
-  padding: 24px;
   background-color: var(--color-white);
   opacity: 0.9;
-  cursor: pointer;
+ 
 }
 
 

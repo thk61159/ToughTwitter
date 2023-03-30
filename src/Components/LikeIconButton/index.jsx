@@ -5,12 +5,12 @@ import { ReactComponent as Like } from '../../assets/icons/like_icon.svg'
 function LikeIconButton({ tweetId, token, isLiked, setIsLiked, likeCount, setLikeCount }) {
 	const Liked = () => {
 		Myaxios(token)
-			.post(`/tweets/${tweet.id}/like`)
+			.post(`/tweets/${tweetId}/like`)
 			.then(e => {
 				setIsLiked(!isLiked)
 				setLikeCount((likeCount += 1))
 			})
-			.catch(err => console.log('err'))
+			.catch(err => console.log(err))
 	}
 	return (
 		<div className={styles['container']}>
