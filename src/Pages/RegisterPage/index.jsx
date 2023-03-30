@@ -30,7 +30,6 @@ function RegisterPage() {
 		}
 	}
   const handleClick = e => {
-    console.log(account, name, email, password, checkPassword, '================', !('account' && 'name' && 'email' && 'password' && 'checkPassword'))
 		setAlertNote(null)
 		if (!(account && name && email && password && checkPassword)) return setAlertNote({ note: '請填所有欄位！', type: 'error' })
 		if (password !== checkPassword) {

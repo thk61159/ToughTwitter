@@ -30,6 +30,8 @@ function AuthNav() {
 				updateUserData(null)
 				if (path === '/admin') {
 					navigate('/admin')
+				} else if (path === '/register') {
+					navigate('/register')
 				} else {
 					navigate('/login')
 				}

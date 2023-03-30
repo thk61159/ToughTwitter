@@ -45,7 +45,7 @@ function ProfileInfo({ data }) {
 				</div>
 				<div className={styles['user-detail']}>
 					{/* 太神了 */}
-					<ProfileEditButton currentUser={d.currentUser} setModal={setModal} />
+					<ProfileEditButton d={d} setModal={setModal} />
 					{/* 彈出編輯匡 */}
 					{userData && <ProfileInfoModal Modal={Modal} setModal={setModal} setNewD={setNewD} userData={userData} />}
 					<div className={styles['user-info']}>
