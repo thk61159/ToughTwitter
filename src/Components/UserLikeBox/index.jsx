@@ -17,27 +17,6 @@ function UserRelpyBox({ data }) {
 	const poster = d.LikedPost.poster
 	let [likeCount, setLikeCount] = useState(tweet.Likes)
 	let [isLiked, setIsLiked] = useState(d.currentIsLiked)
-	const unLiked = e => {
-		console.log('clicked unLike')
-		Myaxios(token)
-			.post(`/tweets/${tweet.id}/unlike`)
-			.then(e => {
-				// likeCount不應該是-1
-				setIsLiked(!isLiked)
-				setLikeCount(likeCount <= 1 ? 0 : (likeCount -= 1))
-			})
-			.catch(err => console.log('err'))
-	}
-	const Liked = () => {
-		console.log('clicked Like')
-		Myaxios(token)
-			.post(`/tweets/${tweet.id}/like`)
-			.then(e => {
-				setIsLiked(!isLiked)
-				setLikeCount((likeCount += 1))
-			})
-			.catch(err => console.log('err'))
-	}
 		return (
 			<div className={styles['container']}>
 				<div className={styles['user-avatar']}>
@@ -60,7 +39,7 @@ function UserRelpyBox({ data }) {
 							<p className={styles['reply-number']}>{tweet.Replies}</p>
 						</div>
 						<div className={styles['tweet-social-group']}>
-							<div className={styles['like-btn']}>{isLiked ? <LikeFullIconButton unLiked={unLiked} /> : <LikeIconButton Liked={Liked} />}</div>
+							<div className={styles['like-btn']}>{isLiked ? <LikeFullIconButton tweetId={tweet.id} token={token} isLiked={isLiked} setIsLiked={setIsLiked} likeCount={likeCount} setLikeCount={setLikeCount} /> : <LikeIconButton tweetId={tweet.id} token={token} isLiked={isLiked} setIsLiked={setIsLiked} likeCount={likeCount} setLikeCount={setLikeCount} />}</div>
 							<p className={styles['like-number']}>{likeCount}</p>
 						</div>
 					</div>

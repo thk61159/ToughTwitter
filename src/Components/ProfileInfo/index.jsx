@@ -14,7 +14,6 @@ function ProfileInfo({ data }) {
 	const [d, setD] = useState(data)
 	const [newD, setNewD] = useState(null)
 	const [alertNote, setAlertNote] = useState()
-	// console.log(data,d)
 	useEffect(() => {
 		if (newD) {
 			setD(newD)

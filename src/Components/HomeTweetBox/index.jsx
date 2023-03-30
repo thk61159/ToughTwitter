@@ -2,7 +2,6 @@ import React, { useState, useContext } from 'react'
 import { Link } from 'react-router-dom'
 
 import styles from './HomeTweetBox.module.scss'
-import { Myaxios } from '../../constants'
 import MyContext from '../MyContext'
 
 import UserInfo from './UserInfo'
@@ -17,27 +16,6 @@ function HomeTweetBox({ data }) {
 	const poster = tweet.poster
 	let [likeCount, setLikeCount] = useState(tweet.Likes)
 	let [isLiked, setIsLiked] = useState(tweet.currentIsLiked)
-	const unLiked = e => {
-		console.log('clicked unLike')
-		Myaxios(token)
-			.post(`/tweets/${tweet.id}/unlike`)
-			.then(e => {
-				// likeCount不應該是-1
-				setIsLiked(!isLiked)
-				setLikeCount(likeCount <= 1 ? 0 : (likeCount -= 1))
-			})
-			.catch(err => console.log('err'))
-	}
-	const Liked = () => {
-		console.log('clicked Like')
-		Myaxios(token)
-			.post(`/tweets/${tweet.id}/like`)
-			.then(e => {
-				setIsLiked(!isLiked)
-				setLikeCount((likeCount += 1))
-			})
-			.catch(err => console.log('err'))
-	}
 	return (
 		<div className={styles['container']}>
 			<div className={styles['user-avatar']}>
@@ -63,7 +41,7 @@ function HomeTweetBox({ data }) {
 					<div className={styles['tweet-social-group']}>
 						<div className={styles['like-btn']}>
 							{/* 按Full-> d.likes --, 另一個是++ */}
-							{isLiked ? <LikeFullIconButton unLiked={unLiked} /> : <LikeIconButton Liked={Liked} />}
+							{isLiked ? <LikeFullIconButton tweetId={tweet.id} token={token} isLiked={isLiked} setIsLiked={setIsLiked} likeCount={likeCount} setLikeCount={setLikeCount} /> : <LikeIconButton tweetId={tweet.id} token={token} isLiked={isLiked} setIsLiked={setIsLiked} likeCount={likeCount} setLikeCount={setLikeCount} />}
 						</div>
 						<p className={styles['like-number']}>{likeCount}</p>
 					</div>

@@ -22,7 +22,7 @@ import Layout from './Components/Layout'
 import LayoutUser from './Components/LayoutUser'
 import AuthNav from './Components/AuthNav'
 import MyContext from './Components/MyContext'
-import ProfileContext from './Components/ProfileContext'
+
 
 const basename = process.env.PUBLIC_URL
 
@@ -41,7 +41,7 @@ function App() {
 		<div className={styles.App}>
 			<BrowserRouter basename={basename}>
 				<MyContext.Provider value={{ userData, updateUserData, BrowsingUser, updateBrowsingUser }}>
-					<ProfileContext.Provider value={BrowsingUser}>
+			
 						<Routes>
 							{/* 用一個nav去處理確認登入狀態的事件 ， 非登入者就重新導向到 /login*/}
 							<Route path='/' element={<AuthNav />}>
@@ -67,7 +67,7 @@ function App() {
 								<Route path='/test' element={userData && <Test />}></Route>
 							</Route>
 						</Routes>
-					</ProfileContext.Provider>
+		
 				</MyContext.Provider>
 			</BrowserRouter>
 		</div>

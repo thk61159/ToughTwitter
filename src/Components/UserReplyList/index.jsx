@@ -16,7 +16,6 @@ function UserReplyList({ token, BrowsingUser }) {
 			Myaxios(token)
 				.get(`/users/${account}/replied_tweets`)
 				.then(e => {
-					console.log(e)
 					console.log('使用者推文清單', e.status)
 					setData(e.data)
 				})
