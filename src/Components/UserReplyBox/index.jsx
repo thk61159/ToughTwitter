@@ -19,6 +19,8 @@ function UserReplyBox({ data, BrowsingUser }) {
 				</Link>
 			</div>
 			<div className={styles['tweet-user-info']}>
+				<UserInfo reply={reply} browsingUser={browsingUser} />
+				<div className={styles['tweet-author']}>
 				<UserInfo reply={reply} BrowsingUser={BrowsingUser} />
 				<div>
 					回覆
