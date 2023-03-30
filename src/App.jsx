@@ -27,8 +27,8 @@ import MyContext from './Components/MyContext';
 const basename = process.env.PUBLIC_URL;
 
 function App() {
-	let [userData, setUserData] = useState(null)
-	let [BrowsingUser, setBrowsingUser] = useState(null)
+	const [userData, setUserData] = useState(null)
+	const [BrowsingUser, setBrowsingUser] = useState(null)
 	const updateUserData = newValue => {
 		setUserData(newValue)
 		console.log(userData, 'userData在react更新')

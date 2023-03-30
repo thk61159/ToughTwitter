@@ -1,5 +1,6 @@
 import styles from './LikeFullIconButton.module.scss'
 import { Myaxios } from '../../constants'
+import { takeErrMsg } from '../../utils'
 
 import { ReactComponent as LikeFull } from '../../assets/icons/like_full_icon.svg'
 
@@ -12,7 +13,7 @@ function LikeFullIconButton({ tweetId, token, isLiked, setIsLiked, likeCount, se
 				setIsLiked(!isLiked)
 				setLikeCount(likeCount <= 1 ? 0 : (likeCount -= 1))
 			})
-			.catch(err => console.log(err))
+			.catch(err => console.error(takeErrMsg(err)))
 	}
 	return (
 		<div className={styles['container']}>

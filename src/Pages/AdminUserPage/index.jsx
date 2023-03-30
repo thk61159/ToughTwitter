@@ -3,6 +3,8 @@ import { useContext, useEffect, useState } from 'react';
 import styles from './AdminUserPage.module.scss'
 import { Myaxios } from '../../constants';
 import MyContext from '../../Components/MyContext';
+import { takeErrMsg } from '../../utils';
+
 import AdminUserCards from '../../Components/AdminUserCards';
 import AdminSideBar from '../../Components/AdminSideBar';
 
@@ -14,12 +16,11 @@ function AdminUserPage() {
   useEffect(() => {
     if (!Data) {
       Myaxios(token)
-        .get(`admin/users`)
-        .then((e) => {
-          setData(e.data);
-
-        })
-        .catch((err) => console.log(err));
+				.get(`admin/users`)
+				.then(e => {
+					setData(e.data)
+				})
+				.catch(err => console.error(takeErrMsg(err)))
     }
   }, []);
 

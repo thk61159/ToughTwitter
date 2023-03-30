@@ -1,14 +1,12 @@
 import React, { useState, useEffect, useContext } from 'react'
-import { useParams } from 'react-router-dom'
+import { useParams, Outlet } from 'react-router-dom'
+
 import styles from './LayoutUser.module.scss'
 import MyContext from '../../Components/MyContext'
 import { Myaxios } from '../../constants'
+import { takeErrMsg } from '../../utils'
 
-//維持中間區塊可以切換變動，其餘左右列固定
 import ProfileUserNavBar from '../../Components/ProfileUserNavBar'
-import { Outlet } from 'react-router-dom'
-
-//Components
 import UserSidebarContainer from '../UserSidebarContainer'
 import UserPopularBar from '../UserPopularBar'
 
@@ -27,7 +25,7 @@ function LayoutUser() {
 					setData(e.data)
 					updateBrowsingUser(e.data)
 				})
-				.catch(err => console.log(err))
+				.catch(err => console.error(takeErrMsg(err)))
 		} else if (account == userData.user.id) {
 			Myaxios(token)
 				.get(`/users/${account}`)
@@ -36,7 +34,7 @@ function LayoutUser() {
 					setData(e.data)
 					updateBrowsingUser(e.data)
 				})
-				.catch(err => console.log(err))
+				.catch(err => console.error(takeErrMsg(err)))
 		}
 	}, [account])
 	return (

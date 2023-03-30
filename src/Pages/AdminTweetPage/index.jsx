@@ -2,10 +2,12 @@ import { useContext, useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import styles from './AdminTweetPage.module.scss'
-import AdminSideBar from '../../Components/AdminSideBar';
-import AdminTweetList from '../../Components/AdminTweetList';
 import MyContext from '../../Components/MyContext';
 import { Myaxios } from '../../constants';
+import { takeErrMsg } from '../../utils';
+
+import AdminSideBar from '../../Components/AdminSideBar';
+import AdminTweetList from '../../Components/AdminTweetList';
 
 function AdminTweetPage() {
   const [Data, setData] = useState(null);
@@ -14,24 +16,24 @@ function AdminTweetPage() {
   const { token } = userData
 
   useEffect(() => {
-    if (!Data) {
+    // if (!Data) {
       Myaxios(token)
-        .get(`admin/tweets`)
-        .then((e) => {
-          setData(e.data);
-        })
-        .catch((err) => console.log(err));
-    }
+				.get(`admin/tweets`)
+				.then(e => {
+					setData(e.data)
+				})
+				.catch(err => console.error(takeErrMsg(err)))
+    // }
   }, []);
 
   const handleDeleteTweet = (id) => {
     Myaxios(token)
-      .delete(`admin/tweets/${id}`)
-      .then((e) => {
-        setData((prevData) => prevData.filter((d) => d.id !== id));
-        navigate('/admin/tweets');
-      })
-      .catch((err) => console.log(err));
+			.delete(`admin/tweets/${id}`)
+			.then(e => {
+				setData(prevData => prevData.filter(d => d.id !== id))
+				navigate('/admin/tweets')
+			})
+			.catch(err => console.error(takeErrMsg(err)))
   };
 
   return (

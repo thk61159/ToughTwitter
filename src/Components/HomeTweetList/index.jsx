@@ -3,6 +3,7 @@ import React, { useState, useContext, useEffect } from 'react'
 import styles from './HomeTweetList.module.scss'
 import { Myaxios } from '../../constants'
 import MyContext from '../MyContext'
+import { takeErrMsg } from '../../utils'
 
 import HomeTweetBox from '../HomeTweetBox'
 
@@ -10,18 +11,18 @@ function HomeTweetList({ post, setPost }) {
 	const { userData } = useContext(MyContext)
 	console.log(userData,'登入後的data')
 	const { token } = userData
-	let [Data, setData] = useState(null)
+	const [Data, setData] = useState(null)
 	useEffect(() => {
-		if (!Data) {
+		// if (!Data) {
 			Myaxios(token)
 				.get('/tweets')
 				.then(e => {
 					console.log('首頁推文', e.status)
 					setData(e.data)
 				})
-				.catch(err => console.log(err))
-		}
-	}, [Data])
+				.catch(err => console.error(takeErrMsg(err)))
+		// }
+	}, [])
 	useEffect(() => {
 			Myaxios(token)
 				.get('/tweets')
@@ -30,7 +31,7 @@ function HomeTweetList({ post, setPost }) {
 					setPost(false)
 					setData(e.data)
 				})
-				.catch(err => console.log(err))
+				.catch(err => console.error(takeErrMsg(err)))
 	}, [post])
 
 	return (

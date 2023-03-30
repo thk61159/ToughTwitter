@@ -1,14 +1,11 @@
-import { Link, useParams } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 import styles from './TweetReplyBox.module.scss'
 
 import UserInfo from './UserInfo'
 
 function TweetReplyBox({ data }) {
-	const { account } = useParams()
 	const d = JSON.parse(JSON.stringify(data))
-	console.log(d)
-
 	return (
 		<div className={styles['container']}>
 			<div className={styles['user-avatar']}>

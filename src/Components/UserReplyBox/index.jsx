@@ -9,7 +9,6 @@ import UserInfo from './UserInfo'
 
 
 function UserReplyBox({ data, BrowsingUser }) {
-	console.log(data)
 	const reply = JSON.parse(JSON.stringify(data)) //about comment
 	
 	return (

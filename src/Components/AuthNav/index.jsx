@@ -3,6 +3,7 @@ import { Outlet, useNavigate, useLocation } from 'react-router-dom'
 
 import MyContext from '../../Components/MyContext'
 import { Myaxios } from '../../constants'
+import { takeErrMsg } from '../../utils'
 
 function AuthNav() {
 	const {userData,updateUserData} = useContext(MyContext)
@@ -26,7 +27,7 @@ function AuthNav() {
 				}
 			})
 			.catch(err => {
-				console.log(err)
+				console.error(takeErrMsg(err))
 				updateUserData(null)
 				if (path === '/admin') {
 					navigate('/admin')

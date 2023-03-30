@@ -1,5 +1,7 @@
 import styles from './LikeIconButton.module.scss'
 import { Myaxios } from '../../constants'
+import { takeErrMsg } from '../../utils'
+
 import { ReactComponent as Like } from '../../assets/icons/like_icon.svg'
 
 function LikeIconButton({ tweetId, token, isLiked, setIsLiked, likeCount, setLikeCount }) {
@@ -10,7 +12,7 @@ function LikeIconButton({ tweetId, token, isLiked, setIsLiked, likeCount, setLik
 				setIsLiked(!isLiked)
 				setLikeCount((likeCount += 1))
 			})
-			.catch(err => console.log(err))
+			.catch(err => console.error(takeErrMsg(err)))
 	}
 	return (
 		<div className={styles['container']}>

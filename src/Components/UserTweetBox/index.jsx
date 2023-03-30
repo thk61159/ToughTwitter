@@ -15,8 +15,8 @@ function UserTweetBox({ data, token }) {
 	const { BrowsingUser } = useContext(MyContext)
 	const poster = BrowsingUser //poster
 	const tweet = JSON.parse(JSON.stringify(data))
-	let [likeCount, setLikeCount] = useState(tweet.Likes)
-	let [isLiked, setIsLiked] = useState(tweet.currentIsLiked)
+	const [likeCount, setLikeCount] = useState(tweet.Likes)
+	const [isLiked, setIsLiked] = useState(tweet.currentIsLiked)
 	return (
 		<div className={styles['container']}>
 			<div className={styles['user-avatar']}>

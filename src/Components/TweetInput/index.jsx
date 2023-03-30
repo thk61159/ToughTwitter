@@ -1,13 +1,14 @@
 import React, { useState, useEffect } from 'react'
 
 import styles from './TweetInput.module.scss'
-
 import { Myaxios } from '../../constants'
+import { takeErrMsg } from '../../utils'
+
 import TweetSubmitButton from './TweetSubmitButton'
 
 function TweetInput({ setPost, token, user }) {
-	let [tweet, setTweet] = useState(null)
-	let [error, setError] = useState(null)
+	const [tweet, setTweet] = useState(null)
+	const [error, setError] = useState(null)
 	const submitTweet = () => {
 		if (!tweet) return setError('不可空白')
 		if (tweet.length < 140 || !tweet.trim()){
@@ -18,7 +19,7 @@ function TweetInput({ setPost, token, user }) {
 					setTweet('')
 					console.log('貼文送出', e.status)
 				})
-				.catch(err => console.log(err))
+				.catch(err => console.error(takeErrMsg(err)))
 		} else {
 			setError('字數不可超過140字或是空白')
 		}

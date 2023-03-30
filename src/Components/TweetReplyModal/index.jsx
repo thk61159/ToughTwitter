@@ -4,14 +4,15 @@ import styles from './TweetReplyModal.module.scss'
 
 import MyContext from '../MyContext'
 import { Myaxios } from '../../constants'
+import { takeErrMsg } from '../../utils'
+
 import TweetSubmitButton from './ReplySubmitButton'
 import { ReactComponent as Close } from '../../assets/icons/admin_cross.svg'
 
 function TweetReplyModal({ Modal, setModal }) {
 	const { token, user } = useContext(MyContext)
-	const navigate = useNavigate()
-	let [tweet, setTweet] = useState(null)
-	let [error, setError] = useState(null)
+	const [tweet, setTweet] = useState(null)
+	const [error, setError] = useState(null)
 	const submitTweet = () => {
 		if (tweet.length < 140 || !tweet.trim()) {
 			Myaxios(token)
@@ -19,9 +20,9 @@ function TweetReplyModal({ Modal, setModal }) {
 				.then(e => {
 					setModal(false)
 					setTweet('')
-					console.log('回覆送出',e.status)
+					console.log('回覆送出', e.status)
 				})
-				.catch(err => console.log(err))
+				.catch(err => console.error(takeErrMsg(err)))
 		} else {
 			setError('字數不可超過140字或是空白')
 		}

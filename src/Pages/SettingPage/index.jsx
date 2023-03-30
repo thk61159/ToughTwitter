@@ -17,9 +17,9 @@ function SettingPage() {
 	const navigate = useNavigate()
 	//State
 	
-	const [account, setAccount] = useState(user.account)
-	const [name, setName] = useState(user.name)
-	const [email, setEmail] = useState(user.email)
+	const [account, setAccount] = useState(user?.account)
+	const [name, setName] = useState(user?.name)
+	const [email, setEmail] = useState(user?.email)
 	const [password, setPassword] = useState('')
 	const [checkPassword, setCheckPassword] = useState('')
 	const [note, setNote] = useState({})

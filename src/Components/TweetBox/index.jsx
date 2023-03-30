@@ -11,8 +11,8 @@ import LikeIconButton from '../LikeIconButton'
 
 //長得跟UserTweetBox 也有資料由data->d
 function TweetBox({ d, token }) {
-	let [likeCount, setLikeCount] = useState(d.Likes)
-	let [isLiked, setIsLiked] = useState(d.currentIsLiked)
+	const [likeCount, setLikeCount] = useState(d.Likes)
+	const [isLiked, setIsLiked] = useState(d.currentIsLiked)
 	return (
 		<div className={styles['container']}>
 			<div className={styles['tweet-user-info']}>

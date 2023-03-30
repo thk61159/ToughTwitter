@@ -3,13 +3,13 @@ import { useParams } from 'react-router-dom'
 
 import styles from './UserTweetList.module.scss'
 import { Myaxios } from '../../constants'
-import MyContext from '../MyContext'
+import { takeErrMsg } from '../../utils'
 
 import TweetReplyBox from '../TweetReplyBox'
 
 function TweetReplyList({ token }) {
 	const { tweet_id } = useParams()
-	let [Data, setData] = useState(null)
+	const [Data, setData] = useState(null)
 	useEffect(() => {
 		if (!Data) {
 			Myaxios(token)
@@ -18,7 +18,7 @@ function TweetReplyList({ token }) {
 					console.log('特定推文回覆清單', e.status)
 					setData(e.data)
 				})
-				.catch(err => console.log(err))
+				.catch(err => console.error(takeErrMsg(err)))
 		}
 	}, [Data])
 

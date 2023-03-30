@@ -1,6 +1,11 @@
 import React from 'react'
 import styles from './AuthInput.module.scss'
-function AuthInput({ label, type, value, placeholder, onChange, note, boxH, count, set }) {
+
+function AuthInput({ label, type, value, placeholder, onChange, note, boxH, count, set , onVerify }) {
+	// useEffect(() => {
+	// 	onVerify(value)
+	// }, [value])
+
 	return (
 		<div className={['authinput-container']}>
 			<div className={styles['authinput-box']} style={{ height: boxH }}>

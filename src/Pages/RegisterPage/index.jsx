@@ -43,7 +43,7 @@ function RegisterPage() {
 		Myaxios()
 			.post(`/users`, form)
 			.then(e => {
-				console.log('使用者註冊', e.status, e.data)
+				console.log('使用者註冊', e.status)
         setAlertNote({ note: '編輯成功', type: 'suc' })
         setTimeout(() => {
 					navigate('/login')

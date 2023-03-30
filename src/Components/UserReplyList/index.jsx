@@ -1,16 +1,15 @@
-import React, { useState, useContext, useEffect } from 'react'
-import { useParams,useLocation } from 'react-router-dom'
+import React, { useState, useEffect } from 'react'
+import { useParams } from 'react-router-dom'
 
 import styles from './UserReplyList.module.scss'
 import { Myaxios } from '../../constants'
-import MyContext from '../MyContext'
-
+import { takeErrMsg } from '../../utils'
 
 import UserReplyBox from '../UserReplyBox'
 
 function UserReplyList({ token, BrowsingUser }) {
 	const { account } = useParams()
-	let [Data, setData] = useState(null)
+	const [Data, setData] = useState(null)
 	useEffect(() => {
 		if (BrowsingUser&&!Data) {
 			Myaxios(token)
@@ -19,7 +18,7 @@ function UserReplyList({ token, BrowsingUser }) {
 					console.log('使用者推文清單', e.status)
 					setData(e.data)
 				})
-				.catch(err => console.log(err))
+				.catch(err => console.error(takeErrMsg(err)))
 		}
 	}, [account])
 

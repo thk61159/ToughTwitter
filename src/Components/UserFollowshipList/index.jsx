@@ -1,21 +1,18 @@
-import React, { useState, useContext, useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 import { useParams, useLocation } from 'react-router-dom'
 
 import styles from './UserFollowshipList.module.scss'
 import { Myaxios } from '../../constants'
-import MyContext from '../MyContext'
-import {findPath} from '../../utils'
+import { findPath, takeErrMsg } from '../../utils'
 
 import UserFollowshipBox from '../UserFollowshipBox'
-
 
 function UserFollowshipList({ token, BrowsingUser }) {
 	const { account } = useParams()
 	const path = useLocation().pathname
-	let [Data, setData] = useState(null)
-	let [loc, setLoc] = useState(null)
+	const [Data, setData] = useState(null)
+	const [loc, setLoc] = useState(null)
 	useEffect(() => {
-
 		if (loc !== findPath(path, 1) && BrowsingUser) {
 			Myaxios(token)
 				.get(`/users/${account}/${findPath(path, 1)}`)
@@ -24,7 +21,7 @@ function UserFollowshipList({ token, BrowsingUser }) {
 					setData(e.data)
 					setLoc(findPath(path, 1))
 				})
-				.catch(err => console.log(err))
+				.catch(err => console.error(takeErrMsg(err)))
 		}
 	}, [Data, path])
 

@@ -3,12 +3,15 @@ import React, { useState, useEffect, useContext } from 'react'
 import styles from './UserPopularList.module.scss'
 import { Myaxios } from '../../../constants'
 import MyContext from '../../MyContext'
+import { takeErrMsg } from '../../../utils'
+
 import UserPopularCard from './UserPopularCard'
+
 
 function UserPopularList() {
 	const { userData } = useContext(MyContext)
 	const { token } = userData
-	let [Data, setData] = useState(null)
+	const [Data, setData] = useState(null)
 	useEffect(() => {
 		if (!Data) {
 			Myaxios(token)
@@ -17,7 +20,7 @@ function UserPopularList() {
 					console.log('人氣追蹤', e.status)
 					setData(e.data)
 				})
-				.catch(err => console.log(err))
+				.catch(err => console.error(takeErrMsg(err)))
 		}
 	}, [Data])
 	

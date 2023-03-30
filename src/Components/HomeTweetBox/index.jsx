@@ -14,8 +14,8 @@ function HomeTweetBox({ data }) {
 	const { token } = userData
 	const tweet = JSON.parse(JSON.stringify(data))
 	const poster = tweet.poster
-	let [likeCount, setLikeCount] = useState(tweet.Likes)
-	let [isLiked, setIsLiked] = useState(tweet.currentIsLiked)
+	const [likeCount, setLikeCount] = useState(tweet.Likes)
+	const [isLiked, setIsLiked] = useState(tweet.currentIsLiked)
 	return (
 		<div className={styles['container']}>
 			<div className={styles['user-avatar']}>

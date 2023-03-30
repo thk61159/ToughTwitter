@@ -3,24 +3,23 @@ import React, { useState, useEffect, useContext, useRef } from 'react'
 import styles from './ProfileInfoModal.module.scss'
 import { Myaxios } from '../../constants'
 import MyContext from '../MyContext'
-import { findExtName } from '../../utils'
+import { findExtName, takeErrMsg} from '../../utils'
 
 import Alert from '../Alert'
+import Button from '../Button'
 import AuthInput from '../AuthInput'
 import { ReactComponent as Close } from '../../assets/icons/admin_cross.svg'
 import { ReactComponent as Camera } from '../../assets/icons/camera_icon.svg'
-import Button from '../Button'
 
-function ProfileInfoModal({ Modal, setModal, setNewD }) {
-	const { userData,updateUserData, updateBrowsingUser } = useContext(MyContext)
+function ProfileInfoModal({ Modal, setModal, setNewD,userData }) {
+	const { updateUserData, updateBrowsingUser } = useContext(MyContext)
 	const { token, user } = userData
-	console.log()
 	const bgFileRef = useRef(null) //for button to connect upload input
 	const avatarFileRef = useRef(null)
-	const [intro, setIntro] = useState(user.introduction)
-	const [name, setName] = useState(user.name)
-	const [avatarURL, setAvatarURL] = useState(user.avatar)
-	const [bgURL, setBgURL] = useState(user.background)
+	const [intro, setIntro] = useState(user?.introduction)
+	const [name, setName] = useState(user?.name)
+	const [avatarURL, setAvatarURL] = useState(user?.avatar)
+	const [bgURL, setBgURL] = useState(user?.background)
 	const [bg, setBg] = useState('')
 	const [avatar, setAvatar] = useState('')
 	const [error, setError] = useState({})
@@ -80,18 +79,26 @@ function ProfileInfoModal({ Modal, setModal, setNewD }) {
 				},
 			})
 			.then(e => {
-				 const updateduser = JSON.parse(JSON.stringify(e.data))
-				 updateduser.currentUser = true
-				 console.log('資料更新成功', e.status)
-				 updateUserData({ token: token, user: updateduser })
-				 updateBrowsingUser({ user: updateduser })
-				 setNewD(updateduser)
-				 setBgURL(updateduser.background)
-				 setAvatarURL(updateduser.avatar)
-				 setModal(false)
+				const updateduser = JSON.parse(JSON.stringify(e.data))
+				updateduser.currentUser = true
+				console.log('資料更新成功', e.status)
+				updateUserData({ token: token, user: updateduser })
+				updateBrowsingUser({ user: updateduser })
+				setNewD(updateduser)
+				setBgURL(updateduser.background)
+				setAvatarURL(updateduser.avatar)
+				setModal(false)
 			})
-			.catch(err => console.log(err))
+			.catch(err => console.error(takeErrMsg(err)))
 	}
+	// useEffect(() => {
+	// 	if (userData) {
+	// 		setIntro(userData.user?.introduction)
+	// 		setName(userData.user?.name)
+	// 		setAvatarURL(userData.user?.avatar)
+	// 		setBgURL(userData.user?.background)
+	// 	}
+	// }, [userData])
 	useEffect(() => {
 		setNameCount(name.length)
 		if (!name) {
@@ -127,7 +134,7 @@ function ProfileInfoModal({ Modal, setModal, setNewD }) {
 						className={styles['closer']}
 						onClick={() => {
 							setModal(false)
-							setName(user.name)
+							// setName(user.name)
 							setIntro(user.introduction)
 							setBgURL(user.background)
 							setAvatarURL(user.avater)
@@ -190,8 +197,8 @@ function ProfileInfoModal({ Modal, setModal, setNewD }) {
 					{/* 太神了 */}
 					<div className={styles['user-info']}>
 						{/* AuthInput({(label, type, value, placeholder, onChange, note)}) */}
-						<AuthInput label='名稱' type='text' value={name} placeholder='請輸入名稱' onChange={setName} count={nameCount} set={50} note={error.name} />
-						<AuthInput label='自我介紹' type='text' value={intro} placeholder='說說你是怎樣的人' onChange={setIntro} count={introCount} set={160} note={error.intro} boxH='147px' />
+						<AuthInput label='名稱' type='text' value={name} placeholder='請輸入名稱' onChange={setName} count={nameCount} set={50} note={error?.name} />
+						<AuthInput label='自我介紹' type='text' value={intro} placeholder='說說你是怎樣的人' onChange={setIntro} count={introCount} set={160} note={error?.intro} boxH='147px' />
 					</div>
 				</div>
 			</div>

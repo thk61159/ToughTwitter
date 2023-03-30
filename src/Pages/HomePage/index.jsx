@@ -4,7 +4,7 @@ import MyContext from '../../Components/MyContext';
 import TweetInput from "../../Components/TweetInput";
 import HomeTweetList from '../../Components/HomeTweetList'
 function HomePage() {
-	let [post, setPost] = useState(false)
+	const [post, setPost] = useState(false)
 	const { userData } = useContext(MyContext)
 	const { user,token } = userData
 

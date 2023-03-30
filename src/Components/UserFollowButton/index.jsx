@@ -8,7 +8,7 @@ import MyContext from '../MyContext'
 function UserFollowBtn({ currentfollowed, userId }) {
 	const { userData } = useContext(MyContext)
 	const { token } = userData
-	let [followed, setFollowed] = useState(currentfollowed)
+	const [followed, setFollowed] = useState(currentfollowed)
 	const handleAddFollow = () => {
 		Myaxios(token)
 			.post(`followships`, { id: userId })

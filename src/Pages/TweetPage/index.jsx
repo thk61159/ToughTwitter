@@ -4,18 +4,18 @@ import { useParams, useNavigate} from 'react-router-dom'
 import styles from './TweetPage.module.scss'
 import { Myaxios } from '../../constants'
 import MyContext from '../../Components/MyContext'
+import { takeErrMsg } from '../../utils'
 
 import TweetReplyList from '../../Components/TweetReplyList'
 import TweetBox from '../../Components/TweetBox'
 import { ReactComponent as ArrowPre } from '../../assets/icons/arrowPre.svg'
-
 
 function TweetPage() {
 	const {userData}= useContext(MyContext)
 	const { token } = userData
 	const navigate = useNavigate()
 	const { tweet_id } = useParams()
-	let [Data, setData] = useState(null)
+	const [Data, setData] = useState(null)
 	useEffect(() => {
 		if (!Data && token) {
 			Myaxios(token)
@@ -24,7 +24,7 @@ function TweetPage() {
 					console.log('特定推文', e.status)
 					setData(e.data)
 				})
-				.catch(err => console.log(err))
+				.catch(err => console.error(takeErrMsg(err)))
 		}
 	}, [token,tweet_id])
 	return (
