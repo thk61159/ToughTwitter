@@ -19,20 +19,21 @@ function UserReplyBox({ data, BrowsingUser }) {
 				</Link>
 			</div>
 			<div className={styles['tweet-user-info']}>
-				<UserInfo reply={reply} browsingUser={browsingUser} />
+				<UserInfo reply={reply} browsingUser={BrowsingUser} />
 				<div className={styles['tweet-author']}>
-				<UserInfo reply={reply} BrowsingUser={BrowsingUser} />
-				<div>
-					回覆
-					<Link to={`/${poster.id}`}>
-						<div>@{poster.account}</div>
-					</Link>
-				</div>
-				<div className={styles['tweet-content']}>
-					<Link to={`/tweet/${reply.TweetId}`} className={styles['tweet-content-link']}>
-						{/* <img src={d.image} alt='' /> */}
-						<div>{reply.comment}</div>
-					</Link>
+					<UserInfo reply={reply} BrowsingUser={BrowsingUser} />
+					<div>
+						回覆
+						<Link to={`/${poster.id}`}>
+							<div>@{poster.account}</div>
+						</Link>
+					</div>
+					<div className={styles['tweet-content']}>
+						<Link to={`/tweet/${reply.TweetId}`} className={styles['tweet-content-link']}>
+							{/* <img src={d.image} alt='' /> */}
+							<div>{reply.comment}</div>
+						</Link>
+					</div>
 				</div>
 			</div>
 		</div>
