@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from 'react'
-import styles from './App.module.scss'
-import { BrowserRouter, Routes, Route, useNavigate, useParams } from 'react-router-dom'
+import React, { useEffect, useState } from 'react';
+import styles from './App.module.scss';
+import { BrowserRouter, Routes, Route, useNavigate } from 'react-router-dom';
 
 
 //Page
@@ -19,13 +19,12 @@ import UserProfileFollowship from './Pages/UserProfileFollowship';
 
 import Test from './Pages/Test';
 //components
-import Layout from './Components/Layout'
-import LayoutUser from './Components/LayoutUser'
-import AuthNav from './Components/AuthNav'
-import MyContext from './Components/MyContext'
-import ProfileContext from './Components/ProfileContext'
+import Layout from './Components/Layout';
+import LayoutUser from './Components/LayoutUser';
+import AuthNav from './Components/AuthNav';
+import MyContext from './Components/MyContext';
 
-const basename = process.env.PUBLIC_URL
+const basename = process.env.PUBLIC_URL;
 
 function App() {
 	let [userData, setUserData] = useState(null)
@@ -46,8 +45,11 @@ function App() {
 						{/* 用一個nav去處理確認登入狀態的事件 ， 非登入者就重新導向到 /login*/}
 						<Route path='/' element={<AuthNav />}>
 							<Route path='login' element={<UserLoginPage />}></Route>
-							<Route path='admin' element={<AdminLoginPage />}></Route>
-							<Route path='admin/userlist' element={<AdminUserPage />}></Route>
+							<Route path='admin'>
+								<Route index element={<AdminLoginPage setUserData={setUserData} />}></Route>
+								<Route path='users' element={userData && <AdminUserPage />}></Route>
+								<Route path='tweets' element={userData && <AdminTweetPage />}></Route>
+							</Route>
 							<Route path='register' element={<RegisterPage />}></Route>
 							<Route path='/' element={userData && <Layout />}>
 								<Route path='home' element={userData && <HomePage />}></Route>
