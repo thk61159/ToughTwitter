@@ -11,9 +11,10 @@ import { ReactComponent as Close } from '../../assets/icons/admin_cross.svg'
 import { ReactComponent as Camera } from '../../assets/icons/camera_icon.svg'
 import Button from '../Button'
 
-function ProfileInfoModal({ Modal, setModal, setNewD, userData }) {
-	const { updateUserData, updateBrowsingUser } = useContext(MyContext)
+function ProfileInfoModal({ Modal, setModal, setNewD }) {
+	const { userData,updateUserData, updateBrowsingUser } = useContext(MyContext)
 	const { token, user } = userData
+	console.log()
 	const bgFileRef = useRef(null) //for button to connect upload input
 	const avatarFileRef = useRef(null)
 	const [intro, setIntro] = useState(user.introduction)

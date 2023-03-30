@@ -7,6 +7,7 @@ import messageIcon from '../../assets/icons/letter_icon.svg'
 import UserFollowBtn from '../UserFollowButton'
 
 function ProfileEditButton({ currentUser, setModal }) {
+	console.log(currentUser)
 	return (
 		<>
 			<div className={styles['container']}>
@@ -26,7 +27,7 @@ function ProfileEditButton({ currentUser, setModal }) {
 						<div className={styles['bell-avatar']}>
 							<img src={notificatiobIcon} alt='bell' className={styles['avatar-img']} />
 						</div>
-						<UserFollowBtn />
+						<UserFollowBtn currentfollowed={currentUser.currentfollowed} userId={currentUser.userId} />
 					</div>
 				)}
 			</div>

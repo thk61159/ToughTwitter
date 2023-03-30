@@ -14,6 +14,7 @@ function AdminUserPage() {
         .get(`admin/users`)
         .then((e) => {
           setData(e.data);
+
         })
         .catch((err) => console.log(err));
     }
@@ -22,6 +23,7 @@ function AdminUserPage() {
   return (
     <div>
       <AdminSideBar />
+    
       {Data && <AdminUserCards data={Data} />}
     </div>
   );

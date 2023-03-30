@@ -32,6 +32,7 @@ import AdminNavBar from '../Components/AdminSideBar/AdminNavBar'
 import AdminUserCards from '../Components/AdminUserCards'
 import ProfileInfoModal from '../Components/ProfileInfoModal'
 import TweetReplyModal from '../Components/TweetReplyModal'
+import AdminTweetList from '../Components/AdminTweetList';
 
 const Test = () => {
 	return (

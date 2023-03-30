@@ -15,7 +15,6 @@ function UserLikeList({ token, BrowsingUser }) {
 			Myaxios(token)
 				.get(`/users/${account}/likes`)
 				.then(e => {
-					console.log(e)
 					console.log('使用者推文清單', e.status)
 					setData(e.data)
 				})
