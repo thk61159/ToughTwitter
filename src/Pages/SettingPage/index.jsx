@@ -35,7 +35,7 @@ function SettingPage() {
 	}
 	//處理資料並送出
 	const saveHandler = e => {
-		setAlertNote(null)
+		setAlertNote('')
 			if (!(account && name && email)) return setAlertNote({ note: '請填所有欄位！', type: 'error' })
 			if (password !== checkPassword) {
 				setAlertNote({ note: '密碼與確認密碼不符！', type: 'error' })
@@ -95,7 +95,7 @@ function SettingPage() {
 			{alertNote && (
 				<div
 					onClick={() => {
-						setAlertNote(null)
+						setAlertNote('')
 					}}>
 					<Alert alertNote={alertNote.note} alertType={alertNote.type} />
 				</div>

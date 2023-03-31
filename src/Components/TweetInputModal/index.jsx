@@ -8,12 +8,13 @@ import { takeErrMsg } from '../../utils'
 
 import TweetSubmitButton from './TweetSubmitButton'
 import { ReactComponent as Close } from '../../assets/icons/admin_cross.svg'
+import DefaultAvatar from '../../assets/icons/AcLogo.svg'
 
 function TweetInputModal({ Modal,setModal }) {
 	const { userData } = useContext(MyContext)
 	const { token, user } = userData
-	const [tweet, setTweet] = useState(null)
-	const [error, setError] = useState(null)
+	const [tweet, setTweet] = useState('')
+	const [error, setError] = useState('')
 	const submitTweet = () => {
 		if (tweet.length < 140 || !tweet.trim()) {
 			Myaxios(token)
@@ -35,7 +36,7 @@ function TweetInputModal({ Modal,setModal }) {
 			} else if (!tweet.trim()) {
 				return setTweet('')
 			} else {
-				setError(null)
+				setError('')
 			}
 		}
 	}, [tweet])
@@ -57,7 +58,7 @@ function TweetInputModal({ Modal,setModal }) {
 				</div>
 				<div className={styles['input-body']}>
 					<div className={styles['user-avatar']}>
-						{user.avatar&&<img src={user.avatar} alt='avatar-img' className={styles['avatar-img']} />}
+						<img src={user.avatar || DefaultAvatar} alt='avatar-img' className={styles['avatar-img']} />
 					</div>
 					<textarea className={styles['input-textarea']} placeholder='有什麼新鮮事?' onChange={e => setTweet(e.target.value)} value={tweet}></textarea>
 				</div>

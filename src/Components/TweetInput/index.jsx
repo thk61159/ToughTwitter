@@ -5,13 +5,14 @@ import { Myaxios } from '../../constants'
 import { takeErrMsg } from '../../utils'
 
 import TweetSubmitButton from './TweetSubmitButton'
+import DefaultAvatar from '../../assets/icons/AcLogo.svg'
 
 function TweetInput({ setPost, token, user }) {
 	const [tweet, setTweet] = useState('')
-	const [error, setError] = useState(null)
+	const [error, setError] = useState('')
 	const submitTweet = () => {
 		if (!tweet) return setError('不可空白')
-		if (tweet.length < 140 || !tweet.trim()){
+		if (tweet.length < 140 || !tweet.trim()) {
 			Myaxios(token)
 				.post(`/tweets`, { description: tweet })
 				.then(e => {
@@ -31,7 +32,7 @@ function TweetInput({ setPost, token, user }) {
 			} else if (!tweet.trim()) {
 				return setTweet('')
 			} else {
-				setError(null)
+				setError('')
 			}
 		}
 	}, [tweet])
@@ -39,8 +40,7 @@ function TweetInput({ setPost, token, user }) {
 		<div className={styles['container']}>
 			<div className={styles['input-body']}>
 				<div className={styles['user-avatar']}>
-					{user.avatar&&
-					<img src={user.avatar} alt='avatar-img' className={styles['avatar-img']} />}
+					<img src={user.avatar || DefaultAvatar} alt='avatar-img' className={styles['avatar-img']} />
 				</div>
 				<textarea className={styles['input-textarea']} placeholder='有什麼新鮮事?' onChange={e => setTweet(e.target.value)} value={tweet}></textarea>
 			</div>

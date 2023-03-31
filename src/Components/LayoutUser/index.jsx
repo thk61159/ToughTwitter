@@ -15,7 +15,7 @@ function LayoutUser() {
 	const { token } = userData
 	const { account } = useParams()
 	const [CurrentAccount, setCurrentAccount] = useState(account)
-	const [Data, setData] = useState(null)
+	const [Data, setData] = useState('')
 	//當網址中:accout改變再做axios
 	useEffect(() => {
 		if (account !== CurrentAccount) {

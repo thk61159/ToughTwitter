@@ -6,6 +6,7 @@ import { Myaxios } from '../../constants'
 import MyContext from '../MyContext'
 
 import UserFollowBtn from '../UserFollowButton'
+import DefaultAvatar from '../../assets/icons/AcLogo.svg'
 
 
 function UserFollowshipBox({ d }) {
@@ -15,7 +16,7 @@ function UserFollowshipBox({ d }) {
 		<div className={styles['container']}>
 			<div className={styles['user-avatar']}>
 				<Link to={`/${d.followingId}`}>
-					<img src={d.avatar} className={styles['avatar-img']} alt='avatar-img' />
+					<img src={d.avatar || DefaultAvatar} className={styles['avatar-img']} alt='avatar-img' />
 				</Link>
 			</div>
 			<div className={styles['tweet-user-info']}>

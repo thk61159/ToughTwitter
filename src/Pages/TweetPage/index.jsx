@@ -15,7 +15,7 @@ function TweetPage() {
 	const { token } = userData
 	const navigate = useNavigate()
 	const { tweet_id } = useParams()
-	const [Data, setData] = useState(null)
+	const [Data, setData] = useState('')
 	useEffect(() => {
 		if (!Data && token) {
 			Myaxios(token)

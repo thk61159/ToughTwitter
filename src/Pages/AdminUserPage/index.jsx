@@ -9,7 +9,7 @@ import AdminUserCards from '../../Components/AdminUserCards';
 import AdminSideBar from '../../Components/AdminSideBar';
 
 function AdminUserPage() {
-  const [Data, setData] = useState(null);
+  const [Data, setData] = useState('');
   const { userData } = useContext(MyContext);
   const { token } = userData
 

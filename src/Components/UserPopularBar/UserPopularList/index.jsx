@@ -11,7 +11,7 @@ import UserPopularCard from './UserPopularCard'
 function UserPopularList() {
 	const { userData } = useContext(MyContext)
 	const { token } = userData
-	const [Data, setData] = useState(null)
+	const [Data, setData] = useState('')
 	useEffect(() => {
 		if (!Data) {
 			Myaxios(token)

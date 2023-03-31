@@ -9,7 +9,7 @@ import TweetReplyBox from '../TweetReplyBox'
 
 function TweetReplyList({ token }) {
 	const { tweet_id } = useParams()
-	const [Data, setData] = useState(null)
+	const [Data, setData] = useState('')
 	useEffect(() => {
 		if (!Data) {
 			Myaxios(token)

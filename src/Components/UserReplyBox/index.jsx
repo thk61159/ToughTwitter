@@ -3,9 +3,8 @@ import { Link } from 'react-router-dom'
 
 import styles from './UserReplyBox.module.scss'
 
-
 import UserInfo from './UserInfo'
-
+import DefaultAvatar from '../../assets/icons/AcLogo.svg'
 
 
 function UserReplyBox({ reply, BrowsingUser }) {
@@ -13,7 +12,7 @@ function UserReplyBox({ reply, BrowsingUser }) {
 		<div className={styles['container']}>
 			<div className={styles['user-avatar']}>
 				<Link to={`/${BrowsingUser.id}`}>
-					<img src={BrowsingUser.avatar} className={styles['avatar-img']} alt='avatar-img' />
+					<img src={BrowsingUser.avatar || DefaultAvatar} className={styles['avatar-img']} alt='avatar-img' />
 				</Link>
 			</div>
 

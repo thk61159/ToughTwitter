@@ -15,7 +15,7 @@ function PageTitle({ data }) {
 		setD(data)
 	}, [data])
 	const previousPage = () => {
-		if (account == user.id && account == path.slice(1, path.length)) {
+		if (account == user.id && account == path) {
 			navigate('/home')
 		}
 		else {

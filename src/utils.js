@@ -36,13 +36,13 @@ export function timestamp(time) {
 
 export function findPath(path, place) {
 	let pathArray = path.split('/')
-	return pathArray[pathArray.length - place]
+	return pathArray[pathArray?.length - place]
 }
 export function findExtName(filemane) {
 	const temp = filemane.split('.')
-	return temp[temp.length - 1]
+	return temp[temp?.length - 1]
 }
 export function takeErrMsg(err) {
-	const temp = err?.response?.data?.message.split(':')
-	return err
+	const temp = err.response.data.message?.split(':')
+	return temp || err.response
 }

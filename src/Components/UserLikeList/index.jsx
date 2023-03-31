@@ -9,7 +9,7 @@ import UserLikeBox from '../UserLikeBox'
 
 function UserLikeList({ token, BrowsingUser }) {
 	const { account } = useParams()
-	const [Data, setData] = useState(null)
+	const [Data, setData] = useState('')
 	useEffect(() => {
 		Myaxios(token)
 			.get(`/users/${account}/likes`)

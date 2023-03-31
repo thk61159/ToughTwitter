@@ -27,8 +27,8 @@ import MyContext from './Components/MyContext';
 const basename = process.env.PUBLIC_URL;
 
 function App() {
-	const [userData, setUserData] = useState(null)
-	const [BrowsingUser, setBrowsingUser] = useState(null)
+	const [userData, setUserData] = useState('')
+	const [BrowsingUser, setBrowsingUser] = useState('')
 	const updateUserData = newValue => {
 		setUserData(newValue)
 		console.log(userData, 'userData在react更新')
@@ -37,7 +37,6 @@ function App() {
 		setBrowsingUser(newValue)
 	}
 	useEffect(() => {
-		console.log(userData)
 	}, [userData, BrowsingUser])
 	return (
 		<div className={styles.App}>

@@ -10,12 +10,14 @@ import Button from '../Button'
 import AuthInput from '../AuthInput'
 import { ReactComponent as Close } from '../../assets/icons/admin_cross.svg'
 import { ReactComponent as Camera } from '../../assets/icons/camera_icon.svg'
+import DefaultAvatar from '../../assets/icons/AcLogo.svg'
+import DefaultBackground from '../../assets/icons/background.svg'
 
 function ProfileInfoModal({ Modal, setModal, setNewD, data }) {
 	const { userData, updateUserData, updateBrowsingUser } = useContext(MyContext)
 	const { token, user } = userData
-	const bgFileRef = useRef(null) //for button to connect upload input
-	const avatarFileRef = useRef(null)
+	const bgFileRef = useRef('') //for button to connect upload input
+	const avatarFileRef = useRef('')
 	const [intro, setIntro] = useState(user?.introduction)
 	const [name, setName] = useState(user?.name)
 	const [avatarURL, setAvatarURL] = useState(user?.avatar)
@@ -94,18 +96,18 @@ function ProfileInfoModal({ Modal, setModal, setNewD, data }) {
 	}
 
 	useEffect(() => {
-		setNameCount(name.length)
+		setNameCount(name?.length)
 		if (!name) {
 			setError({ ...error, name: '請輸入名稱' })
-		} else if (name.length > 50) {
+		} else if (name?.length > 50) {
 			setError({ ...error, name: '名稱不可超過50字' })
 		} else {
 			setError({ ...error, name: '' })
 		}
 	}, [name])
 	useEffect(() => {
-		setIntroCount(intro.length)
-		if (intro.length > 50) {
+		setIntroCount(intro?.length)
+		if (intro?.length > 50) {
 			setError({ ...error, intro: '自我介紹不可超過160字' })
 		} else {
 			setError({ ...error, intro: '' })
@@ -117,7 +119,7 @@ function ProfileInfoModal({ Modal, setModal, setNewD, data }) {
 			{alertNote && (
 				<div
 					onClick={() => {
-						setAlertNote(null)
+						setAlertNote('')
 					}}>
 					<Alert alertNote={alertNote} alertType={alertType} />
 				</div>
@@ -144,7 +146,7 @@ function ProfileInfoModal({ Modal, setModal, setNewD, data }) {
 					</div>
 				</div>
 				<div className={styles['background-avatar']}>
-					<img src={bgURL ? bgURL : 'https://loremflickr.com/320/240?lock=2'} alt='background' className={styles['avatar-img']} />
+					<img src={bgURL || DefaultBackground} alt='background' className={styles['avatar-img']} />
 					<div className={styles['background-avatar-cover']}>
 						<div className={styles['background-setting']}>
 							<div>
@@ -170,7 +172,7 @@ function ProfileInfoModal({ Modal, setModal, setNewD, data }) {
 					</div>
 				</div>
 				<div className={styles['user-avatar']}>
-					{user && <img src={avatarURL} alt='user-avatar' className={styles['avatar-img']} />}
+					{user && <img src={avatarURL || DefaultAvatar} alt='user-avatar' className={styles['avatar-img']} />}
 					<div className={styles['user-avatar-cover']}>
 						<div>
 							<button

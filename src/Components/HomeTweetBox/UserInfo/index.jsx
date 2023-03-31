@@ -1,5 +1,6 @@
-import styles from './UserInfo.module.scss'
 import { Link } from 'react-router-dom'
+
+import styles from './UserInfo.module.scss'
 
 import { timeCounter } from '../../../utils'
 

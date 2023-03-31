@@ -7,7 +7,7 @@ import { takeErrMsg } from '../../utils'
 
 function AuthNav() {
 	const { userData, updateUserData } = useContext(MyContext)
-	const token = userData ? userData.token : null
+	const token = userData ? userData.token : ''
 	const localToken = localStorage.getItem('token') //測試過可以取出
 	const location = useLocation()
 	const path = location.pathname
@@ -33,10 +33,9 @@ function AuthNav() {
 					}
 				})
 				.catch(err => {
-					// console.log(err)
 					console.error(takeErrMsg(err))
 					if (dirHome.includes(location.pathname)) return navigate(location.pathname)
-					updateUserData(null)
+					updateUserData('')
 					navigate('/login')
 				})
 		}

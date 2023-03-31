@@ -8,6 +8,7 @@ import { timestamp } from '../../utils'
 import LikeFullIconButton from '../LikeFullIconButton'
 import ReplyIconButton from '../ReplyIconButton'
 import LikeIconButton from '../LikeIconButton'
+import DefaultAvatar from '../../assets/icons/AcLogo.svg'
 
 //長得跟UserTweetBox 也有資料由data->d
 function TweetBox({ d, token }) {
@@ -18,7 +19,7 @@ function TweetBox({ d, token }) {
 			<div className={styles['tweet-user-info']}>
 				<div className={styles['user-avatar']}>
 					<Link to={`/${d.poster.id}`} style={{ textDecoration: 'none' }}>
-						<img src={d.poster.avatar} className={styles['avatar-img']} alt='avatar-img' />
+						<img src={d.poster.avatar || DefaultAvatar} className={styles['avatar-img']} alt='avatar-img' />
 					</Link>
 				</div>
 				<div className={styles['user-info']}>

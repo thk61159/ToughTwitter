@@ -10,7 +10,7 @@ import UserTweetBox from '../UserTweetBox'
 function UserTweetList({ BrowsingUser ,token}) {
 	const { account } = useParams()
 	const [isLoading, setIsLoading] = useState(true)
-	const [Data, setData] = useState(null)
+	const [Data, setData] = useState('')
 	//當網址中:accout改變在做axios
 	useEffect(() => {
 		if (BrowsingUser) {

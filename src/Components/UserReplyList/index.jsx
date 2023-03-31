@@ -9,7 +9,7 @@ import UserReplyBox from '../UserReplyBox'
 
 function UserReplyList({ token, BrowsingUser }) {
 	const { account } = useParams()
-	const [Data, setData] = useState(null)
+	const [Data, setData] = useState('')
 	useEffect(() => {
 		if (BrowsingUser && !Data) {
 			Myaxios(token)

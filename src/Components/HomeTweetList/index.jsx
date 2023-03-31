@@ -10,7 +10,7 @@ import HomeTweetBox from '../HomeTweetBox'
 function HomeTweetList({ post, setPost }) {
 	const { userData } = useContext(MyContext)
 	const { token } = userData
-	const [Data, setData] = useState(null)
+	const [Data, setData] = useState('')
 	useEffect(() => {
 		// if (!Data) {
 			Myaxios(token)

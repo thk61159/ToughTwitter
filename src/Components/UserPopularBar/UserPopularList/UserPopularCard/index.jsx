@@ -7,7 +7,7 @@ function UserPopularCard({ data }) {
 	return (
 		<div className={styles['container']}>
 			<Link to={`/${d.user.id}`}>
-				<img src={d.user.avatar ? d.user.avatar : DefaultAvatar} alt='user-avatar' className={styles['user-avatar']} />
+				<img src={d.user.avatar || DefaultAvatar} alt='user-avatar' className={styles['user-avatar']} />
 			</Link>
 			<div className={styles['user-info']}>
 				<Link to={`/${d.user.id}`}>

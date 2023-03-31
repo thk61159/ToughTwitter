@@ -8,15 +8,15 @@ import { takeErrMsg,timeCounter } from '../../utils'
 
 import TweetSubmitButton from './ReplySubmitButton'
 import { ReactComponent as Close } from '../../assets/icons/admin_cross.svg'
+import DefaultAvatar from '../../assets/icons/AcLogo.svg'
 
 function TweetReplyModal({ Modal, setModal, data, BrowsingUser }) {
-	console.log(data, '===============================')
 	const { userData } = useContext(MyContext)
 	const { user, token } = userData
 	const [tweet, setTweet] = useState()
 	const [poster, setPoster] = useState()
-	const [reply, setReply] = useState(null)
-	const [error, setError] = useState(null)
+	const [reply, setReply] = useState('')
+	const [error, setError] = useState('')
 	const submitTweet = () => {
 		if (reply.length < 140 || !reply.trim()) {
 			Myaxios(token)
@@ -38,7 +38,7 @@ function TweetReplyModal({ Modal, setModal, data, BrowsingUser }) {
 			} else if (!reply.trim()) {
 				return setReply('')
 			} else {
-				setError(null)
+				setError('')
 			}
 		}
 	}, [reply])
@@ -62,7 +62,7 @@ function TweetReplyModal({ Modal, setModal, data, BrowsingUser }) {
 				</div>
 				<div className={styles['input-body']}>
 					<div className={styles['user-avatar']}>
-						<img src={poster?.avatar} className={styles['avatar-img']} alt='avatar-img' />
+						<img src={poster?.avatar || DefaultAvatar} className={styles['avatar-img']} alt='avatar-img' />
 						<div className={styles['user-avatar-bar']}></div>
 					</div>
 					<div>
@@ -84,7 +84,7 @@ function TweetReplyModal({ Modal, setModal, data, BrowsingUser }) {
 				</div>
 				<div className={styles['input-body']}>
 					<div className={styles['user-avatar']}>
-						<img src={user?.avatar} alt='avatar-img' className={styles['avatar-img']} />
+						<img src={user?.avatar || DefaultAvatar} alt='avatar-img' className={styles['avatar-img']} />
 					</div>
 					<div>
 						<textarea className={styles['input-textarea']} placeholder='推你的回覆...' onChange={e => setReply(e.target.value)} value={reply}></textarea>

@@ -10,7 +10,7 @@ import AdminSideBar from '../../Components/AdminSideBar';
 import AdminTweetList from '../../Components/AdminTweetList';
 
 function AdminTweetPage() {
-  const [Data, setData] = useState(null);
+  const [Data, setData] = useState('');
   const navigate = useNavigate();
   const { userData } = useContext(MyContext);
   const { token } = userData

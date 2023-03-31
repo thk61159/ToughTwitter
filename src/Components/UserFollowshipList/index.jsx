@@ -10,8 +10,8 @@ import UserFollowshipBox from '../UserFollowshipBox'
 function UserFollowshipList({ token, BrowsingUser }) {
 	const { account } = useParams()
 	const path = useLocation().pathname
-	const [Data, setData] = useState(null)
-	const [loc, setLoc] = useState(null)
+	const [Data, setData] = useState('')
+	const [loc, setLoc] = useState('')
 	useEffect(() => {
 		if (loc !== findPath(path, 1) && BrowsingUser) {
 			Myaxios(token)

@@ -8,8 +8,8 @@ function LogoutButton() {
   const {updateUserData,updateBrowsingUser} = useContext(MyContext)
   const navigate = useNavigate()
   const logout = () => {
-		updateUserData(null)
-		updateBrowsingUser(null)
+		updateUserData('')
+		updateBrowsingUser('')
 		localStorage.removeItem('token')
 		navigate('/login')
 	}

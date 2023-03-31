@@ -20,7 +20,7 @@ function RegisterPage() {
 	const [password, setPassword] = useState('')
 	const [checkPassword, setCheckPassword] = useState('')
 	const [note, setNote] = useState({})
-	const [alertNote, setAlertNote] = useState(null)
+	const [alertNote, setAlertNote] = useState('')
 	function updateNoteField(field, value) {
 		if (field === 'password' && value) {
 			const regExp = new RegExp('^(?=.*[a-z])(?=.*[0-9])(?=.{4,12})')
@@ -30,7 +30,7 @@ function RegisterPage() {
 		}
 	}
   const handleClick = e => {
-		setAlertNote(null)
+		setAlertNote('')
 		if (!(account && name && email && password && checkPassword)) return setAlertNote({ note: '請填所有欄位！', type: 'error' })
 		if (password !== checkPassword) {
 			setAlertNote({ note: '密碼與確認密碼不符！', type: 'error' })
@@ -80,7 +80,7 @@ function RegisterPage() {
 			{alertNote && (
 				<div
 					onClick={() => {
-						setAlertNote(null)
+						setAlertNote('')
 						
 					}}>
 					<Alert alertNote={alertNote.note} alertType={alertNote.type} />

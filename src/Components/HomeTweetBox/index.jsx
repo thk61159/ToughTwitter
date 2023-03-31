@@ -9,6 +9,7 @@ import LikeFullIconButton from '../LikeFullIconButton'
 import ReplyIconButton from '../ReplyIconButton'
 import LikeIconButton from '../LikeIconButton'
 import TweetReplyModal from '../TweetReplyModal'
+import DefaultAvatar from '../../assets/icons/AcLogo.svg'
 
 function HomeTweetBox({ data }) {
 	const { userData } = useContext(MyContext)
@@ -29,7 +30,7 @@ function HomeTweetBox({ data }) {
 		<div className={styles['container']}>
 			<div className={styles['user-avatar']}>
 				<Link to={`/${poster?.id}`}>
-					<img src={poster?.avatar} className={styles['avatar-img']} alt='avatar-img' />
+					<img src={poster?.avatar || DefaultAvatar} className={styles['avatar-img']} alt='avatar-img' />
 				</Link>
 			</div>
 			<div className={styles['tweet-user-info']}>
