@@ -12,7 +12,7 @@ function AuthNav() {
 	const location = useLocation()
 	const path = location.pathname
 	const navigate = useNavigate()
-	const dirHome = ['/', '/login', 'register']
+	const dirHome = ['/', '/login', 'register','test']
 	useEffect(() => {
 		if (token) {
 			if (dirHome.includes(location.pathname)) return navigate('home')
@@ -21,26 +21,23 @@ function AuthNav() {
 			Myaxios(localToken)
 				.post('/users/test-token')
 				.then(e => {
-					const { user } = e.data
-					user.currentUser = true
+					// console.log(e.data)
+					const  VerifiedUser  = e.data
+					VerifiedUser.currentUser = true
 					console.log('localToken驗證', e.status)
 					if (e.status === 200) {
-						updateUserData({ token: localToken, user })
+						updateUserData({ token: localToken, user: VerifiedUser })
 
 						if (dirHome.includes(location.pathname)) return navigate('home')
 						navigate(location.pathname)
 					}
 				})
 				.catch(err => {
+					// console.log(err)
 					console.error(takeErrMsg(err))
+					if (dirHome.includes(location.pathname)) return navigate(location.pathname)
 					updateUserData(null)
-					if (path === '/admin') {
-						navigate('/admin')
-					} else if (path === '/register') {
-						navigate('/register')
-					} else {
-						navigate('/login')
-					}
+					navigate('/login')
 				})
 		}
 	}, [path])

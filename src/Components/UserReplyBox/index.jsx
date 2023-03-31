@@ -18,10 +18,12 @@ function UserReplyBox({ data, BrowsingUser }) {
 					<img src={BrowsingUser.avatar} className={styles['avatar-img']} alt='avatar-img' />
 				</Link>
 			</div>
-			<div className={styles['tweet-user-info']}>
-				<UserInfo reply={reply} BrowsingUser={BrowsingUser} />
-				<div className={styles['tweet-author']}>
-					<div style={{display:'flex'}}>
+
+			<div className={styles['tweet-author']}>
+				<div className={styles['tweet-user-info']}>
+					<UserInfo reply={reply} BrowsingUser={BrowsingUser} />
+					</div>
+				<div className={styles['tweet-user-replyto']}>
 						回覆
 						<Link to={`/${reply.UserId}`}>
 							<div>@{reply.account}</div>
@@ -32,7 +34,7 @@ function UserReplyBox({ data, BrowsingUser }) {
 					</div>
 				</div>
 			</div>
-		</div>
+	
 	)
 }
 export default UserReplyBox

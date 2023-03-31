@@ -37,9 +37,9 @@ import AdminTweetList from '../Components/AdminTweetList';
 const Test = () => {
 	return (
 		<div style={{ padding: '100px' }}>
-			{/* <TweetReplyModal Modal={true} /> */}
+			<TweetReplyModal Modal={true} />
 			{/* <ProfileInfoModal/> */}
-			<Alert alertNote={'test'} alertType={ 'suc'} />
+			{/* <Alert alertNote={'test'} alertType={ 'suc'} /> */}
 			{/* <AuthInput /> */}
 			{/* <Button /> ========== ???*/}
 			{/* <Layout /> ========== home fix*/}
@@ -70,7 +70,7 @@ const Test = () => {
       {/* <UserTweetList /> */}
       {/* <AdminNavBar /> */}
       {/* <AdminUserCards /> */}
-      <AdminTweetList />
+      {/* <AdminTweetList /> */}
     </div>
   );
 };

@@ -4,22 +4,26 @@ import styles from './TweetReplyModal.module.scss'
 
 import MyContext from '../MyContext'
 import { Myaxios } from '../../constants'
-import { takeErrMsg } from '../../utils'
+import { takeErrMsg,timeCounter } from '../../utils'
 
 import TweetSubmitButton from './ReplySubmitButton'
 import { ReactComponent as Close } from '../../assets/icons/admin_cross.svg'
 
-function TweetReplyModal({ Modal, setModal }) {
-	const { token, user } = useContext(MyContext)
-	const [tweet, setTweet] = useState(null)
+function TweetReplyModal({ Modal, setModal, data }) {
+	console.log(data)
+	const { userData } = useContext(MyContext)
+	const { user,token } = userData
+	const [tweet, setTweet] = useState()
+	const [poster, setPoster] = useState()
+	const [reply, setReply] = useState(null)
 	const [error, setError] = useState(null)
 	const submitTweet = () => {
-		if (tweet.length < 140 || !tweet.trim()) {
+		if (reply.length < 140 || !reply.trim()) {
 			Myaxios(token)
-				.post(`/tweets`, { description: tweet })
+				.post(`tweets/${tweet?.id}/replies `, { comment: reply })
 				.then(e => {
 					setModal(false)
-					setTweet('')
+					setReply('')
 					console.log('回覆送出', e.status)
 				})
 				.catch(err => console.error(takeErrMsg(err)))
@@ -28,16 +32,21 @@ function TweetReplyModal({ Modal, setModal }) {
 		}
 	}
 	useEffect(() => {
-		if (tweet) {
-			if (tweet.length > 140) {
+		if (reply) {
+			if (reply.length > 140) {
 				return setError('字數不可超過140字')
-			} else if (!tweet.trim()) {
-				return setTweet('')
+			} else if (!reply.trim()) {
+				return setReply('')
 			} else {
 				setError(null)
 			}
 		}
-	}, [tweet])
+	}, [reply])
+	useEffect(() => {
+		setTweet(JSON.parse(JSON.stringify(data)))
+		setPoster(JSON.parse(JSON.stringify(data)).poster)
+	}, [data])
+	
 	if (!Modal) return null
 	return (
 		<div className={styles['modal-bg']}>
@@ -53,30 +62,32 @@ function TweetReplyModal({ Modal, setModal }) {
 				</div>
 				<div className={styles['input-body']}>
 					<div className={styles['user-avatar']}>
-						<img src={user.avatar} className={styles['avatar-img']} alt='avatar-img' />
+						<img src={poster?.avatar} className={styles['avatar-img']} alt='avatar-img' />
 						<div className={styles['user-avatar-bar']}></div>
 					</div>
 					<div>
 						<div className={styles['tweet-box']}>
 							<div className={styles['tweet-user-info']}>
-								<div className={styles['tweet-user-name']}>name</div>
-								<div className={styles['tweet-user-account']}>@account・time</div>
+								<div className={styles['tweet-user-name']}>{poster?.name}</div>
+								<div className={styles['tweet-user-account']}>
+									@{poster?.account}•{timeCounter(tweet?.createdAt)} 小時
+								</div>
 							</div>
 							<div className={styles['tweet-content']}>
-								<div>{'t.descriptiontweet.descrescriptiontweet.descrescriptiontweet.descrescriptiontweet.descrescriptiontweet.descrescriptiontweet.descrescriptiontweet.descrescriptiontweet.descrescriptiontweet.descrescriptiontweet.descrescriptiontweet.descrescriptiontweet.descriptiontwn'}</div>
+								<div>{tweet?.description}</div>
 							</div>
 							<div className={styles['tweet-reply-alert']}>
-								回覆給 <span style={{color:'#FF6600'}}>@{'account'}</span>
+								回覆給 <span style={{ color: '#FF6600' }}>@{poster?.account}</span>
 							</div>
 						</div>
 					</div>
 				</div>
 				<div className={styles['input-body']}>
 					<div className={styles['user-avatar']}>
-						<img src={user.avatar} alt='avatar-img' className={styles['avatar-img']} />
+						<img src={user?.avatar} alt='avatar-img' className={styles['avatar-img']} />
 					</div>
 					<div>
-						<textarea className={styles['input-textarea']} placeholder='推你的回覆...' onChange={e => setTweet(e.target.value)} value={tweet}></textarea>
+						<textarea className={styles['input-textarea']} placeholder='推你的回覆...' onChange={e => setReply(e.target.value)} value={reply}></textarea>
 					</div>
 				</div>
 				<div>

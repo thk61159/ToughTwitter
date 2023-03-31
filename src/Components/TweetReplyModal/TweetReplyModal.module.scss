@@ -20,7 +20,7 @@
 	background-color: #ffffff;
 	position: relative;
 	top: 4.67%;
-	left: 20.7%;
+	left: 24.7%;
 	z-index: 200;
 }
 .close-box {
@@ -39,8 +39,7 @@
 		margin: 0;
 		text-decoration: none;
 		font-size: inherit;
-		position: relative;
-		top: 10px;
+		
 	}
 }
 
@@ -50,11 +49,12 @@
 	margin-top: 18px;
 }
 .user-avatar {
-	display: flex;
-	flex-direction: column;
+	// display: flex;
+	// flex-direction: column;
 	align-items: center;
 	justify-content: space-between;
 	.avatar-img {
+		display: block;
 		width: 50px;
 		height: 50px;
 		border-radius: 100px;
@@ -63,10 +63,19 @@
 		flex-grow: 1;
 		background-color: #ccd6dd;
 		width: 2px;
-		height: 60%;
+		height: 86px;
 		margin: 5px auto;
 	
 	}
+}
+.tweet-content {
+  
+    color: var(--color-dark-black);
+    font-size: 16px;
+    line-height: 26px;
+    font-weight: 400;
+    word-wrap: break-word;
+  
 }
 
 .input-textarea {
@@ -76,7 +85,7 @@
 	resize: none;
 	border: transparent;
 	outline: none;
-	font-size: 18px;
+	font-size: 16px;
 	line-height: 26px;
 	font-weight: 700;
 	// color: var(--color-secondary);

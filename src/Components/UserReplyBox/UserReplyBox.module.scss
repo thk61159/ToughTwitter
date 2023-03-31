@@ -12,30 +12,33 @@
 		border-radius: 100px;
 	}
 }
-.tweet-user-info {
-	margin-left: 8px;
-	.tweet-author {
-		margin: 8px 0;
-		// display: flex;
+.tweet-author{
+	display: flex;
+	flex-direction: column;
+	
+	.tweet-user-info {
 		font-weight: 400;
 		font-size: 14px;
 		color: #6c757d;
 
+		
+	}
+	.tweet-user-replyto{
+		display:flex;
+		margin: 8px 8px;
 		a {
 			margin-left: 5px;
 			text-decoration: none;
 			color: #ff6600;
 		}
 	}
-
+	
 	.tweet-content {
-		// margin-bottom: 9px;
-
+		margin-left: 8px;
 		margin-top: 8px;
 		text-decoration: none;
 		color: var(--color-dark-black);
 		font-size: 16px;
-		// line-height: 26px;
 		font-weight: 400;
 		word-wrap: break-word;
 	}

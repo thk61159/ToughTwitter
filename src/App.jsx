@@ -36,7 +36,9 @@ function App() {
 	const updateBrowsingUser = newValue => {
 		setBrowsingUser(newValue)
 	}
-	useEffect(() => {}, [userData, BrowsingUser])
+	useEffect(() => {
+		console.log(userData)
+	}, [userData, BrowsingUser])
 	return (
 		<div className={styles.App}>
 			<BrowserRouter basename={basename}>
@@ -63,7 +65,7 @@ function App() {
 								<Route path='/:account/followings' element={BrowsingUser && <UserProfileFollowship />}></Route>
 								<Route path='/:account/followers' element={BrowsingUser && <UserProfileFollowship />}></Route>
 							</Route>
-							<Route path='/test' element={userData && <Test />}></Route>
+							<Route path='/test' element={ <Test />}></Route>
 						</Route>
 					</Routes>
 				</MyContext.Provider>
