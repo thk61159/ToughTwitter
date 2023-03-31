@@ -36,8 +36,10 @@ function LayoutUser() {
 				<UserSidebarContainer />
 			</div>
 			<div className={styles['column-2']}>
-				{Data && <ProfileUserNavBar data={Data} />}
-				<Outlet />
+				<div style={{ position: 'absolute', left:'24.5vw'}}>
+					{Data && <ProfileUserNavBar data={Data} />}
+					<Outlet />
+				</div>
 			</div>
 			<div className={styles['column-3']}>
 				<UserPopularBar />
