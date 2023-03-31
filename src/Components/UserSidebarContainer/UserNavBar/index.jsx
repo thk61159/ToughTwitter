@@ -56,13 +56,13 @@ function UserNavBar() {
 						<p className={styles['navbar-link__title']}>設定</p>
 					</NavLink>
 				</NavBarItem>
-				<button
+				<div
 					className={styles['remove-btn']}
 					onClick={() => {
 						setModal(!Modal)
 					}}>
 					<TweetButtonSideBar />
-				</button>
+				</div>
 
 				<TweetInputModal Modal={Modal} setModal={setModal} />
 				<div className={styles['logout-btn']}></div>

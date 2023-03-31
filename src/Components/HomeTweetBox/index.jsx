@@ -14,8 +14,6 @@ function HomeTweetBox({ data }) {
 	const { token } = userData
 	const [tweet, setTweet] = useState()
 	const [poster, setPoster] = useState()
-	// const tweet = JSON.parse(JSON.stringify(data))
-	// const poster = tweet.poster
 	const [likeCount, setLikeCount] = useState()
 	const [isLiked, setIsLiked] = useState()
 	useEffect(() => {

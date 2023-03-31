@@ -7,16 +7,8 @@ import notificatiobIcon from '../../assets/icons/notification_info.svg'
 import messageIcon from '../../assets/icons/letter_icon.svg'
 import UserFollowBtn from '../UserFollowButton'
 
-function ProfileEditButton({ setModal,data }) {
+function ProfileEditButton({ setModal }) {
 	const { BrowsingUser } = useContext(MyContext)
-	// useEffect(() => {
-	// 	console.log('BrowsingUser in ProfileEditButton', BrowsingUser)
-
-	// }, [BrowsingUser])
-	useEffect(() => {
-		console.log('data in ProfileEditButton', data)
-	}, [data])
-
 	return (
 		<>
 			<div className={styles['container']}>

@@ -7,7 +7,7 @@ import { takeErrMsg } from '../../utils'
 import TweetSubmitButton from './TweetSubmitButton'
 
 function TweetInput({ setPost, token, user }) {
-	const [tweet, setTweet] = useState(null)
+	const [tweet, setTweet] = useState('')
 	const [error, setError] = useState(null)
 	const submitTweet = () => {
 		if (!tweet) return setError('不可空白')
