@@ -1,7 +1,7 @@
 import React, { useState, useContext } from 'react'
 import { Link } from 'react-router-dom'
 
-import styles from './UserRelpyBox.module.scss'
+import styles from './UserLikeBox.module.scss'
 import { Myaxios } from '../../constants'
 import MyContext from '../MyContext'
 
@@ -9,14 +9,16 @@ import UserInfo from './UserInfo'
 import LikeFullIconButton from '../LikeFullIconButton'
 import ReplyIconButton from '../ReplyIconButton'
 import LikeIconButton from '../LikeIconButton'
+import TweetReplyModal from '../TweetReplyModal'
 
-function UserRelpyBox({ data }) {
-	const { userData } = useContext(MyContext)
+function UserRelpyBox({ tweet }) {
+	console.log(tweet,'///////////////////////')
+	const { userData, BrowsingUser } = useContext(MyContext)
 	const { token } = userData
-	const tweet = JSON.parse(JSON.stringify(data))
 	const poster = tweet.poster
 	const [likeCount, setLikeCount] = useState(tweet.Likes)
 	const [isLiked, setIsLiked] = useState(tweet.currentIsLiked)
+	const [Modal, setModal] = useState(false)
 	return (
 		<div className={styles['container']}>
 			<div className={styles['user-avatar']}>
@@ -34,7 +36,8 @@ function UserRelpyBox({ data }) {
 				<div className={styles['tweet-social-list']}>
 					<div className={styles['tweet-social-group']}>
 						<div className={styles['reply-link']}>
-							<ReplyIconButton />
+							<ReplyIconButton setModal={setModal} />
+							<TweetReplyModal Modal={Modal} setModal={setModal} data={tweet} />
 						</div>
 						<p className={styles['reply-number']}>{tweet.Replies}</p>
 					</div>

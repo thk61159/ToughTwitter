@@ -18,7 +18,7 @@ function UserFollowshipList({ token, BrowsingUser }) {
 				.get(`/users/${account}/${findPath(path, 1)}`)
 				.then(e => {
 					console.log(`使用者${findPath(path, 1)}清單`, e.status)
-					setData(e.data)
+					setData(JSON.parse(JSON.stringify(e.data)))
 					setLoc(findPath(path, 1))
 				})
 				.catch(err => console.error(takeErrMsg(err)))
@@ -29,7 +29,7 @@ function UserFollowshipList({ token, BrowsingUser }) {
 		<div className={styles['container']}>
 			{Data &&
 				Data.map((d, i) => {
-					return <UserFollowshipBox data={d} key={i} />
+					return <UserFollowshipBox d={d} key={i} />
 				})}
 		</div>
 	)

@@ -15,8 +15,8 @@ function UserReplyList({ token, BrowsingUser }) {
 			Myaxios(token)
 				.get(`/users/${account}/replied_tweets`)
 				.then(e => {
-					console.log('使用者推文清單', e.status)
-					setData(e.data)
+					console.log('使用者回覆清單', e.status)
+					setData(JSON.parse(JSON.stringify(e.data)))
 				})
 				.catch(err => console.error(takeErrMsg(err)))
 		}
@@ -26,7 +26,7 @@ function UserReplyList({ token, BrowsingUser }) {
 		<div className={styles['container']}>
 			{Data &&
 				Data.map((d, i) => {
-					return <UserReplyBox data={d} key={i} BrowsingUser={BrowsingUser} />
+					return <UserReplyBox reply={d} key={i} BrowsingUser={BrowsingUser} />
 				})}
 		</div>
 	)

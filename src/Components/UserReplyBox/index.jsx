@@ -8,9 +8,7 @@ import UserInfo from './UserInfo'
 
 
 
-function UserReplyBox({ data, BrowsingUser }) {
-	const reply = JSON.parse(JSON.stringify(data)) //about comment
-	
+function UserReplyBox({ reply, BrowsingUser }) {
 	return (
 		<div className={styles['container']}>
 			<div className={styles['user-avatar']}>
@@ -22,19 +20,18 @@ function UserReplyBox({ data, BrowsingUser }) {
 			<div className={styles['tweet-author']}>
 				<div className={styles['tweet-user-info']}>
 					<UserInfo reply={reply} BrowsingUser={BrowsingUser} />
-					</div>
+				</div>
 				<div className={styles['tweet-user-replyto']}>
-						回覆
-						<Link to={`/${reply.UserId}`}>
-							<div>@{reply.account}</div>
-						</Link>
-					</div>
-					<div className={styles['tweet-content']}>
-							<div>{reply.comment}</div>
-					</div>
+					回覆
+					<Link to={`/${reply.UserId}`}>
+						<div>@{reply.account}</div>
+					</Link>
+				</div>
+				<div className={styles['tweet-content']}>
+					<div>{reply.comment}</div>
 				</div>
 			</div>
-	
+		</div>
 	)
 }
 export default UserReplyBox

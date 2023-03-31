@@ -17,7 +17,7 @@ function HomeTweetList({ post, setPost }) {
 				.get('/tweets')
 				.then(e => {
 					console.log('首頁推文', e.status)
-					setData(e.data)
+					setData(JSON.parse(JSON.stringify(e.data)))
 				})
 				.catch(err => console.error(takeErrMsg(err)))
 		// }
@@ -29,7 +29,7 @@ function HomeTweetList({ post, setPost }) {
 				.then(e => {
 					console.log('首頁推文更新', e.status)
 					setPost(false)
-					setData(e.data)
+					setData(JSON.parse(JSON.stringify(e.data)))
 				})
 				.catch(err => console.error(takeErrMsg(err)))
 		}

@@ -18,7 +18,7 @@ function UserTweetList({ BrowsingUser ,token}) {
 				.get(`/users/${account}/tweets`)
 				.then(e => {
 					console.log('使用者推文清單', e.status)
-					setData(e.data)
+					setData(JSON.parse(JSON.stringify(e.data)))
 					if (BrowsingUser) {
 						setIsLoading(false)
 					}

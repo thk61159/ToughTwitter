@@ -15,7 +15,7 @@ function UserLikeList({ token, BrowsingUser }) {
 			.get(`/users/${account}/likes`)
 			.then(e => {
 				console.log('使用者Like清單', e.status)
-				setData(e.data)
+				setData(JSON.parse(JSON.stringify(e.data)))
 			})
 			.catch(err => console.error(takeErrMsg(err)))
 	}, [account, BrowsingUser])
@@ -24,7 +24,7 @@ function UserLikeList({ token, BrowsingUser }) {
 		<div className={styles['container']}>
 			{Data &&
 				Data.map((d, i) => {
-					return <UserLikeBox data={d} key={i} />
+					return <UserLikeBox tweet={d} key={i} />
 				})}
 		</div>
 	)

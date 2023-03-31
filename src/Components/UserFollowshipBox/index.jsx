@@ -8,9 +8,8 @@ import MyContext from '../MyContext'
 import UserFollowBtn from '../UserFollowButton'
 
 
-function UserFollowshipBox({ data }) {
-	const { token } = useContext(MyContext)
-	const d = JSON.parse(JSON.stringify(data))
+function UserFollowshipBox({ d }) {
+	
 	
 	return (
 		<div className={styles['container']}>
@@ -21,7 +20,6 @@ function UserFollowshipBox({ data }) {
 			</div>
 			<div className={styles['tweet-user-info']}>
 				<div className={styles['tweet-user-head']}>
-					{/*tweet-user-head 這附近 */}
 					<p className={styles['user-info-name']}>{d.name}</p>
 					<UserFollowBtn currentfollowed={d.currentfollowed} userId={d.followingId} />
 				</div>

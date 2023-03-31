@@ -19,10 +19,10 @@ function HomeTweetBox({ data }) {
 	const [isLiked, setIsLiked] = useState()
 	const [Modal, setModal]=useState(false)
 	useEffect(() => {
-		setTweet(JSON.parse(JSON.stringify(data)))
-		setPoster(JSON.parse(JSON.stringify(data)).poster)
-		setLikeCount(JSON.parse(JSON.stringify(data)).Likes)
-		setIsLiked(JSON.parse(JSON.stringify(data)).currentIsLiked)
+		setTweet(data)
+		setPoster(data.poster)
+		setLikeCount(data.Likes)
+		setIsLiked(data.currentIsLiked)
 	}, [data])
 	
 	return (

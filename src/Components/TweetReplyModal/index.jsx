@@ -9,10 +9,10 @@ import { takeErrMsg,timeCounter } from '../../utils'
 import TweetSubmitButton from './ReplySubmitButton'
 import { ReactComponent as Close } from '../../assets/icons/admin_cross.svg'
 
-function TweetReplyModal({ Modal, setModal, data }) {
-	console.log(data)
+function TweetReplyModal({ Modal, setModal, data, BrowsingUser }) {
+	console.log(data, '===============================')
 	const { userData } = useContext(MyContext)
-	const { user,token } = userData
+	const { user, token } = userData
 	const [tweet, setTweet] = useState()
 	const [poster, setPoster] = useState()
 	const [reply, setReply] = useState(null)
@@ -20,7 +20,7 @@ function TweetReplyModal({ Modal, setModal, data }) {
 	const submitTweet = () => {
 		if (reply.length < 140 || !reply.trim()) {
 			Myaxios(token)
-				.post(`tweets/${tweet?.id}/replies `, { comment: reply })
+				.post(`tweets/${tweet?.id || tweet?.TweetId}/replies `, { comment: reply })
 				.then(e => {
 					setModal(false)
 					setReply('')
@@ -43,10 +43,10 @@ function TweetReplyModal({ Modal, setModal, data }) {
 		}
 	}, [reply])
 	useEffect(() => {
-		setTweet(JSON.parse(JSON.stringify(data)))
-		setPoster(JSON.parse(JSON.stringify(data)).poster)
+		setTweet(data)
+		setPoster(data?.poster || BrowsingUser)
 	}, [data])
-	
+
 	if (!Modal) return null
 	return (
 		<div className={styles['modal-bg']}>

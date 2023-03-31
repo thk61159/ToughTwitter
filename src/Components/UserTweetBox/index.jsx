@@ -8,13 +8,15 @@ import UserInfo from './UserInfo'
 import LikeFullIconButton from '../LikeFullIconButton'
 import ReplyIconButton from '../ReplyIconButton'
 import LikeIconButton from '../LikeIconButton'
+import TweetReplyModal from '../TweetReplyModal'
 
 function UserTweetBox({ data, token }) {
 	const { BrowsingUser } = useContext(MyContext)
 	const [poster,setPoster]=useState()
-	const tweet = JSON.parse(JSON.stringify(data))
+	const tweet = data
 	const [likeCount, setLikeCount] = useState(tweet.Likes)
 	const [isLiked, setIsLiked] = useState(tweet.currentIsLiked)
+	const [Modal, setModal] = useState(false)
 	useEffect(() => {
 		setPoster(BrowsingUser)
 	}, [BrowsingUser])
@@ -37,7 +39,8 @@ function UserTweetBox({ data, token }) {
 				<div className={styles['tweet-social-list']}>
 					<div className={styles['tweet-social-group']}>
 						<div className={styles['reply-link']}>
-							<ReplyIconButton />
+							<ReplyIconButton setModal={setModal} />
+							<TweetReplyModal Modal={Modal} setModal={setModal} data={data} BrowsingUser={BrowsingUser} />
 						</div>
 						<p className={styles['reply-number']}>{tweet.Replies}</p>
 					</div>
