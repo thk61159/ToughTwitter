@@ -11,31 +11,24 @@ import UserSidebarContainer from '../UserSidebarContainer'
 import UserPopularBar from '../UserPopularBar'
 
 function LayoutUser() {
-	const { userData, BrowsingUser, updateBrowsingUser } = useContext(MyContext)
+	const { userData, updateBrowsingUser } = useContext(MyContext)
+	const { token } = userData
 	const { account } = useParams()
+	const [CurrentAccount, setCurrentAccount] = useState(account)
 	const [Data, setData] = useState(null)
 	//當網址中:accout改變再做axios
 	useEffect(() => {
-		const { token } = userData
-		if (!BrowsingUser || BrowsingUser.id != account) {
-			Myaxios(token)
-				.get(`/users/${account}`)
-				.then(e => {
-					console.log('使用者資料', e.status)
-					setData(e.data)
-					updateBrowsingUser(e.data)
-				})
-				.catch(err => console.error(takeErrMsg(err)))
-		} else if (account == userData.user.id) {
-			Myaxios(token)
-				.get(`/users/${account}`)
-				.then(e => {
-					console.log('使用者資料', e.status)
-					setData(e.data)
-					updateBrowsingUser(e.data)
-				})
-				.catch(err => console.error(takeErrMsg(err)))
+		if (account !== CurrentAccount) {
+			setCurrentAccount(account)
 		}
+		Myaxios(token)
+			.get(`/users/${account}`)
+			.then(e => {
+				console.log('使用者資料', e.status)
+				setData(e.data)
+				updateBrowsingUser(e.data)
+			})
+			.catch(err => console.error(takeErrMsg(err)))
 	}, [account])
 	return (
 		<div className={styles['layout-container']}>

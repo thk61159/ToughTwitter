@@ -1,15 +1,19 @@
-import { useContext } from 'react'
+import { useContext, useState, useEffect } from 'react'
 import { useNavigate, useParams, useLocation } from 'react-router-dom'
 import styles from './PageTitle.module.scss'
 import MyContext from '../MyContext'
 import { ReactComponent as ArrowPre } from '../../assets/icons/arrowPre.svg'
 
-function PageTitle({ d }) {
+function PageTitle({ data }) {
+	const [d,setD]=useState()
 	const navigate = useNavigate()
 	const path = useLocation().pathname
 	const { account } = useParams()
 	const { userData } = useContext(MyContext)
 	const { user } = userData
+	useEffect(() => {
+		setD(data)
+	},[])
 	const previousPage = () => {
 		if (account == user.id && account == path.slice(1, path.length)) {
 			navigate('/home')

@@ -11,8 +11,8 @@ import AuthInput from '../AuthInput'
 import { ReactComponent as Close } from '../../assets/icons/admin_cross.svg'
 import { ReactComponent as Camera } from '../../assets/icons/camera_icon.svg'
 
-function ProfileInfoModal({ Modal, setModal, setNewD,userData }) {
-	const { updateUserData, updateBrowsingUser } = useContext(MyContext)
+function ProfileInfoModal({ Modal, setModal, setNewD, data }) {
+	const { userData, updateUserData, updateBrowsingUser } = useContext(MyContext)
 	const { token, user } = userData
 	const bgFileRef = useRef(null) //for button to connect upload input
 	const avatarFileRef = useRef(null)
@@ -91,14 +91,7 @@ function ProfileInfoModal({ Modal, setModal, setNewD,userData }) {
 			})
 			.catch(err => console.error(takeErrMsg(err)))
 	}
-	// useEffect(() => {
-	// 	if (userData) {
-	// 		setIntro(userData.user?.introduction)
-	// 		setName(userData.user?.name)
-	// 		setAvatarURL(userData.user?.avatar)
-	// 		setBgURL(userData.user?.background)
-	// 	}
-	// }, [userData])
+
 	useEffect(() => {
 		setNameCount(name.length)
 		if (!name) {
@@ -134,10 +127,6 @@ function ProfileInfoModal({ Modal, setModal, setNewD,userData }) {
 						className={styles['closer']}
 						onClick={() => {
 							setModal(false)
-							// setName(user.name)
-							setIntro(user.introduction)
-							setBgURL(user.background)
-							setAvatarURL(user.avater)
 							setAlertNote()
 							setError()
 						}}>

@@ -1,5 +1,5 @@
-import React, { useState, useEffect, useContext } from 'react'
-import { useLocation, useParams } from 'react-router-dom'
+import React, { useState, useEffect } from 'react'
+import { useLocation } from 'react-router-dom'
 
 import styles from './ProfileUserNavBar.module.scss'
 
@@ -16,11 +16,11 @@ function ProfileUserNavBar({ data }) {
 	//如果希望載入此元件及執行
 	useEffect(() => {
 		setD(JSON.parse(JSON.stringify(data)))
-	}, [])
+	}, [data])
 	return (
 		<div className={styles['container']}>
 			<div className={styles['profile-title']}>
-				<PageTitle d={d} />
+				<PageTitle data={d} />
 			</div>
 			{!toRender && (
 				<div className={styles['user-profile-info']}>
@@ -29,12 +29,12 @@ function ProfileUserNavBar({ data }) {
 			)}
 			{!toRender && (
 				<div className={styles['profile-nav-link']}>
-					<ProfileNavLink d={d} />
+					<ProfileNavLink data={d} />
 				</div>
 			)}
 			{toRender && (
 				<div className={styles['profile-nav-link']} style={{ marginTop: '74px' }}>
-					<FollowNavLink d={d} />
+					<FollowNavLink data={d} />
 				</div>
 			)}
 		</div>

@@ -25,7 +25,7 @@ function ProfileInfo({ data }) {
 			setD(BrowsingUser || data)
 			console.log(d)
 		}
-	}, [d, data, BrowsingUser])
+	}, [ data, BrowsingUser])
 	return (
 		<>
 			{data&&<div className={styles['container']}>
@@ -45,9 +45,9 @@ function ProfileInfo({ data }) {
 				</div>
 				<div className={styles['user-detail']}>
 					{/* 太神了 */}
-					<ProfileEditButton d={d} setModal={setModal} />
+					<ProfileEditButton data={d} setModal={setModal} />
 					{/* 彈出編輯匡 */}
-					{userData && <ProfileInfoModal Modal={Modal} setModal={setModal} setNewD={setNewD} userData={userData} />}
+					<ProfileInfoModal Modal={Modal} setModal={setModal} setNewD={setNewD} data={d} />
 					<div className={styles['user-info']}>
 						<p className={styles['user-name']}>{d.name}</p>
 						<p className={styles['user-account']}>@{d.account}</p>
