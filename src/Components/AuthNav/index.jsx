@@ -12,7 +12,8 @@ function AuthNav() {
 	const location = useLocation()
 	const path = location.pathname
 	const navigate = useNavigate()
-	const dirHome = ['/', '/login', 'register','test']
+	const dirHome = ['/', '/login', '/register']
+	const dirLogout = [ '/login', '/register', '/admin']
 	useEffect(() => {
 		if (token) {
 			if (dirHome.includes(location.pathname)) return navigate('home')
@@ -33,9 +34,9 @@ function AuthNav() {
 					}
 				})
 				.catch(err => {
-					console.error(takeErrMsg(err))
-					if (dirHome.includes(location.pathname)) return navigate(location.pathname)
 					updateUserData('')
+					console.error(takeErrMsg(err))
+					if (dirLogout.includes(location.pathname)) return navigate(location.pathname)
 					navigate('/login')
 				})
 		}
