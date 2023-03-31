@@ -11,7 +11,7 @@ function UserReplyList({ token, BrowsingUser }) {
 	const { account } = useParams()
 	const [Data, setData] = useState(null)
 	useEffect(() => {
-		if (BrowsingUser&&!Data) {
+		if (BrowsingUser && !Data) {
 			Myaxios(token)
 				.get(`/users/${account}/replied_tweets`)
 				.then(e => {

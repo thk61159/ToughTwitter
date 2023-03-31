@@ -17,9 +17,11 @@ function AuthNav() {
 		Myaxios(localToken)
 			.post('/users/test-token')
 			.then(e => {
+				const { user } = e.data
+				user.currentUser = true
 				console.log('localToken驗證', e.status)
 				if (e.status === 200) {
-					updateUserData({ token: localToken, user: e.data })
+					updateUserData({ token: localToken, user })
 					//用正則比較好但不會
 					const dirHome = ['/', '/login', 'register']
 					if (dirHome.includes(location.pathname)) return navigate('home')

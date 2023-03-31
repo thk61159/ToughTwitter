@@ -23,6 +23,7 @@ function UserLoginPage() {
 		Myaxios().post('/users/login', { account, password })
 			.then(response => {
 				const { token, user } = response.data.data
+				user.currentUser = true
 				console.log('login token', token)
 				if (token) {
 					localStorage.setItem('token', token)

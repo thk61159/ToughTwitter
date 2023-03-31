@@ -13,7 +13,7 @@ function PageTitle({ data }) {
 	const { user } = userData
 	useEffect(() => {
 		setD(data)
-	},[])
+	}, [data])
 	const previousPage = () => {
 		if (account == user.id && account == path.slice(1, path.length)) {
 			navigate('/home')

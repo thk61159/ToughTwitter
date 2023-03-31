@@ -79,14 +79,15 @@ function ProfileInfoModal({ Modal, setModal, setNewD, data }) {
 				},
 			})
 			.then(e => {
-				const updateduser = JSON.parse(JSON.stringify(e.data))
-				updateduser.currentUser = true
-				console.log('資料更新成功', e.status)
-				updateUserData({ token: token, user: updateduser })
-				updateBrowsingUser({ user: updateduser })
-				setNewD(updateduser)
-				setBgURL(updateduser.background)
-				setAvatarURL(updateduser.avatar)
+				const updatedUser = JSON.parse(JSON.stringify(e.data))
+				updatedUser.currentUser = true
+				const mergeUser = { ...user, ...updatedUser }
+				console.log('資料更新成功', e.status, mergeUser)
+				updateUserData({ token: token, user: updatedUser })
+				updateBrowsingUser(updatedUser)
+				setNewD(mergeUser)
+				setBgURL(updatedUser.background)
+				setAvatarURL(updatedUser.avatar)
 				setModal(false)
 			})
 			.catch(err => console.error(takeErrMsg(err)))

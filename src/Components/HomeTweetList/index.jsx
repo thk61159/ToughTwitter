@@ -9,7 +9,6 @@ import HomeTweetBox from '../HomeTweetBox'
 
 function HomeTweetList({ post, setPost }) {
 	const { userData } = useContext(MyContext)
-	console.log(userData,'登入後的data')
 	const { token } = userData
 	const [Data, setData] = useState(null)
 	useEffect(() => {
@@ -24,6 +23,7 @@ function HomeTweetList({ post, setPost }) {
 		// }
 	}, [])
 	useEffect(() => {
+		if (post) {
 			Myaxios(token)
 				.get('/tweets')
 				.then(e => {
@@ -32,6 +32,7 @@ function HomeTweetList({ post, setPost }) {
 					setData(e.data)
 				})
 				.catch(err => console.error(takeErrMsg(err)))
+		}
 	}, [post])
 
 	return (

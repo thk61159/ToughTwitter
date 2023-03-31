@@ -1,14 +1,20 @@
-import styles from './UserInfo.module.scss'
+import React, { useState, useContext, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 
+import styles from './UserInfo.module.scss'
+import MyContext from '../../MyContext'
 import { timeCounter } from '../../../utils'
 
-function UserInfo({ tweet, poster }) {
+function UserInfo({ tweet }) {
+	const { BrowsingUser } = useContext(MyContext)
+	useEffect(() => {	
+	}, [BrowsingUser])
+
 	return (
 		<div className={styles['container']}>
-			<Link to={`/${poster.id}`} className={styles['account-link']}>
-				<p className={styles['user-info-name']}>{poster.name}</p>
-				<p className={styles['user-info-account']}>@{poster.account}</p>
+			<Link to={`/${BrowsingUser?.id}`} className={styles['account-link']}>
+				<p className={styles['user-info-name']}>{BrowsingUser?.name}</p>
+				<p className={styles['user-info-account']}>@{BrowsingUser?.account}</p>
 			</Link>
 			<p className={styles['user-info-dot']}>•</p>
 			<p className={styles['user-info-update']}>{timeCounter(tweet.createdAt)} 小時</p>

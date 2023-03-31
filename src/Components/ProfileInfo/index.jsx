@@ -23,7 +23,6 @@ function ProfileInfo({ data }) {
 			setNewD(null)
 		} else {
 			setD(BrowsingUser || data)
-			console.log(d)
 		}
 	}, [ data, BrowsingUser])
 	return (

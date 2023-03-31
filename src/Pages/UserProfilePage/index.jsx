@@ -2,6 +2,7 @@ import React, { useContext } from 'react'
 
 import styles from './UserProfilePage.module.scss'
 import MyContext from '../../Components/MyContext'
+
 import UserTweetList from '../../Components/UserTweetList'
 
 function UserProfilePage() {

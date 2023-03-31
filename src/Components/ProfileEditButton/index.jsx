@@ -1,21 +1,26 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useState,useContext } from 'react'
 
 import styles from './ProfileEditButton.module.scss'
+import MyContext from '../MyContext'
 
 import notificatiobIcon from '../../assets/icons/notification_info.svg'
 import messageIcon from '../../assets/icons/letter_icon.svg'
 import UserFollowBtn from '../UserFollowButton'
 
-function ProfileEditButton({ data, setModal }) {
-	const [d, setD] = useState()
+function ProfileEditButton({ setModal,data }) {
+	const { BrowsingUser } = useContext(MyContext)
+	// useEffect(() => {
+	// 	console.log('BrowsingUser in ProfileEditButton', BrowsingUser)
+
+	// }, [BrowsingUser])
 	useEffect(() => {
-		setD(data)
+		console.log('data in ProfileEditButton', data)
 	}, [data])
 
 	return (
 		<>
 			<div className={styles['container']}>
-				{d?.currentUser ? (
+				{BrowsingUser?.currentUser ? (
 					<button
 						className={styles['edit-btn']}
 						onClick={() => {
@@ -31,7 +36,7 @@ function ProfileEditButton({ data, setModal }) {
 						<div className={styles['bell-avatar']}>
 							<img src={notificatiobIcon} alt='bell' className={styles['avatar-img']} />
 						</div>
-						<UserFollowBtn currentfollowed={d?.currentfollowed} userId={d?.id} />
+						<UserFollowBtn currentfollowed={BrowsingUser?.currentfollowed} userId={BrowsingUser?.id} />
 					</div>
 				)}
 			</div>

@@ -11,16 +11,14 @@ function UserLikeList({ token, BrowsingUser }) {
 	const { account } = useParams()
 	const [Data, setData] = useState(null)
 	useEffect(() => {
-		if (!Data && BrowsingUser) {
-			Myaxios(token)
-				.get(`/users/${account}/likes`)
-				.then(e => {
-					console.log('使用者推文清單', e.status)
-					setData(e.data)
-				})
-				.catch(err => console.error(takeErrMsg(err)))
-		}
-	}, [account,Data])
+		Myaxios(token)
+			.get(`/users/${account}/likes`)
+			.then(e => {
+				console.log('使用者Like清單', e.status)
+				setData(e.data)
+			})
+			.catch(err => console.error(takeErrMsg(err)))
+	}, [account, BrowsingUser])
 
 	return (
 		<div className={styles['container']}>
