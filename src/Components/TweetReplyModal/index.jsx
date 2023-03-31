@@ -18,7 +18,7 @@ function TweetReplyModal({ Modal, setModal, data, BrowsingUser }) {
 	const [reply, setReply] = useState('')
 	const [error, setError] = useState('')
 	const submitTweet = () => {
-		if (reply.length < 140 || !reply.trim()) {
+		if (reply?.length < 140 || !reply.trim()) {
 			Myaxios(token)
 				.post(`tweets/${tweet?.id || tweet?.TweetId}/replies `, { comment: reply })
 				.then(e => {
@@ -33,7 +33,7 @@ function TweetReplyModal({ Modal, setModal, data, BrowsingUser }) {
 	}
 	useEffect(() => {
 		if (reply) {
-			if (reply.length > 140) {
+			if (reply?.length > 140) {
 				return setError('字數不可超過140字')
 			} else if (!reply.trim()) {
 				return setReply('')

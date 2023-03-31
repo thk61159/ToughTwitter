@@ -29,6 +29,7 @@ const basename = process.env.PUBLIC_URL;
 function App() {
 	const [userData, setUserData] = useState('')
 	const [BrowsingUser, setBrowsingUser] = useState('')
+	const [newPost, setNewPost] = useState(false)
 	const updateUserData = newValue => {
 		setUserData(newValue)
 		console.log(userData, 'userData在react更新')
@@ -36,12 +37,14 @@ function App() {
 	const updateBrowsingUser = newValue => {
 		setBrowsingUser(newValue)
 	}
-	useEffect(() => {
-	}, [userData, BrowsingUser])
+	const updateNewPost = boolean => {
+		setNewPost(boolean)
+	}
+	// useEffect(() => {}, [userData, BrowsingUser])
 	return (
 		<div className={styles.App}>
 			<BrowserRouter basename={basename}>
-				<MyContext.Provider value={{ userData, updateUserData, BrowsingUser, updateBrowsingUser }}>
+				<MyContext.Provider value={{ userData, updateUserData, BrowsingUser, updateBrowsingUser,newPost, updateNewPost }}>
 					<Routes>
 						{/* 用一個nav去處理確認登入狀態的事件 ， 非登入者就重新導向到 /login*/}
 						<Route path='/' element={<AuthNav />}>
@@ -64,7 +67,7 @@ function App() {
 								<Route path='/:account/followings' element={BrowsingUser && <UserProfileFollowship />}></Route>
 								<Route path='/:account/followers' element={BrowsingUser && <UserProfileFollowship />}></Route>
 							</Route>
-							<Route path='/test' element={ <Test />}></Route>
+							<Route path='/test' element={<Test />}></Route>
 						</Route>
 					</Routes>
 				</MyContext.Provider>

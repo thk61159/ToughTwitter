@@ -10,19 +10,21 @@ import TweetSubmitButton from './TweetSubmitButton'
 import { ReactComponent as Close } from '../../assets/icons/admin_cross.svg'
 import DefaultAvatar from '../../assets/icons/AcLogo.svg'
 
-function TweetInputModal({ Modal,setModal }) {
-	const { userData } = useContext(MyContext)
+function TweetInputModal({ Modal, setModal }) {
+	const { userData, newPost, updateNewPost } = useContext(MyContext)
 	const { token, user } = userData
 	const [tweet, setTweet] = useState('')
 	const [error, setError] = useState('')
 	const submitTweet = () => {
-		if (tweet.length < 140 || !tweet.trim()) {
+		if (tweet?.length < 140 || !tweet.trim()) {
 			Myaxios(token)
 				.post(`/tweets`, { description: tweet })
 				.then(e => {
 					setModal(false)
 					setTweet('')
 					console.log('推文送出', e.status)
+					console.log(newPost)
+					updateNewPost(true)
 				})
 				.catch(err => console.error(takeErrMsg(err)))
 		} else {
@@ -31,7 +33,7 @@ function TweetInputModal({ Modal,setModal }) {
 	}
 	useEffect(() => {
 		if (tweet) {
-			if (tweet.length > 140) {
+			if (tweet?.length > 140) {
 				return setError('字數不可超過140字')
 			} else if (!tweet.trim()) {
 				return setTweet('')
@@ -41,7 +43,7 @@ function TweetInputModal({ Modal,setModal }) {
 		}
 	}, [tweet])
 	// useEffect(() => {
-		
+
 	// }, [userData])
 	if (!Modal) return null
 	return (

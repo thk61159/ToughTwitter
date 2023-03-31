@@ -37,7 +37,7 @@ function RegisterPage() {
 			setPassword('')
 			return setCheckPassword('')
 		}
-		if (name.length > 50) return setAlertNote({ note: '名稱太長拉！', type: 'error' })
+		if (name?.length > 50) return setAlertNote({ note: '名稱太長拉！', type: 'error' })
 		const form = { account, name, email, password, checkPassword }
 
 		Myaxios()
@@ -60,7 +60,7 @@ function RegisterPage() {
 	}, [account])
 	useEffect(() => {
 		updateNoteField('name', name)
-		if (name.length > 50) {
+		if (name?.length > 50) {
 			setNote({ ...note, name: '名稱長度超過50字' })
 		}
 	}, [name])

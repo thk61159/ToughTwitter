@@ -12,7 +12,7 @@ function TweetInput({ setPost, token, user }) {
 	const [error, setError] = useState('')
 	const submitTweet = () => {
 		if (!tweet) return setError('不可空白')
-		if (tweet.length < 140 || !tweet.trim()) {
+		if (tweet?.length < 140 || !tweet?.trim()) {
 			Myaxios(token)
 				.post(`/tweets`, { description: tweet })
 				.then(e => {
@@ -27,7 +27,7 @@ function TweetInput({ setPost, token, user }) {
 	}
 	useEffect(() => {
 		if (tweet) {
-			if (tweet.length > 140) {
+			if (tweet?.length > 140) {
 				return setError('字數不可超過140字')
 			} else if (!tweet.trim()) {
 				return setTweet('')

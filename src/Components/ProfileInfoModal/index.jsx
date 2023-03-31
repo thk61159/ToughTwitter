@@ -62,11 +62,11 @@ function ProfileInfoModal({ Modal, setModal, setNewD, data }) {
 		setAvatarURL(url)
 	}
 	const handleSubmit = e => {
-		if (name.length > 50 && intro.length > 160) {
+		if (name?.length > 50 && intro?.length > 160) {
 			return setError({ ...error, name: '名稱太長', intro: '自我介紹太長' })
-		} else if (name.length > 50) {
+		} else if (name?.length > 50) {
 			return setError({ ...error, name: '名稱太長' })
-		} else if (intro.length > 160) {
+		} else if (intro?.length > 160) {
 			return setError({ ...error, intro: '自我介紹太長' })
 		}
 		const formData = new FormData()

@@ -8,7 +8,8 @@ import { takeErrMsg } from '../../utils'
 import HomeTweetBox from '../HomeTweetBox'
 
 function HomeTweetList({ post, setPost }) {
-	const { userData } = useContext(MyContext)
+	const { userData, newPost, updateNewPost } = useContext(MyContext)
+
 	const { token } = userData
 	const [Data, setData] = useState('')
 	useEffect(() => {
@@ -23,17 +24,19 @@ function HomeTweetList({ post, setPost }) {
 		// }
 	}, [])
 	useEffect(() => {
-		if (post) {
+		if (post || newPost) {
 			Myaxios(token)
 				.get('/tweets')
 				.then(e => {
 					console.log('首頁推文更新', e.status)
+					console.log(newPost,'//////////////')
+					updateNewPost(false)
 					setPost(false)
 					setData(JSON.parse(JSON.stringify(e.data)))
 				})
 				.catch(err => console.error(takeErrMsg(err)))
 		}
-	}, [post])
+	}, [post, newPost])
 
 	return (
 		<div className={styles['container']}>
