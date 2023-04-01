@@ -1,9 +1,9 @@
 # Tough Twitter
 利用 React 與 [nodeJS X MySQL API ](https://github.com/sd880428/twitter-api-2020)製作出的 SPA 社群網頁
-|        | Email             | Password     |
+|        | account            | Password     |
 | ------ | ----------------- | ------------ |
-| admin Login  | root@example.com  | 12345678     |
-| user Login | user1@example.com  | 12345678     |
+| admin Login  | root  | 12345678     |
+| user Login | user1 | 12345678     |
 
 ## 功能
 1. 登入登出註冊
@@ -43,8 +43,9 @@
 npm start
 ```
 4. 更換API
-/src/constants.js
-修改 Myaxios funciton
+```
+/src/constants.js -> 修改 Myaxios funciton
+```
 
 ##開發工具
 * Visual Studio Code 
