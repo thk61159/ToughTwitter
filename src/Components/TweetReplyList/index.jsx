@@ -7,20 +7,21 @@ import { takeErrMsg } from '../../utils'
 
 import TweetReplyBox from '../TweetReplyBox'
 
-function TweetReplyList({ token }) {
+function TweetReplyList({ token, newReply, setNewReply }) {
 	const { tweet_id } = useParams()
 	const [Data, setData] = useState('')
 	useEffect(() => {
-		if (!Data) {
+		if (!Data || newReply) {
 			Myaxios(token)
 				.get(`tweets/${tweet_id}/replies`)
 				.then(e => {
 					console.log('特定推文回覆清單', e.status)
 					setData(JSON.parse(JSON.stringify(e.data)))
+					setNewReply(false)
 				})
 				.catch(err => console.error(takeErrMsg(err)))
 		}
-	}, [Data])
+	}, [newReply])
 
 	return (
 		<div className={styles['container']}>

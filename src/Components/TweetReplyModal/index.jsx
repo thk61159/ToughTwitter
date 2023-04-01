@@ -10,7 +10,7 @@ import TweetSubmitButton from './ReplySubmitButton'
 import { ReactComponent as Close } from '../../assets/icons/admin_cross.svg'
 import DefaultAvatar from '../../assets/icons/AcLogo.svg'
 
-function TweetReplyModal({ Modal, setModal, data, BrowsingUser }) {
+function TweetReplyModal({ Modal, setModal, data, BrowsingUser, setNewReply }) {
 	const { userData } = useContext(MyContext)
 	const { user, token } = userData
 	const [tweet, setTweet] = useState()
@@ -22,6 +22,7 @@ function TweetReplyModal({ Modal, setModal, data, BrowsingUser }) {
 			Myaxios(token)
 				.post(`tweets/${tweet?.id || tweet?.TweetId}/replies `, { comment: reply })
 				.then(e => {
+					setNewReply(true)
 					setModal(false)
 					setReply('')
 					console.log('回覆送出', e.status)
@@ -70,7 +71,7 @@ function TweetReplyModal({ Modal, setModal, data, BrowsingUser }) {
 							<div className={styles['tweet-user-info']}>
 								<div className={styles['tweet-user-name']}>{poster?.name}</div>
 								<div className={styles['tweet-user-account']}>
-									@{poster?.account}•{timeCounter(tweet?.createdAt)} 小時
+									@{poster?.account}•{timeCounter(tweet?.createdAt)}
 								</div>
 							</div>
 							<div className={styles['tweet-content']}>

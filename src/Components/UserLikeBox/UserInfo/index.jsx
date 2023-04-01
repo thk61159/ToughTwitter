@@ -11,7 +11,7 @@ function UserInfo({ tweet, poster }) {
 				<p className={styles['user-info-account']}>@{poster.account}</p>
 			</Link>
 			<p className={styles['user-info-dot']}>•</p>
-			<p className={styles['user-info-update']}>{timeCounter(tweet.createdAt)} 小時</p>
+			<p className={styles['user-info-update']}>{timeCounter(tweet.createdAt)} </p>
 		</div>
 	)
 }

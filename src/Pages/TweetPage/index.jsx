@@ -16,17 +16,16 @@ function TweetPage() {
 	const navigate = useNavigate()
 	const { tweet_id } = useParams()
 	const [Data, setData] = useState('')
+	const [newReply, setNewReply] = useState(false)
 	useEffect(() => {
-		if (!Data && token) {
-			Myaxios(token)
-				.get(`tweets/${tweet_id}`)
-				.then(e => {
-					console.log('特定推文', e.status)
-					setData(e.data)
-				})
-				.catch(err => console.error(takeErrMsg(err)))
-		}
-	}, [token,tweet_id])
+		Myaxios(token)
+			.get(`tweets/${tweet_id}`)
+			.then(e => {
+				console.log('特定推文', e.status)
+				setData(e.data)
+			})
+			.catch(err => console.error(takeErrMsg(err)))
+	}, [token, tweet_id, newReply])
 	return (
 		<div className={styles['container']}>
 			<div className={styles['page-title-box']}>
@@ -40,9 +39,9 @@ function TweetPage() {
 				<div className={styles['page-title']}>推文</div>
 			</div>
 
-			<div className={styles['tweet-input']}>{Data && <TweetBox d={Data} token={token} />}</div>
+			<div className={styles['tweet-input']}>{Data && <TweetBox data={Data} token={token} setNewReply={setNewReply} />}</div>
 			<div className={styles['tweet-list']}>
-				<TweetReplyList token={token} />
+				<TweetReplyList token={token} newReply={newReply} setNewReply={setNewReply} />
 			</div>
 		</div>
 	)

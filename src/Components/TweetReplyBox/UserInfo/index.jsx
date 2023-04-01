@@ -13,7 +13,7 @@ function UserInfo({ replyer, reply }) {
 				<p className={styles['user-info-account']}>@{replyer?.account}</p>
 			</Link>
 			<p className={styles['user-info-dot']}>•</p>
-			<p className={styles['user-info-update']}>{timeCounter(reply?.createdAt)} 小時</p>
+			<p className={styles['user-info-update']}>{timeCounter(reply?.createdAt)}</p>
 		</div>
 	)
 }
