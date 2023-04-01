@@ -58,13 +58,13 @@ function ProfileInfo({ data }) {
 						<div className={styles['user-track-info']}>
 							<div className={styles['user-following']}>
 								<Link to={`/${d.id}/followings`} className={styles['number-link']}>
-									{d.followingsCounts||0}
+									{d.followingsCounts || 0}
 								</Link>
 								<p className={styles['note']}>個跟隨中</p>
 							</div>
 							<div className={styles['user-following']}>
 								<Link to={`/${d.id}/followers`} className={styles['number-link']}>
-									{d.followersCounts||0}
+									{d.followersCounts || 0}
 								</Link>
 								<p className={styles['note']}>位跟隨者</p>
 							</div>
