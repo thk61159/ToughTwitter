@@ -18,7 +18,7 @@ function UserPopularList() {
 				.get(`/followships?limit=10&sort=DESC`)
 				.then(e => {
 					console.log('人氣追蹤', e.status)
-					setData(e.data)
+					setData(JSON.parse(JSON.stringify(e.data)))
 				})
 				.catch(err => console.error(takeErrMsg(err)))
 		}
@@ -28,7 +28,8 @@ function UserPopularList() {
 	return (
 		<div className={styles['container']}>
 			<h4 className={styles['popular__title']}>推薦跟隨</h4>
-			<div className={styles['popular__user-list']}>{Data && Data.map((d, i) => <UserPopularCard data={d} key={i} />)}</div>
+			<div className={styles['popular__user-list']}>
+				{Data && Data.map((d, i) => <UserPopularCard d={d} key={i} />)}</div>
 		</div>
 	)
 }

@@ -22,7 +22,7 @@ function UserLoginPage() {
 		// 點擊登入發送 POST /api/users/login
 		Myaxios().post('/users/login', { account, password })
 			.then(response => {
-				const { token, user } = response.data.data
+				const { token, user } = response.data
 				user.currentUser = true
 				console.log('login token', token)
 				if (token) {

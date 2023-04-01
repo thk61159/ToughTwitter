@@ -22,7 +22,6 @@ function AuthNav() {
 			Myaxios(localToken)
 				.post('/users/test-token')
 				.then(e => {
-					// console.log(e.data)
 					const  VerifiedUser  = e.data
 					VerifiedUser.currentUser = true
 					console.log('localToken驗證', e.status)

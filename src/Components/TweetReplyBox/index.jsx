@@ -6,27 +6,26 @@ import styles from './TweetReplyBox.module.scss'
 import UserInfo from './UserInfo'
 import DefaultAvatar from '../../assets/icons/AcLogo.svg'
 
-function TweetReplyBox({ data }) {
-	const d = JSON.parse(JSON.stringify(data))
+function TweetReplyBox({ d }) {
+	const [reply, setReply] = useState()
 	const [replyer, setReplyer] = useState()
 	const [poster, setPoster] = useState()
 	useEffect(() => {
-		setReplyer(d.reply)
+		setReply(d)
+		setReplyer(d.User)
 		setPoster(d.poster)
-	}, [data])
-	
+	}, [d])
+
 	return (
 		<div className={styles['container']}>
 			<div className={styles['user-avatar']}>
-				<Link to={`/${replyer?.UserId}`}>
-					<img src={replyer?.User.avatar || DefaultAvatar} className={styles['avatar-img']} alt='avatar-img' />
+				<Link to={`/${replyer?.id}`}>
+					<img src={replyer?.avatar || DefaultAvatar} className={styles['avatar-img']} alt='avatar-img' />
 				</Link>
 			</div>
 
 			<div className={styles['tweet-author']}>
-				<div className={styles['tweet-user-info']}>
-					<UserInfo d={d} />
-				</div>
+				<div className={styles['tweet-user-info']}>{replyer && <UserInfo reply={reply} replyer={replyer} />}</div>
 				<div className={styles['tweet-user-replyto']}>
 					回覆
 					<Link to={`/${poster?.id}`}>
@@ -34,7 +33,7 @@ function TweetReplyBox({ data }) {
 					</Link>
 				</div>
 				<div className={styles['tweet-content']}>
-					<div>{replyer?.comment}</div>
+					<div>{reply?.comment}</div>
 				</div>
 			</div>
 		</div>

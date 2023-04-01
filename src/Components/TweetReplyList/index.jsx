@@ -16,7 +16,7 @@ function TweetReplyList({ token }) {
 				.get(`tweets/${tweet_id}/replies`)
 				.then(e => {
 					console.log('特定推文回覆清單', e.status)
-					setData(e.data)
+					setData(JSON.parse(JSON.stringify(e.data)))
 				})
 				.catch(err => console.error(takeErrMsg(err)))
 		}
@@ -26,7 +26,7 @@ function TweetReplyList({ token }) {
 		<div className={styles['container']}>
 			{Data &&
 				Data.map((d, i) => {
-					return <TweetReplyBox data={d} key={i} />
+					return <TweetReplyBox d={d} key={i} />
 				})}
 		</div>
 	)
