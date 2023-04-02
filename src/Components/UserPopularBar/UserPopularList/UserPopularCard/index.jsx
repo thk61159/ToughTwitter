@@ -1,8 +1,12 @@
+import { useContext } from 'react'
 import { Link } from 'react-router-dom'
 import styles from './UserPopularCard.module.scss'
+import MyContext from '../../../MyContext'
 import DefaultAvatar from '../../../../assets/icons/AcLogo.svg'
 import UserFollowBtn from '../../../UserFollowButton'
 function UserPopularCard({ d }) {
+	const { userData } = useContext(MyContext)
+	const { user } = userData
 	return (
 		<div className={styles['container']}>
 			<Link to={`/${d.id}`}>
@@ -17,7 +21,7 @@ function UserPopularCard({ d }) {
 				</Link>
 			</div>
 
-			<UserFollowBtn currentfollowed={d.currentfollowed} userId={d.id} />
+			{user?.id === d?.id ? null : <UserFollowBtn currentfollowed={d.currentfollowed} userId={d.id} />}
 		</div>
 	)
 }
