@@ -6,6 +6,7 @@ import { Myaxios } from '../../constants'
 import MyContext from '../../Components/MyContext'
 
 // Components
+import Alert from '../../Components/Alert'
 import Button from '../../Components/Button'
 import AuthInput from '../../Components/AuthInput'
 import { ReactComponent as AcLogo } from '../../assets/icons/AcLogo.svg'
@@ -16,6 +17,7 @@ function UserLoginPage() {
 	const [account, setAccount] = useState('')
 	const [password, setPassword] = useState('')
 	const [note, setNote] = useState({})
+	const [alertNote, setAlertNote] = useState('')
 	// 事件處理
 	const handleClick = () => {
 		if (!password || !account) return setNote({ password: '請輸入帳號密碼' })
@@ -28,7 +30,10 @@ function UserLoginPage() {
 				if (token) {
 					localStorage.setItem('token', token)
 					updateUserData({ token: token, user: user })
-					navigate('/home')
+					setAlertNote({ note: '登入成功', type: 'suc' })
+					setTimeout(() => {
+						navigate('/home')
+					}, 1000)
 				}
 				setNote({})
 				//如果伺服器回傳錯誤會直接被丟到catch，所以沒有特別檢查 !token
@@ -45,6 +50,14 @@ function UserLoginPage() {
 	}
 	return (
 		<div className={styles.container}>
+			{alertNote && (
+				<div
+					onClick={() => {
+						setAlertNote('')
+					}}>
+					<Alert alertNote={alertNote.note} alertType={alertNote.type} />
+				</div>
+			)}
 			<div>
 				<AcLogo />
 			</div>
