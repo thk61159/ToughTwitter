@@ -9,11 +9,16 @@ function PageTitle({ data }) {
 	const navigate = useNavigate()
 	const path = useLocation().pathname
 	const { account } = useParams()
-	const { userData } = useContext(MyContext)
+	const { userData, BrowsingUser } = useContext(MyContext)
 	const { user } = userData
 	useEffect(() => {
-		setD(data)
-	}, [data])
+		if (BrowsingUser) {
+			setD(BrowsingUser)
+		} else {
+			setD(data)
+		}
+		
+	}, [data, BrowsingUser])
 	const previousPage = () => {
 		if (account == user.id && account == path) {
 			navigate('/home')
