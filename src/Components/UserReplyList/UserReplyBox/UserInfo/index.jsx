@@ -1,7 +1,8 @@
-import styles from './UserInfo.module.scss'
+import React from 'react'
 import { Link } from 'react-router-dom'
 
-import { timeCounter } from '../../../utils'
+import styles from './UserInfo.module.scss'
+import { timeCounter } from '../../../../utils'
 
 function UserInfo({ reply, BrowsingUser }) {
 	return (

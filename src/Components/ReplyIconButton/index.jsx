@@ -1,3 +1,4 @@
+import React from "react";
 import styles from "./ReplyIconButton.module.scss";
 import { ReactComponent as Reply } from "../../assets/icons/reply_icon.svg";
 // import ReplyModal from "../ReplyModal";

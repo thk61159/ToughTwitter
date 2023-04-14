@@ -42,10 +42,6 @@
 ```shell
 npm start
 ```
-4. 更換API
-```
-/src/constants.js -> 修改 Myaxios funciton
-```
 
 ##開發工具
 * Visual Studio Code 

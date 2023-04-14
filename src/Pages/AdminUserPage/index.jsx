@@ -1,9 +1,8 @@
-import { useContext, useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 
 import styles from './AdminUserPage.module.scss'
-import { Myaxios } from '../../constants';
 import MyContext from '../../Components/MyContext';
-import { takeErrMsg } from '../../utils';
+import { Myaxios, takeErrMsg } from '../../utils'
 
 import AdminUserCards from '../../Components/AdminUserCards';
 import AdminSideBar from '../../Components/AdminSideBar';

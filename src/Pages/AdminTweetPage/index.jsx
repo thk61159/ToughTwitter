@@ -1,10 +1,9 @@
-import { useContext, useState, useEffect } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import styles from './AdminTweetPage.module.scss'
 import MyContext from '../../Components/MyContext';
-import { Myaxios } from '../../constants';
-import { takeErrMsg } from '../../utils';
+import { Myaxios, takeErrMsg } from '../../utils'
 
 import AdminSideBar from '../../Components/AdminSideBar';
 import AdminTweetList from '../../Components/AdminTweetList';

@@ -1,9 +1,8 @@
 import React, { useState, useContext, useEffect } from 'react'
 
 import styles from './HomeTweetList.module.scss'
-import { Myaxios } from '../../constants'
 import MyContext from '../MyContext'
-import { takeErrMsg } from '../../utils'
+import { takeErrMsg, Myaxios } from '../../utils'
 
 import HomeTweetBox from '../HomeTweetBox'
 

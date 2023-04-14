@@ -3,8 +3,7 @@ import { useParams, Outlet } from 'react-router-dom'
 
 import styles from './LayoutUser.module.scss'
 import MyContext from '../../Components/MyContext'
-import { Myaxios } from '../../constants'
-import { takeErrMsg } from '../../utils'
+import { takeErrMsg, Myaxios } from '../../utils'
 
 import ProfileUserNavBar from '../../Components/ProfileUserNavBar'
 import UserSidebarContainer from '../UserSidebarContainer'

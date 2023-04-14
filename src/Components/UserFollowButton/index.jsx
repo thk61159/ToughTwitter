@@ -2,7 +2,7 @@ import React, { useState, useContext } from 'react'
 
 import styles from './UserFollowBtn.module.scss'
 
-import { Myaxios } from '../../constants'
+import { Myaxios } from '../../utils'
 import MyContext from '../MyContext'
 
 function UserFollowBtn({ currentfollowed, userId }) {

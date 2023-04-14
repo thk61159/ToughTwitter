@@ -2,8 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { useParams, useLocation } from 'react-router-dom'
 
 import styles from './UserFollowshipList.module.scss'
-import { Myaxios } from '../../constants'
-import { findPath, takeErrMsg } from '../../utils'
+import { Myaxios, findPath, takeErrMsg } from '../../utils'
 
 import UserFollowshipBox from '../UserFollowshipBox'
 

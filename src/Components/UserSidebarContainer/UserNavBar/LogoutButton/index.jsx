@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import React, { useContext } from "react";
 import styles from "./LogoutButton.module.scss";
 import MyContext from "../../../MyContext";
 import { NavLink, useNavigate } from "react-router-dom";

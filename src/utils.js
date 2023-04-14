@@ -1,3 +1,13 @@
+import axios from 'axios'
+export const Myaxios = (token, api_id = 1) => {
+	let apiURL = process.env.REACT_APP_TWITTER_API
+	return axios.create({
+		baseURL: apiURL + '/api',
+		headers: {
+			Authorization: `Bearer ${token}`,
+		},
+	})
+}
 export function timeCounter(createdAt) {
 	const now = new Date()
 	const targetDate = new Date(createdAt)

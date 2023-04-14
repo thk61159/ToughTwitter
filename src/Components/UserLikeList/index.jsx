@@ -2,10 +2,9 @@ import React, { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 
 import styles from './UserLikeList.module.scss'
-import { Myaxios } from '../../constants'
-import { takeErrMsg } from '../../utils'
+import { Myaxios, takeErrMsg } from '../../utils'
 
-import UserLikeBox from '../UserLikeBox'
+import UserLikeBox from './UserLikeBox'
 
 function UserLikeList({ token, BrowsingUser }) {
 	const { account } = useParams()

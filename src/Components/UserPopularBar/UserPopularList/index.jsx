@@ -1,9 +1,8 @@
 import React, { useState, useEffect, useContext } from 'react'
 
 import styles from './UserPopularList.module.scss'
-import { Myaxios } from '../../../constants'
 import MyContext from '../../MyContext'
-import { takeErrMsg } from '../../../utils'
+import { Myaxios, takeErrMsg } from '../../../utils'
 
 import UserPopularCard from './UserPopularCard'
 

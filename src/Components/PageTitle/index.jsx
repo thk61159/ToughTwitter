@@ -1,4 +1,4 @@
-import { useContext, useState, useEffect } from 'react'
+import React, { useContext, useState, useEffect } from 'react'
 import { useNavigate, useParams, useLocation } from 'react-router-dom'
 import styles from './PageTitle.module.scss'
 import MyContext from '../MyContext'

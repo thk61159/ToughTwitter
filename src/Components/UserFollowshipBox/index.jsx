@@ -1,18 +1,12 @@
-import React, { useState, useContext } from 'react'
+import React from 'react'
 import { Link } from 'react-router-dom'
 
 import styles from './UserFollowshipBox.module.scss'
-import { Myaxios } from '../../constants'
-import MyContext from '../MyContext'
 
 import UserFollowBtn from '../UserFollowButton'
 import DefaultAvatar from '../../assets/icons/AcLogo.svg'
 
-
 function UserFollowshipBox({ d }) {
-	console.log(d)
-	
-	
 	return (
 		<div className={styles['container']}>
 			<div className={styles['user-avatar']}>

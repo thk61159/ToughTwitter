@@ -1,10 +1,9 @@
-import React, { useState, useContext,useEffect } from 'react'
+import React, { useState, useContext, useEffect } from 'react'
 import { useParams, useNavigate} from 'react-router-dom'
 
 import styles from './TweetPage.module.scss'
-import { Myaxios } from '../../constants'
 import MyContext from '../../Components/MyContext'
-import { takeErrMsg } from '../../utils'
+import { Myaxios, takeErrMsg } from '../../utils'
 
 import TweetReplyList from '../../Components/TweetReplyList'
 import TweetBox from '../../Components/TweetBox'

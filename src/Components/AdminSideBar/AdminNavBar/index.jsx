@@ -1,3 +1,5 @@
+import React from 'react';
+import { NavLink } from 'react-router-dom';
 import styles from './AdminNavBar.module.scss';
 import { ReactComponent as AcLogo } from '../../../assets/icons/AcLogo.svg';
 import { ReactComponent as House } from '../../../assets/icons/house.svg';
@@ -6,7 +8,6 @@ import { ReactComponent as Head } from '../../../assets/icons/head.svg';
 import { ReactComponent as HeadActive } from '../../../assets/icons/head_Full.svg';
 import NavBarItem from '../../UserSidebarContainer/UserNavBar/NavBarItem';
 import LogoutButton from '../../UserSidebarContainer/UserNavBar/LogoutButton';
-import { NavLink } from 'react-router-dom';
 
 function AdminNavBar() {
   return (

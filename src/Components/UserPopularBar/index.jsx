@@ -1,11 +1,13 @@
-import styles from "./UserPopularBar.module.scss";
-import PopularUserList from "./UserPopularList";
+import React from 'react'
+
+import styles from './UserPopularBar.module.scss'
+import PopularUserList from './UserPopularList'
 function UserPopularBar() {
-  return (
-    <div className={styles["container"]}>
-      <PopularUserList />
-    </div>
-  );
+	return (
+		<div className={styles['container']}>
+			<PopularUserList />
+		</div>
+	)
 }
 
-export default UserPopularBar;
+export default UserPopularBar

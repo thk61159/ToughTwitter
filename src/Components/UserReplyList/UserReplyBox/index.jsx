@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 import styles from './UserReplyBox.module.scss'
 
 import UserInfo from './UserInfo'
-import DefaultAvatar from '../../assets/icons/AcLogo.svg'
+import DefaultAvatar from '../../../assets/icons/AcLogo.svg'
 
 
 function UserReplyBox({ reply, BrowsingUser }) {

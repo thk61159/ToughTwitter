@@ -2,17 +2,17 @@ import React, { useState, useContext } from 'react'
 import { Link } from 'react-router-dom'
 
 import styles from './UserLikeBox.module.scss'
-import { Myaxios } from '../../constants'
-import MyContext from '../MyContext'
+import { Myaxios } from '../../../utils'
+import MyContext from '../../MyContext'
 
 import UserInfo from './UserInfo'
-import LikeFullIconButton from '../LikeFullIconButton'
-import ReplyIconButton from '../ReplyIconButton'
-import LikeIconButton from '../LikeIconButton'
-import TweetReplyModal from '../TweetReplyModal'
-import DefaultAvatar from '../../assets/icons/AcLogo.svg'
+import LikeFullIconButton from '../../LikeFullIconButton'
+import ReplyIconButton from '../../ReplyIconButton'
+import LikeIconButton from '../../LikeIconButton'
+import TweetReplyModal from '../../TweetReplyModal'
+import DefaultAvatar from '../../../assets/icons/AcLogo.svg'
 
-function UserRelpyBox({ tweet }) {
+function UserLikeBox({ tweet }) {
 	const { userData, BrowsingUser } = useContext(MyContext)
 	const { token } = userData
 	const poster = tweet.poster
@@ -50,4 +50,4 @@ function UserRelpyBox({ tweet }) {
 		</div>
 	)
 }
-export default UserRelpyBox
+export default UserLikeBox

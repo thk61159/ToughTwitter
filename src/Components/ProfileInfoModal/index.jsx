@@ -1,9 +1,8 @@
 import React, { useState, useEffect, useContext, useRef } from 'react'
 
 import styles from './ProfileInfoModal.module.scss'
-import { Myaxios } from '../../constants'
 import MyContext from '../MyContext'
-import { findExtName, takeErrMsg} from '../../utils'
+import { Myaxios, findExtName, takeErrMsg } from '../../utils'
 
 import Alert from '../Alert'
 import Button from '../Button'

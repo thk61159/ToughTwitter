@@ -1,3 +1,4 @@
+import React from 'react';
 import styles from './AdminTweetList.module.scss';
 import AdminTweetBox from './AdminTweetBox';
 import DefaultAvatar from '../../assets/icons/AcLogo.svg'

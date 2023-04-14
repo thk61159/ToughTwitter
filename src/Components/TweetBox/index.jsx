@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 
 import styles from './TweetBox.module.scss'
-import { Myaxios } from '../../constants'
 import { timestamp } from '../../utils'
 
 import LikeFullIconButton from '../LikeFullIconButton'

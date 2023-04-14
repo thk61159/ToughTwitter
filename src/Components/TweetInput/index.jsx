@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from 'react'
 
 import styles from './TweetInput.module.scss'
-import { Myaxios } from '../../constants'
-import { takeErrMsg } from '../../utils'
+import { Myaxios, takeErrMsg } from '../../utils'
 
 import TweetSubmitButton from './TweetSubmitButton'
 import DefaultAvatar from '../../assets/icons/AcLogo.svg'

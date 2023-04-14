@@ -1,8 +1,9 @@
+import React from 'react';
+import styles from './AdminUserCard.module.scss';
 import { ReactComponent as TweetIcon } from '../../../assets/icons/tweet_feather_icon.svg';
 import { ReactComponent as LikeIcon } from '../../../assets/icons/like_icon.svg';
 import DefaultAvatar from '../../../assets/icons/AcLogo.svg'
 import DefaultBackground from '../../../assets/icons/background.svg'
-import styles from './AdminUserCard.module.scss';
 
 const AdminUserCard = ({ background, avatar, account, name, tweetsCount, followersCount, followingsCount, likesCount }) => {
   return (

@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
-import axios from 'axios'
-import styles from './AdminLoginPage.module.scss'
 import { Link, useNavigate } from 'react-router-dom'
-import { API_URL } from '../../constants'
+
+import styles from './AdminLoginPage.module.scss'
+import { Myaxios } from '../../utils'
 
 // Component
 import { ReactComponent as AcLogo } from '../../assets/icons/AcLogo.svg'
@@ -18,9 +18,8 @@ function AdminLoginPage({ setUserData }) {
 	//事件處理
 	const handleClick = () => {
 		if (!password || !account) return setNote({ password: '請輸入帳號密碼' })
-
-		axios
-			.post(`${API_URL}/admin/login`, { account, password })
+		Myaxios()
+			.post(`/admin/login`, { account, password })
 			.then(response => {
 				const { token, user } = response.data
 

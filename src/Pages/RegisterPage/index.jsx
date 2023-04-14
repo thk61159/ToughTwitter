@@ -2,8 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 
 import styles from './RegisterPage.module.scss'
-import { Myaxios } from '../../constants'
-import { takeErrMsg } from '../../utils'
+import { Myaxios, takeErrMsg } from '../../utils'
 
 //Components
 import { ReactComponent as AcLogo } from '../../assets/icons/AcLogo.svg'

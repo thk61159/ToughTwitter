@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import styles from './App.module.scss';
-import { BrowserRouter, Routes, Route, useNavigate } from 'react-router-dom';
-
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 //Page
 import UserLoginPage from './Pages/UserLoginPage';
@@ -24,7 +23,7 @@ import LayoutUser from './Components/LayoutUser';
 import AuthNav from './Components/AuthNav';
 import MyContext from './Components/MyContext';
 
-const basename = process.env.PUBLIC_URL;
+const basename = process.env.PUBLIC_URL
 
 function App() {
 	const [userData, setUserData] = useState('')
@@ -40,7 +39,10 @@ function App() {
 	const updateNewPost = boolean => {
 		setNewPost(boolean)
 	}
-	// useEffect(() => {}, [userData, BrowsingUser])
+	useEffect(() => {
+		console.log(process.env.TWITTER_API)
+	}, [])
+	
 	return (
 		<div className={styles.App}>
 			<BrowserRouter basename={basename}>

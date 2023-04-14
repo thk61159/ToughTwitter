@@ -1,6 +1,6 @@
+import React from 'react'
 import styles from './LikeIconButton.module.scss'
-import { Myaxios } from '../../constants'
-import { takeErrMsg } from '../../utils'
+import { Myaxios, takeErrMsg } from '../../utils'
 
 import { ReactComponent as Like } from '../../assets/icons/like_icon.svg'
 

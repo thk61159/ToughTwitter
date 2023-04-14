@@ -1,10 +1,8 @@
 import React, { useState, useEffect, useContext } from 'react'
-import { useNavigate } from 'react-router-dom'
 
 import styles from './TweetInputModal.module.scss'
 import MyContext from '../MyContext'
-import { Myaxios } from '../../constants'
-import { takeErrMsg } from '../../utils'
+import { Myaxios, takeErrMsg } from '../../utils'
 
 import TweetSubmitButton from './TweetSubmitButton'
 import { ReactComponent as Close } from '../../assets/icons/admin_cross.svg'

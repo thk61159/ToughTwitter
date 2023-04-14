@@ -1,10 +1,9 @@
 import React, { useState, useEffect, useContext } from 'react'
 import { useNavigate } from 'react-router-dom'
+
 import styles from './SettingPage.module.scss'
-import { Myaxios } from '../../constants'
 import MyContext from '../../Components/MyContext'
-import { formChange } from '../../utils'
-import { takeErrMsg } from '../../utils'
+import { Myaxios, takeErrMsg, formChange } from '../../utils'
 
 // Components
 import Button from '../../Components/Button'

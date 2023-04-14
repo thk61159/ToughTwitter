@@ -2,7 +2,7 @@ import React, { useState, useEffect, useContext } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 
 import styles from './UserLoginPage.module.scss'
-import { Myaxios } from '../../constants'
+import { Myaxios } from '../../utils'
 import MyContext from '../../Components/MyContext'
 
 // Components

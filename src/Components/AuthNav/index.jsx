@@ -2,8 +2,7 @@ import React, { useEffect, useContext } from 'react'
 import { Outlet, useNavigate, useLocation } from 'react-router-dom'
 
 import MyContext from '../../Components/MyContext'
-import { Myaxios } from '../../constants'
-import { takeErrMsg } from '../../utils'
+import { takeErrMsg, Myaxios } from '../../utils'
 
 function AuthNav() {
 	const { userData, updateUserData } = useContext(MyContext)
