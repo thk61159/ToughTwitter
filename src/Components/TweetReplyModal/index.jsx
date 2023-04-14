@@ -9,6 +9,7 @@ import { ReactComponent as Close } from '../../assets/icons/admin_cross.svg'
 import DefaultAvatar from '../../assets/icons/AcLogo.svg'
 
 function TweetReplyModal({ Modal, setModal, data, BrowsingUser, setNewReply }) {
+	
 	const { userData } = useContext(MyContext)
 	const { user, token } = userData
 	const [tweet, setTweet] = useState()
@@ -20,12 +21,12 @@ function TweetReplyModal({ Modal, setModal, data, BrowsingUser, setNewReply }) {
 			Myaxios(token)
 				.post(`tweets/${tweet?.id || tweet?.TweetId}/replies `, { comment: reply })
 				.then(e => {
-					setNewReply(true)
+					setNewReply && setNewReply(true)
 					setModal(false)
 					setReply('')
 					console.log('回覆送出', e.status)
 				})
-				.catch(err => console.error(takeErrMsg(err)))
+				.catch(err => console.error(err))
 		} else {
 			setError('字數不可超過140字或是空白')
 		}
